@@ -134,6 +134,18 @@ def generate_permutations(s: str) -> list[str]:
 
     backtrack([])
     return result
+
+def main():
+    s = input().strip()
+    result = generate_permutations(s)
+    if result:
+        for perm in result:
+            print(perm)
+    else:
+        print("NONE")
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

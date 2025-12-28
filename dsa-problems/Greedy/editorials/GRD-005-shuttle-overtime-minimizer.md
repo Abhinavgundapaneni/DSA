@@ -200,20 +200,23 @@ def min_overtime_cost(n: int, H: int, shifts: list) -> int:
     return needed * min_rate
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read().split()
     if not data:
         return
         
-    iterator = iter(data)
-    n = int(next(iterator))
-    H = int(next(iterator))
+    idx = 0
+    n = int(data[idx])
+    idx += 1
+    H = int(data[idx])
+    idx += 1
     
     shifts = []
     for _ in range(n):
-        l = int(next(iterator))
-        p = int(next(iterator))
-        shifts.append([l, p])
+        l = int(data[idx])
+        idx += 1
+        p = int(data[idx])
+        idx += 1
+        shifts.append((l, p))
 
     result = min_overtime_cost(n, H, shifts)
     print(result)

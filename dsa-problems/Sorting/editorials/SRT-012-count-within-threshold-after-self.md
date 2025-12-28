@@ -198,7 +198,7 @@ def count_within_threshold(arr: list[int], T: int) -> list[int]:
 def main():
     n, t = map(int, input().split())
     arr = list(map(int, input().split()))
-    result = count_threshold(arr, t)
+    result = count_within_threshold(arr, t)
     print(' '.join(map(str, result)))
 
 if __name__ == "__main__":

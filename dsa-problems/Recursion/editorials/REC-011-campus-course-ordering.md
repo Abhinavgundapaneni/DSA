@@ -122,39 +122,54 @@ class Solution {
 ### Python
 
 ```python
-def all_orderings(n: int, edges: list[tuple[int, int]]) -> list[list[int]]:
+from collections import deque
+
+def topological_sort(n, edges):
+    """
+    Topological sort using Kahn's algorithm (BFS).
+    Returns one valid ordering or None if cycle exists.
+    """
     adj = [[] for _ in range(n)]
     indegree = [0] * n
+    
     for u, v in edges:
         adj[u].append(v)
         indegree[v] += 1
     
-    results = []
-    visited = [False] * n
+    # Start with all nodes that have no prerequisites
+    queue = deque([i for i in range(n) if indegree[i] == 0])
+    result = []
+    
+    while queue:
+        node = queue.popleft()
+        result.append(node)
+        
+        for neighbor in adj[node]:
+            indegree[neighbor] -= 1
+            if indegree[neighbor] == 0:
+                queue.append(neighbor)
+    
+    if len(result) != n:
+        return None  # Cycle detected
+    
+    return result
 
-    def backtrack(path):
-        if len(path) == n:
-            results.append(list(path))
-            return
+def main():
+    n, m = map(int, input().split())
+    edges = []
+    for _ in range(m):
+        u, v = map(int, input().split())
+        edges.append((u, v))
+    
+    result = topological_sort(n, edges)
+    
+    if result is None:
+        print("IMPOSSIBLE")
+    else:
+        print(' '.join(map(str, result)))
 
-        for i in range(n):
-            if not visited[i] and indegree[i] == 0:
-                # Choose
-                visited[i] = True
-                path.append(i)
-                for neighbor in adj[i]:
-                    indegree[neighbor] -= 1
-                
-                backtrack(path)
-                
-                # Unchoose
-                for neighbor in adj[i]:
-                    indegree[neighbor] += 1
-                path.pop()
-                visited[i] = False
-
-    backtrack([])
-    return results
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

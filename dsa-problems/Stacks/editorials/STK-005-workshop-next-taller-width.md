@@ -106,24 +106,35 @@ class Solution {
 
 ```python
 def next_taller_within(h: list[int], w: int) -> list[int]:
+    """Find next taller element within distance w for each position"""
     n = len(h)
     result = [-1] * n
-    stack = [] # Stores indices
+    stack = []  # Monotonic decreasing stack of indices
     
-    for i in range(n - 1, -1, -1):
-        while stack and h[stack[-1]] <= h[i]:
-            stack.pop()
-            
-        if stack:
-            j = stack[-1]
-            if j - i <= w:
-                result[i] = h[j]
-            else:
-                result[i] = -1
+    for i in range(n):
+        # Pop elements smaller than current
+        while stack and h[stack[-1]] < h[i]:
+            idx = stack.pop()
+            # Check if current is within distance w
+            if i - idx <= w:
+                result[idx] = h[i]
         
         stack.append(i)
-        
+    
     return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n, w = map(int, lines[0].split())
+    heights = list(map(int, lines[1].split()))
+    
+    result = next_taller_within(heights, w)
+    print(' '.join(map(str, result)))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -192,6 +203,37 @@ class Solution {
     return Array.from(result);
   }
 }
+```
+
+### Python
+
+```python
+
+def next_taller_width(arr):
+    n = len(arr)
+    result = [-1] * n
+    stack = []
+    
+    for i in range(n):
+        while stack and arr[stack[-1]] < arr[i]:
+            idx = stack.pop()
+            result[idx] = i - idx
+        stack.append(i)
+    
+    return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    arr = list(map(int, lines[1].split()))
+    
+    result = next_taller_width(arr)
+    print(' '.join(map(str, result)))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

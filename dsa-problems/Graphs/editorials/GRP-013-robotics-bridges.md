@@ -191,6 +191,50 @@ def find_bridges(n: int, adj: List[List[int]]) -> List[tuple]:
             dfs(i)
     
     return bridges
+
+def main():
+    n = int(input())
+    m = int(input())
+    
+    adj = [[] for _ in range(n)]
+    
+    for _ in range(m):
+        u, v = map(int, input().split())
+        adj[u].append(v)
+        adj[v].append(u)
+    
+    # Find bridges using Tarjan's algorithm
+    visited = [False] * n
+    disc = [0] * n
+    low = [0] * n
+    parent = [-1] * n
+    bridges = []
+    timer = [0]
+    
+    def dfs(u):
+        visited[u] = True
+        disc[u] = low[u] = timer[0]
+        timer[0] += 1
+        
+        for v in adj[u]:
+            if not visited[v]:
+                parent[v] = u
+                dfs(v)
+                low[u] = min(low[u], low[v])
+                
+                if low[v] > disc[u]:
+                    bridges.append((min(u,v), max(u,v)))
+            elif v != parent[u]:
+                low[u] = min(low[u], disc[v])
+    
+    for i in range(n):
+        if not visited[i]:
+            dfs(i)
+    
+    print(len(bridges))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

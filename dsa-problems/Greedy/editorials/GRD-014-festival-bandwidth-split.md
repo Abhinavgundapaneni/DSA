@@ -195,18 +195,21 @@ def max_stages(n: int, B: int, bandwidths: list) -> int:
     return count
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read()
+    data = data.split()
     if not data:
         return
         
-    iterator = iter(data)
-    n = int(next(iterator))
-    B = int(next(iterator))
+    idx = 0
+    n = int(data[idx])
+    idx += 1
+    B = int(data[idx])
+    idx += 1
     
     bandwidths = []
     for _ in range(n):
-        bandwidths.append(int(next(iterator)))
+        bandwidths.append(int(data[idx]))
+        idx += 1
 
     result = max_stages(n, B, bandwidths)
     print(result)

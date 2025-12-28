@@ -155,6 +155,40 @@ def reachable_nodes(n: int, adj: List[List[tuple]], source: int, threshold: int)
                 queue.append(neighbor)
     
     return list(visited)
+
+def main():
+    n = int(input())
+    m = int(input())
+    
+    adj = [[] for _ in range(n)]
+    
+    for _ in range(m):
+        u, v, w = map(int, input().split())
+        adj[u].append((v, w))
+        adj[v].append((u, w))
+    
+    # Dijkstra from node 0, count reachable nodes
+    import heapq
+    dist = [float('inf')] * n
+    dist[0] = 0
+    pq = [(0, 0)]
+    
+    while pq:
+        d, u = heapq.heappop(pq)
+        if d > dist[u]:
+            continue
+        
+        for v, w in adj[u]:
+            if dist[u] + w < dist[v]:
+                dist[v] = dist[u] + w
+                heapq.heappush(pq, (dist[v], v))
+    
+    # Count reachable nodes (dist < inf)
+    count = sum(1 for d in dist if d != float('inf'))
+    print(count)
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

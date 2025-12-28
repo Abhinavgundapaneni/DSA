@@ -25,12 +25,14 @@ def solve(k, operations):
                 buffer[tail] = x
                 tail = (tail + 1) % k
                 size += 1
-                results.append("true")
+                results.append("NONE")
             else:
+                # Save the value that will be overwritten
+                overwritten_val = buffer[head]
                 buffer[tail] = x
                 tail = (tail + 1) % k
                 head = (head + 1) % k
-                results.append("overwritten")
+                results.append(str(overwritten_val))
         elif op == "DEQ":
             if size > 0:
                 val = buffer[head]
@@ -71,40 +73,53 @@ def generate_yaml():
                 ["ENQ_OVR", 8],
                 ["FRONT"],
                 ["REAR"]
-            ])
-        ],
-        "public": [
+            ]),
             make_test_case(1, [["ENQ", 1], ["ENQ", 2], ["ENQ_OVR", 3], ["DEQ"]]),
             make_test_case(3, [["ISEMPTY"], ["ISFULL"], ["ENQ", 10], ["ISEMPTY"], ["ENQ", 20], ["ENQ", 30], ["ISFULL"]])
+        ],
+        "public": [
+            make_test_case(1, [["ENQ_OVR", i] for i in range(5)] + [["FRONT"]]),  # Capacity 1 overwrite
+            make_test_case(5, [["ENQ", i] for i in range(5)] + [["ISFULL"], ["ENQ_OVR", 100], ["FRONT"]]),  # Full buffer overwrite
+            make_test_case(4, [["ENQ", 1], ["ENQ", 2], ["DEQ"], ["ENQ_OVR", 3], ["FRONT"], ["REAR"]]),  # Partial then overwrite
+            make_test_case(2, [["ISEMPTY"], ["ENQ", 5], ["ISEMPTY"], ["ISFULL"]]),  # Empty/full checks
+            make_test_case(3, [["ENQ", 10], ["ENQ", 20], ["ENQ", 30], ["DEQ"], ["FRONT"], ["REAR"]])  # Normal ops
         ],
         "hidden": []
     }
 
-    # Edge case: Capacity 1 overwriting
-    tc["hidden"].append(make_test_case(1, [["ENQ_OVR", i] for i in range(10)] + [["FRONT"]]))
+    # Edge cases (8-10)
+    tc["hidden"].append(make_test_case(1, [["ENQ_OVR", 1], ["FRONT"], ["REAR"], ["ISEMPTY"], ["ISFULL"]]))  # Single capacity all ops
+    tc["hidden"].append(make_test_case(5, [["ISEMPTY"], ["ISFULL"]]))  # Empty buffer checks
+    tc["hidden"].append(make_test_case(1, [["ENQ_OVR", 1]]))  # Single overwrite
+    tc["hidden"].append(make_test_case(2, [["ENQ", 1], ["ENQ", 2], ["ENQ_OVR", 3], ["ENQ_OVR", 4], ["FRONT"], ["REAR"]]))  # Multiple overwrites
+    tc["hidden"].append(make_test_case(3, [["ENQ", 1], ["ENQ", 2], ["FRONT"], ["REAR"], ["ISEMPTY"], ["ISFULL"]]))  # Partial buffer
+    tc["hidden"].append(make_test_case(4, [["ENQ", i] for i in range(4)] + [["DEQ"], ["ENQ_OVR", 100]]))  # Full then dequeue then overwrite
+    tc["hidden"].append(make_test_case(5, [["ENQ_OVR", 1]]))  # Overwrite on empty
+    tc["hidden"].append(make_test_case(3, [["ENQ", 1], ["ENQ", 2], ["ENQ", 3], ["FRONT"], ["REAR"]]))  # Exactly full
     
-    # Large sequence: Fill and empty
-    tc["hidden"].append(make_test_case(1000, [["ENQ", i] for i in range(1000)] + [["DEQ"] * 1000]))
+    # Corner cases (8-10)
+    tc["hidden"].append(make_test_case(1, [["ENQ_OVR", 10**9], ["ENQ_OVR", -10**9], ["FRONT"]]))  # Extreme values capacity 1
+    tc["hidden"].append(make_test_case(3, [["ENQ", -10**9], ["ENQ", 0], ["ENQ", 10**9], ["ENQ_OVR", 999], ["FRONT"], ["REAR"]]))  # Extremes
+    tc["hidden"].append(make_test_case(2, [["ENQ", 0], ["ENQ", 0], ["ENQ_OVR", 0], ["FRONT"], ["REAR"]]))  # All zeros
+    tc["hidden"].append(make_test_case(4, [["ENQ", 1], ["DEQ"], ["ENQ", 2], ["DEQ"], ["ENQ", 3], ["FRONT"]]))  # Alternating enq/deq
+    tc["hidden"].append(make_test_case(5, [["ENQ", i] for i in range(5)] + [["ENQ_OVR", i] for i in range(5)] + [["FRONT"], ["REAR"]]))  # Fill then overwrite all
+    tc["hidden"].append(make_test_case(2, [["ENQ", -1], ["ENQ", -2], ["ENQ_OVR", -3], ["DEQ"], ["FRONT"]]))  # Negative values
+    tc["hidden"].append(make_test_case(3, [["ENQ", 1], ["ENQ", 2], ["ENQ", 3], ["DEQ"], ["DEQ"], ["ENQ_OVR", 4]]))  # Wrap around
+    tc["hidden"].append(make_test_case(1, [["ENQ_OVR", i] for i in [1, 2, 3, 4, 5]] + [["FRONT"]]))  # Repeated overwrites capacity 1
 
-    # Stress case
-    k_stress = random.randint(1000, 100000)
-    m_stress = 100000
-    stress_ops = []
-    for _ in range(m_stress):
-        r = random.random()
-        if r < 0.3:
-            stress_ops.append(["ENQ", random.randint(-10**9, 10**9)])
-        elif r < 0.6:
-            stress_ops.append(["ENQ_OVR", random.randint(-10**9, 10**9)])
-        elif r < 0.75:
-            stress_ops.append(["DEQ"])
-        elif r < 0.85:
-            stress_ops.append(["FRONT"])
-        elif r < 0.95:
-            stress_ops.append(["REAR"])
-        else:
-            stress_ops.append(["ISEMPTY" if random.random() < 0.5 else "ISFULL"])
-    tc["hidden"].append(make_test_case(k_stress, stress_ops))
+    # Normal cases (10-14)
+    tc["hidden"].append(make_test_case(5, [["ENQ", i] for i in range(3)] + [["FRONT"], ["REAR"], ["ISEMPTY"]]))  # Small buffer
+    tc["hidden"].append(make_test_case(8, [["ENQ", i] for i in range(5)] + [["DEQ"], ["DEQ"], ["ENQ_OVR", 100], ["FRONT"]]))  # Medium buffer
+    tc["hidden"].append(make_test_case(10, [["ENQ", i] for i in range(10)] + [["ISFULL"], ["ENQ_OVR", 999], ["DEQ"], ["FRONT"]]))  # Fill medium
+    tc["hidden"].append(make_test_case(6, [["ENQ", 10], ["ENQ", 20], ["ENQ", 30], ["DEQ"], ["ENQ", 40], ["FRONT"], ["REAR"]]))  # Mixed ops
+    tc["hidden"].append(make_test_case(7, [["ENQ", i*10] for i in range(7)] + [["ISFULL"], ["FRONT"], ["REAR"]]))  # Fill exact
+    tc["hidden"].append(make_test_case(4, [["ENQ", 5], ["ENQ", 10], ["DEQ"], ["ENQ", 15], ["ENQ", 20], ["FRONT"]]))  # Wrap pattern
+    tc["hidden"].append(make_test_case(12, [["ENQ", i] for i in range(8)] + [["DEQ"]] * 3 + [["ENQ_OVR", 100], ["FRONT"]]))  # Larger buffer
+    tc["hidden"].append(make_test_case(15, [["ENQ", i] for i in range(10)] + [["ISEMPTY"], ["ISFULL"], ["REAR"]]))  # Partial large
+    tc["hidden"].append(make_test_case(5, [["ENQ", 1], ["ENQ", 2], ["ENQ", 3], ["ENQ", 4], ["ENQ", 5], ["ENQ_OVR", 6], ["DEQ"], ["FRONT"], ["REAR"]]))  # Full cycle
+    tc["hidden"].append(make_test_case(8, [["ENQ", i*5] for i in range(6)] + [["DEQ"], ["DEQ"], ["ENQ_OVR", 999], ["ISEMPTY"], ["ISFULL"]]))  # Complex mix
+    tc["hidden"].append(make_test_case(20, [["ENQ", i] for i in range(15)] + [["FRONT"], ["REAR"]]))  # Large partial
+    tc["hidden"].append(make_test_case(10, [["ENQ", i] for i in range(10)] + [["DEQ"]] * 5 + [["ENQ_OVR", 100], ["FRONT"], ["REAR"]]))  # Half empty then overwrite
 
     print(yaml.dump(tc, sort_keys=False, default_flow_style=False))
 

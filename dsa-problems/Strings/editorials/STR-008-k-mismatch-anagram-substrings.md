@@ -164,6 +164,19 @@ def count_k_mismatch_anagrams(s: str, p: str, k: int) -> int:
             count += 1
 
     return count
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    s = lines[0]
+    p = lines[1]
+    k = int(lines[2])
+    result = count_k_mismatch_anagrams(s, p, k)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

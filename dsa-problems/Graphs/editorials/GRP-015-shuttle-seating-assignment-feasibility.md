@@ -181,6 +181,46 @@ def is_feasible(n: int, edges: List[List[int]]) -> bool:
                 queue.append(v)
     
     return processed == n
+
+def main():
+    n = int(input())
+    m = int(input())
+    
+    adj = [[] for _ in range(n)]
+    
+    for _ in range(m):
+        u, v = map(int, input().split())
+        adj[u].append(v)
+        adj[v].append(u)
+    
+    # Check if bipartite
+    color = [-1] * n
+    
+    from collections import deque
+    def is_bipartite():
+        for start in range(n):
+            if color[start] == -1:
+                queue = deque([start])
+                color[start] = 0
+                
+                while queue:
+                    u = queue.popleft()
+                    for v in adj[u]:
+                        if color[v] == -1:
+                            color[v] = 1 - color[u]
+                            queue.append(v)
+                        elif color[v] == color[u]:
+                            return False
+        return True
+    
+    if is_bipartite():
+        count = sum(1 for c in color if c == 0)
+        print(count)
+    else:
+        print(0)
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

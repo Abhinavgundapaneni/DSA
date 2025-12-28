@@ -151,45 +151,52 @@ class Solution {
 ### Python
 
 ```python
-def expressions(s: str, target: int, max_ops: int) -> list[str]:
-    results = []
-    n = len(s)
+def eval_expression(nums, ops):
+    """Evaluate expression left to right."""
+    result = nums[0]
+    for i, op in enumerate(ops):
+        if op == '+':
+            result += nums[i + 1]
+        else:  # '-'
+            result -= nums[i + 1]
+    return result
 
-    def backtrack(index, current_val, ops_count, flip_used, current_expr):
-        if index == n:
-            if current_val == target:
-                results.append(current_expr)
-            return
+def find_one_flip_target(nums, ops, target):
+    """
+    Check if flipping exactly one operator makes target achievable.
+    Returns the index of operator to flip, or -1 if already at target
+    or not possible with one flip.
+    """
+    # Check if already at target
+    original = eval_expression(nums, ops)
+    if original == target:
+        return -1
+    
+    # Try flipping each operator
+    for i in range(len(ops)):
+        # Flip operator
+        old_op = ops[i]
+        ops[i] = '-' if old_op == '+' else '+'
+        
+        if eval_expression(nums, ops) == target:
+            ops[i] = old_op  # Restore
+            return i
+        
+        ops[i] = old_op  # Restore
+    
+    return -1  # Not possible with one flip
 
-        for i in range(index, n):
-            # Leading zero check
-            if i > index and s[index] == '0':
-                break
-            
-            sub = s[index : i+1]
-            val = int(sub)
+def main():
+    n = int(input())
+    nums = list(map(int, input().split()))
+    ops = list(input().strip())
+    target = int(input())
+    
+    result = find_one_flip_target(nums, ops, target)
+    print(result)
 
-            if index == 0:
-                # First term
-                # Normal
-                backtrack(i + 1, val, 0, flip_used, sub)
-                # Flip
-                if not flip_used:
-                    backtrack(i + 1, -val, 0, True, "-" + sub)
-            else:
-                if ops_count < max_ops:
-                    # +
-                    backtrack(i + 1, current_val + val, ops_count + 1, flip_used, current_expr + "+" + sub)
-                    if not flip_used:
-                        backtrack(i + 1, current_val - val, ops_count + 1, True, current_expr + "+-" + sub)
-                    
-                    # -
-                    backtrack(i + 1, current_val - val, ops_count + 1, flip_used, current_expr + "-" + sub)
-                    if not flip_used:
-                        backtrack(i + 1, current_val + val, ops_count + 1, True, current_expr + "--" + sub)
-
-    backtrack(0, 0, 0, False, "")
-    return sorted(results)
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

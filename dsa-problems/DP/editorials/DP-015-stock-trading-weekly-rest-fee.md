@@ -176,6 +176,14 @@ def max_profit(prices: List[int], fee: int) -> int:
     for val in unlock[n:]:
         ans = max(ans, val)
     return ans
+
+def main():
+    n, fee = map(int, input().split())
+    prices = list(map(int, input().split()))
+    print(max_profit(prices, fee))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

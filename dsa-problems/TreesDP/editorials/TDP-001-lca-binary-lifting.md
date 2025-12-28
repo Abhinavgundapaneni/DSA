@@ -289,6 +289,7 @@ public class Main {
 ```python
 from typing import List
 import sys
+sys.setrecursionlimit(300000)
 
 class Solution:
     def __init__(self):

@@ -211,18 +211,21 @@ def max_tickets(n: int, requests: list) -> int:
     return sum(pq)
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read()
+    data = data.split()
     if not data:
         return
         
-    iterator = iter(data)
-    n = int(next(iterator))
+    idx = 0
+    n = int(data[idx])
+    idx += 1
     
     requests = []
     for _ in range(n):
-        q = int(next(iterator))
-        d = int(next(iterator))
+        q = int(data[idx])
+        idx += 1
+        d = int(data[idx])
+        idx += 1
         requests.append([q, d])
 
     result = max_tickets(n, requests)

@@ -127,6 +127,15 @@ def gray_code(n: int) -> list[str]:
         result.append("1" + s)
         
     return result
+
+def main():
+    n = int(input())
+    result = gray_code(n)
+    for code in result:
+        print(code)
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

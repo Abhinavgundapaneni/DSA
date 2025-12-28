@@ -123,30 +123,49 @@ class Solution {
 ### Python
 
 ```python
-def count_arrangements(n: int, k: int, d: int) -> int:
-    memo = {}
+def n_queens_count(n):
+    """
+    Count N-Queens solutions using backtracking with bit manipulation.
+    Uses bits to track columns and diagonals for O(1) conflict checking.
+    """
+    if n == 0:
+        return 1
+    
+    count = 0
+    all_ones = (1 << n) - 1
+    
+    def backtrack(cols, diag1, diag2):
+        nonlocal count
+        if cols == all_ones:
+            count += 1
+            return
+        
+        # Available positions: not in any conflict
+        available = all_ones & ~(cols | diag1 | diag2)
+        
+        while available:
+            # Get lowest set bit (next available position)
+            pos = available & -available
+            available ^= pos  # Remove this position
+            
+            # Place queen and recurse
+            # diag1 shifts left (going down-left)
+            # diag2 shifts right (going down-right)
+            backtrack(
+                cols | pos,
+                (diag1 | pos) << 1,
+                (diag2 | pos) >> 1
+            )
+    
+    backtrack(0, 0, 0)
+    return count
 
-    def backtrack(idx, remaining_k):
-        if remaining_k == 0:
-            return 1
-        if idx >= n:
-            return 0
-        
-        state = (idx, remaining_k)
-        if state in memo:
-            return memo[state]
-        
-        # Option 1: Place student here
-        # Next valid index is idx + 1 (current occupied) + d (gap)
-        res = backtrack(idx + 1 + d, remaining_k - 1)
-        
-        # Option 2: Skip this seat
-        res += backtrack(idx + 1, remaining_k)
-        
-        memo[state] = res
-        return res
+def main():
+    n = int(input().strip())
+    print(n_queens_count(n))
 
-    return backtrack(0, k)
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

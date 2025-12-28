@@ -208,6 +208,55 @@ def find_articulation_points(n: int, adj: List[List[int]]) -> List[int]:
             dfs(i)
     
     return list(ap)
+
+def main():
+    n = int(input())
+    m = int(input())
+    
+    adj = [[] for _ in range(n)]
+    
+    for _ in range(m):
+        u, v = map(int, input().split())
+        adj[u].append(v)
+        adj[v].append(u)
+    
+    # Find articulation points
+    visited = [False] * n
+    disc = [0] * n
+    low = [0] * n
+    parent = [-1] * n
+    ap = [False] * n
+    timer = [0]
+    
+    def dfs(u):
+        children = 0
+        visited[u] = True
+        disc[u] = low[u] = timer[0]
+        timer[0] += 1
+        
+        for v in adj[u]:
+            if not visited[v]:
+                parent[v] = u
+                children += 1
+                dfs(v)
+                low[u] = min(low[u], low[v])
+                
+                if parent[u] == -1 and children > 1:
+                    ap[u] = True
+                if parent[u] != -1 and low[v] >= disc[u]:
+                    ap[u] = True
+            elif v != parent[u]:
+                low[u] = min(low[u], disc[v])
+    
+    for i in range(n):
+        if not visited[i]:
+            dfs(i)
+    
+    count = sum(ap)
+    print(count)
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

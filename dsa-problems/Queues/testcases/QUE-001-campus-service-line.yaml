@@ -1,1446 +1,920 @@
-problem_id: QUE_CAMPUS_SERVICE_LINE__4821
 samples:
-- input: |-
-    6
+- input: '6
+
     ENQUEUE 12
+
     ENQUEUE -5
+
     FRONT
+
     DEQUEUE
+
     FRONT
-    DEQUEUE
-  output: |-
+
+    DEQUEUE'
+  output: '12
+
     12
-    12
+
     -5
-    -5
-- input: |-
-    6
-    DEQUEUE
-    FRONT
+
+    -5'
+- input: '3
+
     ENQUEUE 100
-    FRONT
+
     DEQUEUE
-    FRONT
-  output: |-
-    EMPTY
-    EMPTY
-    100
-    100
-    EMPTY
-- input: |-
-    8
-    ENQUEUE 1
-    ENQUEUE 2
-    ENQUEUE 3
+
+    FRONT'
+  output: '100
+
+    EMPTY'
+- input: '6
+
+    ENQUEUE 5
+
+    ENQUEUE 10
+
+    ENQUEUE 15
+
     DEQUEUE
+
     DEQUEUE
-    ENQUEUE 4
-    FRONT
-    DEQUEUE
-  output: |-
-    1
-    2
-    3
-    3
+
+    DEQUEUE'
+  output: '5
+
+    10
+
+    15'
 public:
-- input: |-
-    45
-    ENQUEUE 518
-    ENQUEUE -543
-    ENQUEUE -791
-    FRONT
-    ENQUEUE -136
-    ENQUEUE -809
-    ENQUEUE 34
-    DEQUEUE
-    FRONT
-    ENQUEUE -81
-    ENQUEUE 657
-    FRONT
-    ENQUEUE -135
-    ENQUEUE -682
-    ENQUEUE 563
-    ENQUEUE -811
-    ENQUEUE -265
-    DEQUEUE
-    FRONT
-    ENQUEUE 992
-    DEQUEUE
-    ENQUEUE 287
-    FRONT
-    ENQUEUE 442
-    ENQUEUE 354
-    ENQUEUE -408
-    FRONT
-    DEQUEUE
-    ENQUEUE 708
-    ENQUEUE -242
-    ENQUEUE 372
-    ENQUEUE 918
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -54
-    ENQUEUE 895
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE -354
-    ENQUEUE -865
-    ENQUEUE 931
-    ENQUEUE 470
-    ENQUEUE 342
-    ENQUEUE 811
-  output: |-
-    518
-    518
-    -543
-    -543
-    -543
-    -791
-    -791
-    -136
-    -136
-    -136
-    -809
-    34
-    -81
-    657
-    657
-- input: |-
-    46
-    ENQUEUE -458
-    ENQUEUE 525
-    ENQUEUE -462
-    DEQUEUE
-    ENQUEUE -259
-    ENQUEUE -717
-    ENQUEUE -814
-    FRONT
-    ENQUEUE -673
-    DEQUEUE
-    ENQUEUE -219
-    ENQUEUE -42
-    ENQUEUE 988
-    ENQUEUE 930
-    ENQUEUE 476
-    ENQUEUE 812
-    ENQUEUE -454
-    DEQUEUE
-    ENQUEUE -677
-    ENQUEUE 953
-    FRONT
-    FRONT
-    ENQUEUE -783
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 561
-    ENQUEUE 952
-    DEQUEUE
-    ENQUEUE -337
-    ENQUEUE -771
-    FRONT
-    DEQUEUE
-    ENQUEUE 798
-    ENQUEUE -839
-    ENQUEUE -5
-    FRONT
-    ENQUEUE -743
-    ENQUEUE -27
-    DEQUEUE
-    ENQUEUE 242
-    ENQUEUE -567
-    FRONT
-    FRONT
-    ENQUEUE 375
-    DEQUEUE
-    ENQUEUE -753
-  output: |-
-    -458
-    525
-    525
-    -462
-    -259
-    -259
-    -259
-    -717
-    -814
-    -673
-    -673
-    -219
-    -219
-    -42
-    -42
-    -42
-- input: |-
-    20
-    ENQUEUE -308
-    ENQUEUE 134
-    ENQUEUE -549
-    ENQUEUE 449
-    DEQUEUE
-    FRONT
-    ENQUEUE -513
-    ENQUEUE -6
-    ENQUEUE -730
-    FRONT
-    ENQUEUE -503
-    FRONT
-    ENQUEUE -802
-    DEQUEUE
-    ENQUEUE 769
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -306
-    DEQUEUE
-    ENQUEUE 98
-  output: |-
-    -308
-    134
-    134
-    134
-    134
-    -549
-    449
-    -513
-- input: |-
-    33
-    ENQUEUE -625
-    ENQUEUE -489
-    DEQUEUE
-    FRONT
-    ENQUEUE 335
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE -563
-    FRONT
-    ENQUEUE -996
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 960
-    FRONT
-    DEQUEUE
-    ENQUEUE -555
-    DEQUEUE
-    ENQUEUE 531
-    ENQUEUE -898
-    ENQUEUE 29
-    DEQUEUE
-    ENQUEUE 40
-    ENQUEUE -620
-    ENQUEUE -861
-    DEQUEUE
-    ENQUEUE 823
-    ENQUEUE 185
-    ENQUEUE 268
-    ENQUEUE 346
-    ENQUEUE 70
-    ENQUEUE -466
-    ENQUEUE 466
-  output: |-
-    -625
-    -489
-    -489
-    -489
-    -489
-    335
-    335
-    -563
-    -996
-    -996
-    960
-    -555
-    531
-- input: |-
-    25
-    ENQUEUE -190
-    ENQUEUE 321
-    ENQUEUE -353
-    FRONT
-    ENQUEUE 272
-    FRONT
-    ENQUEUE -564
-    ENQUEUE -729
-    FRONT
-    DEQUEUE
-    ENQUEUE 707
-    ENQUEUE -381
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    ENQUEUE -764
-    FRONT
-    ENQUEUE -423
-    FRONT
-    ENQUEUE 298
-    DEQUEUE
-    ENQUEUE 859
-    DEQUEUE
-    ENQUEUE -434
-  output: |-
-    -190
-    -190
-    -190
-    -190
-    321
-    321
-    -353
-    272
-    272
-    272
-    272
-    -564
-hidden:
-- input: |-
-    7
-    ENQUEUE 579
-    ENQUEUE -464
-    ENQUEUE -96
-    ENQUEUE -125
-    ENQUEUE -771
-    ENQUEUE 808
-    DEQUEUE
-  output: |-
-    579
-- input: |-
-    7
-    DEQUEUE
-    ENQUEUE -739
-    ENQUEUE -254
-    FRONT
-    FRONT
-    ENQUEUE -489
-    DEQUEUE
-  output: |-
-    EMPTY
-    -739
-    -739
-    -739
-- input: |-
-    40
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    FRONT
-    ENQUEUE 612
-    DEQUEUE
-    ENQUEUE -37
-    ENQUEUE 672
-    DEQUEUE
-    FRONT
-    ENQUEUE 351
-    ENQUEUE -328
-    ENQUEUE -858
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -111
-    ENQUEUE 610
-    ENQUEUE 241
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -107
-    ENQUEUE 895
-    DEQUEUE
-    FRONT
-    ENQUEUE -117
-    ENQUEUE 360
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 361
-  output: |-
-    EMPTY
-    EMPTY
-    EMPTY
-    EMPTY
-    EMPTY
-    EMPTY
-    EMPTY
-    EMPTY
-    612
-    -37
-    672
-    672
-    351
-    -328
-    -858
-    EMPTY
-    EMPTY
-    -111
-    610
-    241
-    -107
-    -107
-    895
-    -117
-    360
-    EMPTY
-- input: |-
-    29
-    FRONT
-    DEQUEUE
-    ENQUEUE -1000
-    ENQUEUE -570
-    ENQUEUE 187
-    DEQUEUE
-    ENQUEUE 383
-    ENQUEUE -31
-    FRONT
-    DEQUEUE
-    ENQUEUE 359
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE -950
-    ENQUEUE -27
-    FRONT
-    ENQUEUE 814
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 343
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 141
-    ENQUEUE 737
-    ENQUEUE -727
-    DEQUEUE
-  output: |-
-    EMPTY
-    EMPTY
-    -1000
-    -570
-    -570
-    187
-    383
-    383
-    -31
-    -31
-    359
-    -950
-    -950
-    -950
-    -27
-    814
-- input: |-
-    40
-    ENQUEUE 945
-    DEQUEUE
-    FRONT
-    ENQUEUE 857
-    ENQUEUE 837
-    ENQUEUE 764
-    ENQUEUE -470
-    FRONT
-    ENQUEUE 592
-    ENQUEUE 283
-    ENQUEUE -100
-    ENQUEUE -415
-    ENQUEUE -313
-    ENQUEUE 106
-    ENQUEUE -692
-    ENQUEUE 421
-    ENQUEUE -562
-    ENQUEUE -166
-    ENQUEUE -46
-    ENQUEUE -577
-    DEQUEUE
-    FRONT
-    ENQUEUE 803
-    DEQUEUE
-    ENQUEUE -280
-    ENQUEUE -202
-    FRONT
-    ENQUEUE 530
-    FRONT
-    DEQUEUE
-    ENQUEUE -6
-    ENQUEUE -312
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 857
-    ENQUEUE 155
-    DEQUEUE
-    ENQUEUE 775
-    ENQUEUE -898
-  output: |-
-    945
-    EMPTY
-    857
-    857
-    837
-    837
-    764
-    764
-    764
-    -470
-    -470
-    -470
-    -470
-- input: |-
-    21
-    ENQUEUE -567
-    ENQUEUE -309
-    DEQUEUE
-    FRONT
-    ENQUEUE -833
-    ENQUEUE 534
-    ENQUEUE 949
-    ENQUEUE 331
-    ENQUEUE 960
-    FRONT
-    DEQUEUE
-    ENQUEUE -688
-    ENQUEUE -31
-    DEQUEUE
-    ENQUEUE 432
-    ENQUEUE -245
-    ENQUEUE 243
-    FRONT
-    DEQUEUE
-    ENQUEUE 185
-    ENQUEUE -362
-  output: |-
-    -567
-    -309
-    -309
-    -309
-    -833
-    534
-    534
-- input: |-
-    41
-    FRONT
-    ENQUEUE 464
-    ENQUEUE 212
-    DEQUEUE
-    ENQUEUE 582
-    ENQUEUE 401
-    DEQUEUE
-    FRONT
-    ENQUEUE -123
-    DEQUEUE
-    DEQUEUE
+- input: '2
+
+    DEQUEUE
+
+    FRONT'
+  output: 'EMPTY
+
+    EMPTY'
+- input: '3
+
+    ENQUEUE 100
+
+    DEQUEUE
+
+    DEQUEUE'
+  output: '100
+
+    EMPTY'
+- input: '15
+
+    ENQUEUE 0
+
+    ENQUEUE 1
+
+    ENQUEUE 2
+
     ENQUEUE 3
-    ENQUEUE 967
-    ENQUEUE 825
+
+    ENQUEUE 4
+
     FRONT
-    ENQUEUE 502
-    ENQUEUE 332
-    ENQUEUE 655
+
+    DEQUEUE
+
     FRONT
-    ENQUEUE 691
+
     DEQUEUE
+
     FRONT
-    ENQUEUE 805
-    ENQUEUE 536
-    ENQUEUE 249
+
     DEQUEUE
-    ENQUEUE -335
-    ENQUEUE -566
-    ENQUEUE -471
-    ENQUEUE 802
-    ENQUEUE 802
-    ENQUEUE -980
-    ENQUEUE -609
-    ENQUEUE 474
-    ENQUEUE 137
+
+    FRONT
+
     DEQUEUE
+
+    FRONT
+
+    DEQUEUE'
+  output: '0
+
+    0
+
+    1
+
+    1
+
+    2
+
+    2
+
+    3
+
+    3
+
+    4
+
+    4'
+- input: '5
+
+    ENQUEUE -1
+
+    ENQUEUE 0
+
+    ENQUEUE 1
+
+    FRONT
+
+    DEQUEUE'
+  output: '-1
+
+    -1'
+- input: '5
+
+    ENQUEUE 999
+
+    FRONT
+
+    FRONT
+
     DEQUEUE
+
+    FRONT'
+  output: '999
+
+    999
+
+    999
+
+    EMPTY'
+hidden:
+- input: '5
+
     DEQUEUE
-    ENQUEUE 416
-    ENQUEUE 359
-    ENQUEUE -31
-  output: |-
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE'
+  output: 'EMPTY
+
     EMPTY
-    464
-    212
-    582
-    582
-    401
-    -123
-    -123
-    -123
-    3
-    3
-    967
-    825
-    502
-- input: |-
-    40
-    ENQUEUE -129
-    DEQUEUE
-    ENQUEUE -71
-    ENQUEUE -486
-    ENQUEUE 477
-    ENQUEUE -756
+
+    EMPTY
+
+    EMPTY
+
+    EMPTY'
+- input: '3
+
     FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 556
-    ENQUEUE -421
+
     FRONT
-    ENQUEUE -261
-    ENQUEUE -972
+
+    FRONT'
+  output: 'EMPTY
+
+    EMPTY
+
+    EMPTY'
+- input: '3
+
     DEQUEUE
-    ENQUEUE -889
-    ENQUEUE 428
+
+    FRONT
+
+    DEQUEUE'
+  output: 'EMPTY
+
+    EMPTY
+
+    EMPTY'
+- input: '4
+
+    ENQUEUE 42
+
+    FRONT
+
     DEQUEUE
+
+    FRONT'
+  output: '42
+
+    42
+
+    EMPTY'
+- input: '4
+
+    ENQUEUE -999
+
     DEQUEUE
-    ENQUEUE -418
-    ENQUEUE -98
-    ENQUEUE 977
-    ENQUEUE 927
+
+    ENQUEUE 888
+
+    FRONT'
+  output: '-999
+
+    888'
+- input: '20
+
+    ENQUEUE 0
+
     DEQUEUE
+
+    ENQUEUE 1
+
+    DEQUEUE
+
+    ENQUEUE 2
+
+    DEQUEUE
+
+    ENQUEUE 3
+
+    DEQUEUE
+
+    ENQUEUE 4
+
+    DEQUEUE
+
+    ENQUEUE 5
+
+    DEQUEUE
+
+    ENQUEUE 6
+
+    DEQUEUE
+
     ENQUEUE 7
-    ENQUEUE 289
+
     DEQUEUE
-    FRONT
-    ENQUEUE -492
-    ENQUEUE 565
-    ENQUEUE 220
-    DEQUEUE
-    ENQUEUE -78
-    DEQUEUE
-    ENQUEUE -122
-    ENQUEUE 271
-    ENQUEUE 966
-    FRONT
-    ENQUEUE -568
-    ENQUEUE -834
-  output: |-
-    -129
-    -71
-    -71
-    -486
-    477
-    477
-    -756
-    556
-    -421
-    -261
-    -972
-    -972
-    -889
-    428
-- input: |-
-    15
-    ENQUEUE 130
-    ENQUEUE -995
-    ENQUEUE 411
-    ENQUEUE -404
-    ENQUEUE -410
-    FRONT
-    ENQUEUE 407
-    ENQUEUE -459
-    DEQUEUE
-    FRONT
-    ENQUEUE 115
-    ENQUEUE -695
-    FRONT
-    ENQUEUE -661
-    DEQUEUE
-  output: |-
-    130
-    130
-    -995
-    -995
-    -995
-- input: |-
-    41
-    DEQUEUE
-    ENQUEUE -378
-    FRONT
-    ENQUEUE 11
-    ENQUEUE 224
-    ENQUEUE -116
-    DEQUEUE
-    ENQUEUE -532
-    FRONT
-    ENQUEUE 947
-    ENQUEUE 566
-    DEQUEUE
-    ENQUEUE 548
-    ENQUEUE 62
-    FRONT
-    ENQUEUE 198
-    ENQUEUE 667
-    ENQUEUE -814
-    ENQUEUE -164
-    ENQUEUE 372
-    ENQUEUE -671
-    ENQUEUE 420
-    ENQUEUE 356
-    FRONT
-    ENQUEUE -69
-    ENQUEUE -484
-    ENQUEUE 986
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 61
-    ENQUEUE 549
-    ENQUEUE -95
-    DEQUEUE
-    ENQUEUE 899
-    ENQUEUE 803
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -676
-    ENQUEUE -972
-    ENQUEUE -810
-  output: |-
-    EMPTY
-    -378
-    -378
-    11
-    11
-    224
-    224
-    224
-    224
-    -116
-    -532
-    947
-    566
-- input: |-
-    19
-    FRONT
-    ENQUEUE -760
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -33
-    ENQUEUE 128
-    ENQUEUE -610
-    DEQUEUE
-    FRONT
-    ENQUEUE 617
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 486
-    ENQUEUE 202
-    ENQUEUE 351
-    ENQUEUE -696
-    ENQUEUE -9
-    ENQUEUE 130
-  output: |-
-    EMPTY
-    -760
-    EMPTY
-    EMPTY
-    -33
-    128
-    128
-    -610
-- input: |-
-    39
-    ENQUEUE 910
-    ENQUEUE -614
-    DEQUEUE
-    ENQUEUE 753
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE 28
-    DEQUEUE
-    ENQUEUE 730
-    ENQUEUE 77
-    DEQUEUE
-    ENQUEUE 783
-    DEQUEUE
-    ENQUEUE 984
-    ENQUEUE 276
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE 471
-    DEQUEUE
-    ENQUEUE 264
-    ENQUEUE 292
-    DEQUEUE
-    ENQUEUE -815
-    ENQUEUE -799
-    FRONT
-    ENQUEUE -660
-    FRONT
-    ENQUEUE 630
-    ENQUEUE -266
-    ENQUEUE -702
-    ENQUEUE -157
-    ENQUEUE 623
-    ENQUEUE -642
-    ENQUEUE 783
-    ENQUEUE 399
-  output: |-
-    910
-    -614
-    753
-    753
-    EMPTY
-    EMPTY
-    28
-    730
-    77
-    783
-    984
-    984
-    276
-    471
-    264
-    264
-- input: |-
-    20
-    ENQUEUE 194
-    ENQUEUE -56
-    DEQUEUE
-    FRONT
-    ENQUEUE -411
-    DEQUEUE
-    ENQUEUE -293
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -382
-    ENQUEUE -213
-    DEQUEUE
-    ENQUEUE -265
-    ENQUEUE 432
-    ENQUEUE 699
-    DEQUEUE
-    ENQUEUE 404
-    FRONT
-    FRONT
-    FRONT
-  output: |-
-    194
-    -56
-    -56
-    -411
-    -293
-    -382
-    -213
-    -265
-    -265
-    -265
-- input: |-
-    19
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE 186
-    ENQUEUE -731
-    ENQUEUE -396
-    ENQUEUE -150
-    ENQUEUE -730
-    FRONT
-    ENQUEUE 27
-    FRONT
-    ENQUEUE 688
-    FRONT
-    ENQUEUE 782
-    ENQUEUE -765
-    ENQUEUE -846
-  output: |-
-    EMPTY
-    EMPTY
-    EMPTY
-    EMPTY
-    EMPTY
-    EMPTY
-    186
-    186
-    186
-- input: |-
-    14
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 732
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -69
-    ENQUEUE 533
-    DEQUEUE
-    FRONT
-    ENQUEUE -522
-    ENQUEUE 268
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 687
-  output: |-
-    EMPTY
-    EMPTY
-    732
-    EMPTY
-    -69
-    533
-    533
-    -522
-- input: |-
-    34
-    DEQUEUE
-    ENQUEUE -714
-    ENQUEUE -924
+
     ENQUEUE 8
-    ENQUEUE -520
+
     DEQUEUE
-    ENQUEUE 373
-    DEQUEUE
-    ENQUEUE 202
-    DEQUEUE
-    ENQUEUE -798
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -517
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -612
-    FRONT
-    DEQUEUE
-    ENQUEUE 309
-    ENQUEUE -957
-    ENQUEUE -317
-    ENQUEUE -743
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 665
-    DEQUEUE
-    ENQUEUE 844
-    ENQUEUE -433
-    DEQUEUE
-    ENQUEUE -487
-    DEQUEUE
-  output: |-
-    EMPTY
-    -714
-    -924
-    8
-    -520
-    373
-    202
-    -798
-    -517
-    EMPTY
-    -612
-    -612
-    309
-    -957
-    -317
-    -743
-    665
-- input: |-
+
+    ENQUEUE 9
+
+    DEQUEUE'
+  output: '0
+
+    1
+
+    2
+
+    3
+
+    4
+
+    5
+
     6
-    ENQUEUE -267
-    DEQUEUE
-    ENQUEUE -644
-    ENQUEUE -741
-    DEQUEUE
-    DEQUEUE
-  output: |-
-    -267
-    -644
-    -741
-- input: |-
-    28
-    ENQUEUE -777
-    ENQUEUE -547
-    DEQUEUE
-    FRONT
-    ENQUEUE -62
-    DEQUEUE
-    FRONT
-    ENQUEUE -779
-    ENQUEUE 863
-    ENQUEUE 841
-    ENQUEUE 245
-    ENQUEUE -742
-    ENQUEUE 296
-    ENQUEUE 458
-    ENQUEUE 223
-    ENQUEUE -71
-    ENQUEUE -119
-    ENQUEUE 437
-    ENQUEUE 340
-    FRONT
-    DEQUEUE
-    ENQUEUE -533
-    ENQUEUE 694
-    ENQUEUE -149
-    DEQUEUE
-    ENQUEUE -478
-    ENQUEUE -688
-    DEQUEUE
-  output: |-
-    -777
-    -547
-    -547
-    -62
-    -62
-    -62
-    -779
-    863
-- input: |-
-    10
-    DEQUEUE
-    ENQUEUE 513
-    ENQUEUE -734
-    ENQUEUE 201
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    ENQUEUE 875
-    FRONT
-    DEQUEUE
-  output: |-
-    EMPTY
-    513
-    -734
-    201
-    201
-    201
-- input: |-
-    41
-    ENQUEUE -684
-    DEQUEUE
-    ENQUEUE 731
-    ENQUEUE -765
-    DEQUEUE
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE 902
-    DEQUEUE
-    ENQUEUE -441
-    DEQUEUE
-    ENQUEUE -988
-    ENQUEUE -707
-    ENQUEUE -180
-    ENQUEUE 517
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -302
-    ENQUEUE -362
-    FRONT
-    ENQUEUE -827
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -93
-    DEQUEUE
-    ENQUEUE -441
-    ENQUEUE 49
-    ENQUEUE -120
-    ENQUEUE 388
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 227
-    ENQUEUE -582
-    ENQUEUE -568
-    FRONT
-    ENQUEUE -755
-    ENQUEUE 529
-    ENQUEUE -736
-    ENQUEUE 441
-    ENQUEUE 144
-  output: |-
-    -684
-    731
-    -765
-    -765
-    -765
-    902
-    -441
-    -988
-    -707
-    -180
-    -180
-    517
-    -302
-    -362
-    -827
-    -93
-- input: |-
-    47
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 886
-    ENQUEUE -359
-    ENQUEUE 174
-    ENQUEUE 311
-    ENQUEUE -765
-    ENQUEUE 978
-    ENQUEUE 641
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -784
-    ENQUEUE 206
-    ENQUEUE -839
-    ENQUEUE -365
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 589
-    ENQUEUE 489
-    DEQUEUE
-    ENQUEUE -790
-    ENQUEUE -596
-    ENQUEUE -687
-    DEQUEUE
-    ENQUEUE 582
-    DEQUEUE
-    ENQUEUE 186
-    ENQUEUE 892
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -40
-    ENQUEUE -380
-    DEQUEUE
-    ENQUEUE -849
-    ENQUEUE -75
-    ENQUEUE -245
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE 135
-    FRONT
-    ENQUEUE 861
-    DEQUEUE
-    ENQUEUE -26
-    ENQUEUE 961
-  output: |-
-    EMPTY
-    EMPTY
-    886
-    -359
-    174
-    311
-    -765
-    978
-    641
-    -784
-    206
-    -839
-    -365
-    589
-    489
-    -790
-    -790
-    -596
-    -596
-- input: |-
+
+    7
+
     8
-    ENQUEUE 660
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -493
+
+    9'
+- input: '16
+
+    ENQUEUE 0
+
     FRONT
-    ENQUEUE 248
-    ENQUEUE -237
-    DEQUEUE
-  output: |-
-    660
-    EMPTY
-    -493
-    -493
-- input: |-
-    26
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 142
-    DEQUEUE
-    DEQUEUE
+
+    ENQUEUE 1
+
     FRONT
-    ENQUEUE 193
+
+    ENQUEUE 2
+
     FRONT
-    ENQUEUE 343
-    DEQUEUE
-    ENQUEUE 921
-    ENQUEUE 144
-    ENQUEUE 621
-    ENQUEUE -739
+
+    ENQUEUE 3
+
     FRONT
-    DEQUEUE
-    ENQUEUE 323
-    DEQUEUE
-    ENQUEUE -368
-    ENQUEUE -562
-    ENQUEUE 569
-    ENQUEUE -537
-    DEQUEUE
-    ENQUEUE 614
-    ENQUEUE 578
-    ENQUEUE 512
-  output: |-
-    EMPTY
-    EMPTY
-    142
-    EMPTY
-    EMPTY
-    193
-    193
-    343
-    343
-    921
-    144
-- input: |-
-    38
-    ENQUEUE -311
-    DEQUEUE
-    ENQUEUE -685
-    ENQUEUE 702
-    DEQUEUE
+
+    ENQUEUE 4
+
     FRONT
-    ENQUEUE -254
-    DEQUEUE
-    ENQUEUE -417
+
+    ENQUEUE 5
+
     FRONT
-    ENQUEUE -511
-    ENQUEUE 656
+
+    ENQUEUE 6
+
     FRONT
-    ENQUEUE 389
-    FRONT
-    ENQUEUE -423
+
+    ENQUEUE 7
+
+    FRONT'
+  output: '0
+
+    0
+
+    0
+
+    0
+
+    0
+
+    0
+
+    0
+
+    0'
+- input: '7
+
+    ENQUEUE 1
+
+    ENQUEUE 2
+
+    ENQUEUE 3
+
+    ENQUEUE 4
+
     DEQUEUE
-    ENQUEUE -669
-    FRONT
-    ENQUEUE -488
-    ENQUEUE -16
+
     DEQUEUE
-    ENQUEUE 732
-    ENQUEUE -745
-    ENQUEUE 562
-    ENQUEUE -80
-    DEQUEUE
-    ENQUEUE 938
-    FRONT
-    FRONT
-    ENQUEUE -189
-    ENQUEUE -518
-    ENQUEUE -833
-    ENQUEUE -943
-    ENQUEUE -798
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 699
-  output: |-
-    -311
-    -685
-    702
-    702
-    -254
-    -254
-    -254
-    -254
-    -417
-    -417
-    -511
-    656
-    656
-    656
-    389
-- input: |-
-    35
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -838
-    ENQUEUE -559
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -410
-    ENQUEUE -751
-    ENQUEUE -141
-    DEQUEUE
-    ENQUEUE 713
-    DEQUEUE
-    ENQUEUE 55
-    ENQUEUE 471
-    ENQUEUE -121
-    ENQUEUE -278
-    ENQUEUE -147
-    ENQUEUE 368
-    ENQUEUE 996
-    ENQUEUE 952
-    ENQUEUE 39
-    DEQUEUE
-    ENQUEUE 788
-    ENQUEUE 301
-    ENQUEUE -236
-    ENQUEUE -967
-    ENQUEUE -862
-    ENQUEUE 501
-    DEQUEUE
-    ENQUEUE 549
-    ENQUEUE -910
-    ENQUEUE -307
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-  output: |-
-    EMPTY
-    EMPTY
-    -838
-    -559
-    -410
-    -751
-    -141
-    713
-    55
-    471
-    -121
-- input: |-
-    13
-    ENQUEUE 589
-    DEQUEUE
-    ENQUEUE 620
-    ENQUEUE -915
-    ENQUEUE -365
-    ENQUEUE 669
-    ENQUEUE -482
-    ENQUEUE 324
-    ENQUEUE -269
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -100
-  output: |-
-    589
-    620
-    -915
-    -365
-- input: |-
-    29
-    ENQUEUE -618
-    ENQUEUE 18
-    ENQUEUE 632
-    ENQUEUE 640
-    ENQUEUE -131
-    ENQUEUE 233
-    DEQUEUE
-    ENQUEUE -790
-    ENQUEUE 353
-    ENQUEUE -87
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 781
-    DEQUEUE
-    ENQUEUE 309
-    FRONT
-    ENQUEUE 305
+
+    FRONT'
+  output: '1
+
+    2
+
+    3'
+- input: '13
+
+    ENQUEUE 0
+
+    ENQUEUE 10
+
+    ENQUEUE 20
+
+    ENQUEUE 30
+
+    ENQUEUE 40
+
     ENQUEUE 50
-    DEQUEUE
-    DEQUEUE
+
     FRONT
-    ENQUEUE -863
-    ENQUEUE 321
-    ENQUEUE -216
+
     DEQUEUE
-    ENQUEUE -79
+
     DEQUEUE
+
     DEQUEUE
-    ENQUEUE -185
-  output: |-
-    -618
-    18
-    632
-    640
-    -131
-    -131
-    233
-    -790
-    -790
-    353
-    -87
-- input: |-
-    25
+
     DEQUEUE
-    ENQUEUE 506
-    ENQUEUE 60
-    ENQUEUE 150
-    ENQUEUE 587
-    ENQUEUE -87
-    ENQUEUE 253
-    ENQUEUE 876
+
     DEQUEUE
-    ENQUEUE -849
-    ENQUEUE 840
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -386
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -589
-    DEQUEUE
-    ENQUEUE -261
-    ENQUEUE -245
-    ENQUEUE 129
-    ENQUEUE 810
-  output: |-
-    EMPTY
-    506
-    60
-    60
-    60
-    150
-    587
-    587
-    -87
-    253
-- input: |-
+
+    DEQUEUE'
+  output: '0
+
+    0
+
     10
-    ENQUEUE -185
-    FRONT
-    ENQUEUE 575
-    ENQUEUE 177
-    ENQUEUE 991
-    ENQUEUE -849
-    ENQUEUE 392
-    ENQUEUE -738
-    FRONT
+
+    20
+
+    30
+
+    40
+
+    50'
+- input: '5
+
+    ENQUEUE 100
+
+    ENQUEUE 200
+
     DEQUEUE
-  output: |-
-    -185
-    -185
-    -185
-- input: |-
-    13
-    ENQUEUE 865
-    FRONT
-    ENQUEUE -378
-    ENQUEUE -340
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE -839
+
     ENQUEUE 300
+
+    FRONT'
+  output: '100
+
+    200'
+- input: '6
+
+    ENQUEUE -10
+
+    ENQUEUE -20
+
+    ENQUEUE -30
+
     DEQUEUE
+
     DEQUEUE
-    ENQUEUE 312
-    ENQUEUE 928
-    ENQUEUE -650
-  output: |-
-    865
-    865
-    -378
-    -340
-    -839
+
+    DEQUEUE'
+  output: '-10
+
+    -20
+
+    -30'
+- input: '5
+
+    ENQUEUE -50
+
+    FRONT
+
+    ENQUEUE -100
+
+    DEQUEUE
+
+    FRONT'
+  output: '-50
+
+    -50
+
+    -100'
+- input: '5
+
+    ENQUEUE 1
+
+    FRONT
+
+    ENQUEUE 2
+
+    DEQUEUE
+
+    DEQUEUE'
+  output: '1
+
+    1
+
+    2'
+- input: '6
+
+    ENQUEUE 7
+
+    ENQUEUE 8
+
+    ENQUEUE 9
+
+    FRONT
+
+    DEQUEUE
+
+    FRONT'
+  output: '7
+
+    7
+
+    8'
+- input: '5
+
+    ENQUEUE 50
+
+    DEQUEUE
+
+    ENQUEUE 60
+
+    ENQUEUE 70
+
+    FRONT'
+  output: '50
+
+    60'
+- input: '4
+
+    ENQUEUE 111
+
+    FRONT
+
+    FRONT
+
+    FRONT'
+  output: '111
+
+    111
+
+    111'
+- input: '7
+
+    ENQUEUE 5
+
+    ENQUEUE 6
+
+    FRONT
+
+    FRONT
+
+    FRONT
+
+    FRONT
+
+    DEQUEUE'
+  output: '5
+
+    5
+
+    5
+
+    5
+
+    5'
+- input: '20
+
+    ENQUEUE 10
+
+    ENQUEUE 11
+
+    ENQUEUE 12
+
+    ENQUEUE 13
+
+    ENQUEUE 14
+
+    ENQUEUE 15
+
+    ENQUEUE 16
+
+    ENQUEUE 17
+
+    ENQUEUE 18
+
+    ENQUEUE 19
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE'
+  output: '10
+
+    11
+
+    12
+
+    13
+
+    14
+
+    15
+
+    16
+
+    17
+
+    18
+
+    19'
+- input: '13
+
+    ENQUEUE 0
+
+    ENQUEUE 5
+
+    ENQUEUE 10
+
+    ENQUEUE 15
+
+    ENQUEUE 20
+
+    ENQUEUE 25
+
+    ENQUEUE 30
+
+    ENQUEUE 35
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    FRONT'
+  output: '0
+
+    5
+
+    10
+
+    15
+
+    20'
+- input: '4
+
+    ENQUEUE 1000000000
+
+    ENQUEUE -1000000000
+
+    DEQUEUE
+
+    FRONT'
+  output: '1000000000
+
+    -1000000000'
+- input: '5
+
+    ENQUEUE 0
+
+    ENQUEUE 0
+
+    FRONT
+
+    DEQUEUE
+
+    DEQUEUE'
+  output: '0
+
+    0
+
+    0'
+- input: '9
+
+    ENQUEUE 45
+
+    ENQUEUE 12
+
+    ENQUEUE 89
+
+    ENQUEUE 3
+
+    ENQUEUE 67
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    FRONT'
+  output: '45
+
+    12
+
+    89
+
+    3'
+- input: '8
+
+    ENQUEUE 100
+
+    ENQUEUE 50
+
+    ENQUEUE 75
+
+    ENQUEUE 25
+
+    FRONT
+
+    DEQUEUE
+
+    FRONT
+
+    DEQUEUE'
+  output: '100
+
+    100
+
+    50
+
+    50'
+- input: '5
+
+    ENQUEUE 1
+
+    DEQUEUE
+
+    ENQUEUE 2
+
+    DEQUEUE
+
+    ENQUEUE 3'
+  output: '1
+
+    2'
+- input: '5
+
+    ENQUEUE 10
+
+    ENQUEUE 20
+
+    DEQUEUE
+
+    DEQUEUE
+
+    FRONT'
+  output: '10
+
+    20
+
+    EMPTY'
+- input: '7
+
+    ENQUEUE 1
+
+    ENQUEUE 2
+
+    ENQUEUE 3
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE'
+  output: '1
+
+    2
+
+    3
+
+    EMPTY'
+- input: '26
+
+    ENQUEUE 0
+
+    ENQUEUE 1
+
+    ENQUEUE 2
+
+    ENQUEUE 3
+
+    ENQUEUE 4
+
+    ENQUEUE 5
+
+    ENQUEUE 6
+
+    ENQUEUE 7
+
+    ENQUEUE 8
+
+    ENQUEUE 9
+
+    ENQUEUE 10
+
+    ENQUEUE 11
+
+    ENQUEUE 12
+
+    ENQUEUE 13
+
+    ENQUEUE 14
+
+    FRONT
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE'
+  output: '0
+
+    0
+
+    1
+
+    2
+
+    3
+
+    4
+
+    5
+
+    6
+
+    7
+
+    8
+
+    9'
+- input: '19
+
+    ENQUEUE 0
+
+    ENQUEUE 2
+
+    ENQUEUE 4
+
+    ENQUEUE 6
+
+    ENQUEUE 8
+
+    ENQUEUE 10
+
+    ENQUEUE 12
+
+    ENQUEUE 14
+
+    ENQUEUE 16
+
+    ENQUEUE 18
+
+    ENQUEUE 20
+
+    ENQUEUE 22
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    FRONT'
+  output: '0
+
+    2
+
+    4
+
+    6
+
+    8
+
+    10
+
+    12'
+- input: '16
+
+    ENQUEUE 9
+
+    ENQUEUE 8
+
+    ENQUEUE 7
+
+    ENQUEUE 6
+
+    ENQUEUE 5
+
+    ENQUEUE 4
+
+    ENQUEUE 3
+
+    ENQUEUE 2
+
+    ENQUEUE 1
+
+    ENQUEUE 0
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    DEQUEUE
+
+    FRONT'
+  output: '9
+
+    8
+
+    7
+
+    6
+
+    5
+
+    4'
+

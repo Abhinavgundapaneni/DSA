@@ -248,19 +248,23 @@ def min_proctors(n: int, r: int, exams: list) -> int:
     return (max_overlap + r - 1) // r
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read()
+    data = data.split()
     if not data:
         return
         
-    iterator = iter(data)
-    n = int(next(iterator))
-    r = int(next(iterator))
+    idx = 0
+    n = int(data[idx])
+    idx += 1
+    r = int(data[idx])
+    idx += 1
     
     exams = []
     for _ in range(n):
-        start = int(next(iterator))
-        end = int(next(iterator))
+        start = int(data[idx])
+        idx += 1
+        end = int(data[idx])
+        idx += 1
         exams.append([start, end])
     
     result = min_proctors(n, r, exams)

@@ -123,6 +123,18 @@ def decode_with_cap(s: str, cap: int) -> str:
         result.append(char * actual_count)
 
     return ''.join(result)
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    s = lines[0]
+    cap = int(lines[1])
+    result = decode_with_cap(s, cap)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

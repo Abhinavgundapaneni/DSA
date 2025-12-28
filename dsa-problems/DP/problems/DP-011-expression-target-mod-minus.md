@@ -69,12 +69,12 @@ Print one integer: the number of valid expressions modulo `1_000_000_007`.
 
 **Output:**
 ```
-5
+2
 ```
 
 **Explanation:**
 
-With chunk length up to 2 and at least one minus, there are 5 valid expressions whose value is congruent to 0 modulo 7.
+With chunk length up to 2 and at least one minus, there are 2 valid expressions whose value is congruent to 0 modulo 7: `1-2-3+4 = 0` and `1-2-34 = -35 ≡ 0 (mod 7)`.
 
 ![Example Visualization](../images/DP-011/example-1.png)
 

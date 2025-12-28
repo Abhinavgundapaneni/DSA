@@ -75,21 +75,22 @@ B 2 1
 
 Tasks:
 
-- Task A: count=3, priority=2 (medium)
-- Task B: count=2, priority=1 (low)
+- Task A: count=3, priority=2 (higher priority)
+- Task B: count=2, priority=1 (lower priority)
 
-Cooldown k=1 (need 1 different task between identical tasks)
+Cooldown k=1 (after executing a task, it becomes ready again at time + k + 1)
 
 Schedule:
 
-- Slot 1: A (priority 2) → cooldown list: [A waits 2 slots]
-- Slot 2: B (priority 1) → cooldown list: [A waits 1, B waits 2]
-- Slot 3: A (priority 2, cooldown expired) → B's cooldown reset to 3 → cooldown: [A waits 2, B waits 3]
-- Slot 4: B cannot be used (still in cooldown) → IDLE
-- Slot 5: A (cooldown expired) → cooldown: [A waits 2, B waits 2]
-- Slot 6: B (cooldown expired) → cooldown: [B waits 2]
+- Slot 1: Execute A (2 remaining) → A ready at slot 3
+- Slot 2: Execute B (1 remaining) → B ready at slot 4
+- Slot 3: Execute A (1 remaining) → Interrupt: B's ready time reset to max(4, 3+1+1) = 5 → A ready at slot 5
+- Slot 4: IDLE (B not ready until slot 5)
+- Slot 5: Execute A (0 remaining) → Interrupt: B's ready time reset to max(5, 5+1+1) = 7
+- Slot 6: IDLE (B not ready until slot 7)
+- Slot 7: Execute B (0 remaining) → Done
 
-Total tasks: A(3 times) + B(2 times) = 5 tasks completed in 6 time slots.
+Total: 5 tasks completed in 7 time slots.
 
 ![Example Visualization](../images/GRD-012/example-1.png)
 

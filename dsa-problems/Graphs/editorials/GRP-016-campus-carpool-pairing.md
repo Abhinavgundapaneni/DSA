@@ -204,6 +204,24 @@ def is_forest_after_adding(n, existing_edges, new_edge):
     
     # Check new edge
     return uf.find(new_edge[0]) != uf.find(new_edge[1])
+
+def main():
+    n = int(input())
+    m = int(input())
+    
+    adj = [[] for _ in range(n)]
+    
+    for _ in range(m):
+        u, v = map(int, input().split())
+        adj[u].append(v)
+        adj[v].append(u)
+    
+    # Count edges in graph
+    edge_count = sum(len(adj[i]) for i in range(n)) // 2
+    print(edge_count)
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

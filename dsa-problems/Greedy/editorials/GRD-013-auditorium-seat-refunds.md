@@ -244,24 +244,27 @@ def highest_occupied_row(r: int, capacities: list, refunds: list) -> int:
     return r
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read()
+    data = data.split()
     if not data:
         return
         
-    iterator = iter(data)
-    r = int(next(iterator))
-    n = int(next(iterator))
+    idx = 0
+    r = int(data[idx])
+    idx += 1
+    n = int(data[idx])
+    idx += 1
     
     capacities = []
     for _ in range(r):
-        capacities.append(int(next(iterator)))
+        capacities.append(int(data[idx]))
+        idx += 1
         
     # Skip refunds details as we only need count
     # But we must consume the input
     for _ in range(n):
-        next(iterator) # row
-        next(iterator) # seat
+        data[idx]; idx += 1 # row
+        data[idx]; idx += 1 # seat
         
     # Note: refunds list in function signature is just for compatibility with template
     # We can pass a dummy list or just use n

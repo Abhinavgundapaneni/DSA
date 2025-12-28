@@ -158,6 +158,16 @@ def minimal_unique_rotation(s: str) -> str:
         return s
     else:
         return min_rotation
+
+def main():
+    import sys
+    s = sys.stdin.read().strip()
+    result = minimal_unique_rotation(s)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

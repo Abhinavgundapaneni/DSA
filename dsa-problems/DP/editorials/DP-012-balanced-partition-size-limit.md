@@ -176,6 +176,14 @@ def min_larger_group_size(a: list[int], D: int) -> int:
                 if ans is None or cand < ans:
                     ans = cand
     return -1 if ans is None else ans
+
+def main():
+    n, D = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(min_larger_group_size(a, D))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

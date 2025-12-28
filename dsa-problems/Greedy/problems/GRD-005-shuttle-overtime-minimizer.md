@@ -65,7 +65,7 @@ Your goal is to minimize the total overtime cost while covering all `H` hours.
 **Output:**
 
 ```
-4
+2
 ```
 
 **Explanation:**

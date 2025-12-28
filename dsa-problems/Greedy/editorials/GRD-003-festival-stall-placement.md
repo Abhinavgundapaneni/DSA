@@ -211,19 +211,22 @@ def max_stalls(stalls: list, d: int) -> int:
     return count
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read().split()
     if not data:
         return
         
-    iterator = iter(data)
-    n = int(next(iterator))
-    d = int(next(iterator))
+    idx = 0
+    n = int(data[idx])
+    idx += 1
+    d = int(data[idx])
+    idx += 1
     
     stalls = []
     for _ in range(n):
-        start = int(next(iterator))
-        end = int(next(iterator))
+        start = int(data[idx])
+        idx += 1
+        end = int(data[idx])
+        idx += 1
         stalls.append([start, end])
 
     result = max_stalls(stalls, d)

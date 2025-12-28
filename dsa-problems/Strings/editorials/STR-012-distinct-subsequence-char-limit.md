@@ -162,6 +162,19 @@ def count_distinct_subsequences_with_limit(s: str, max_freq: int, MOD: int) -> i
     # Sum all states
     total = sum(dp.values()) % MOD
     return total
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    s = lines[0]
+    max_freq = int(lines[1])
+    MOD = 1000000007
+    result = count_distinct_subsequences_with_limit(s, max_freq, MOD)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

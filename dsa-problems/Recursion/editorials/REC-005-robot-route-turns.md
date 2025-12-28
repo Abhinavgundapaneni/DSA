@@ -125,40 +125,48 @@ class Solution {
 ### Python
 
 ```python
-def find_path(grid: list[list[int]], T: int) -> list[tuple[int, int]]:
-    rows = len(grid)
-    cols = len(grid[0])
-    visited = [[False for _ in range(cols)] for _ in range(rows)]
-    path = [(0, 0)]
-    visited[0][0] = True
+def count_paths_with_turns(r, c, max_turns):
+    """
+    Count paths from (0,0) to (r-1,c-1) with at most max_turns turns.
+    A turn occurs when changing direction (R to D or D to R).
+    """
+    memo = {}
     
-    # Directions: 0:Up, 1:Down, 2:Left, 3:Right
-    dirs = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-
-    def dfs(r, c, last_dir, turns):
-        if r == rows - 1 and c == cols - 1:
-            return True
+    def dp(row, col, direction, turns):
+        # Base case: reached destination (check this FIRST)
+        if row == r - 1 and col == c - 1:
+            return 1
         
-        for i, (dr, dc) in enumerate(dirs):
-            nr, nc = r + dr, c + dc
-            
-            if 0 <= nr < rows and 0 <= nc < cols and not visited[nr][nc] and grid[nr][nc] == 0:
-                new_turns = turns
-                if last_dir != -1 and i != last_dir:
-                    new_turns += 1
-                
-                if new_turns <= T:
-                    visited[nr][nc] = True
-                    path.append((nr, nc))
-                    if dfs(nr, nc, i, new_turns):
-                        return True
-                    path.pop()
-                    visited[nr][nc] = False
-        return False
+        # Pruning: out of bounds or too many turns
+        if row >= r or col >= c or turns > max_turns:
+            return 0
+        
+        key = (row, col, direction, turns)
+        if key in memo:
+            return memo[key]
+        
+        result = 0
+        
+        # Move right: turn occurs if previous direction was Down
+        new_turns = turns + (1 if direction == 'D' else 0)
+        result += dp(row, col + 1, 'R', new_turns)
+        
+        # Move down: turn occurs if previous direction was Right
+        new_turns = turns + (1 if direction == 'R' else 0)
+        result += dp(row + 1, col, 'D', new_turns)
+        
+        memo[key] = result
+        return result
+    
+    return dp(0, 0, '', 0)
 
-    if dfs(0, 0, -1, 0):
-        return path
-    return []
+def main():
+    parts = input().split()
+    r, c, t = int(parts[0]), int(parts[1]), int(parts[2])
+    print(count_paths_with_turns(r, c, t))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

@@ -190,58 +190,40 @@ class Solution {
 ### Python
 
 ```python
-def prev_greater_opposite_parity(arr: list[int]) -> list[int]:
+def prev_greater_same_parity(arr: list[int]) -> list[int]:
+    """Find previous greater element with same parity (odd/even value)"""
     n = len(arr)
     result = [-1] * n
+    stack = []  # Monotonic stack of indices with decreasing values
     
-    even_stack = [] # Indices
-    odd_stack = []  # Indices
+    for i in range(n):
+        # Maintain monotonic decreasing stack
+        while stack and arr[stack[-1]] <= arr[i]:
+            stack.pop()
+        
+        # Find previous greater with same parity (of VALUE)
+        for j in range(len(stack) - 1, -1, -1):
+            if arr[stack[j]] % 2 == arr[i] % 2:
+                result[i] = stack[j]
+                break
+        
+        stack.append(i)
     
-    def find_nearest_greater(stack, val):
-        # Stack has indices of decreasing values: [Big ... Small]
-        # We want the rightmost element in stack > val
-        # This corresponds to the smallest valid value in the stack
-        if not stack:
-            return -1
-            
-        l, r = 0, len(stack) - 1
-        ans_idx = -1
-        
-        while l <= r:
-            mid = (l + r) // 2
-            if arr[stack[mid]] > val:
-                ans_idx = stack[mid]
-                l = mid + 1 # Try closer (right)
-            else:
-                r = mid - 1
-        return ans_idx
-        
-    for i, val in enumerate(arr):
-        if val % 2 == 0:
-            # Look in Odd
-            idx = find_nearest_greater(odd_stack, val)
-            if idx != -1:
-                result[i] = arr[idx]
-            
-            # Update Even
-            while even_stack and arr[even_stack[-1]] <= val:
-                even_stack.pop()
-            even_stack.append(i)
-        else:
-            # Look in Even
-            idx = find_nearest_greater(even_stack, val)
-            if idx != -1:
-                result[i] = arr[idx]
-                
-            # Update Odd
-            while odd_stack and arr[odd_stack[-1]] <= val:
-                odd_stack.pop()
-            odd_stack.append(i)
-            
     return result
-```
 
-### C++
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    arr = list(map(int, lines[1].split()))
+    
+    result = prev_greater_same_parity(arr)
+    print(' '.join(map(str, result)))
+
+if __name__ == "__main__":
+    main()
+
+```### C++
 
 ```cpp
 #include <vector>
@@ -356,6 +338,40 @@ class Solution {
     return Array.from(result);
   }
 }
+```
+
+### Python
+
+```python
+
+def previous_greater_parity(arr):
+    n = len(arr)
+    result = [-1] * n
+    stack = []
+    
+    for i in range(n):
+        while stack and arr[stack[-1]] <= arr[i]:
+            stack.pop()
+        
+        if stack:
+            result[i] = stack[-1]
+        
+        stack.append(i)
+    
+    return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    arr = list(map(int, lines[1].split()))
+    
+    result = previous_greater_parity(arr)
+    print(' '.join(map(str, result)))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

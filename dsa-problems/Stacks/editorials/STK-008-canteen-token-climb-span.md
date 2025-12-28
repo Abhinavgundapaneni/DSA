@@ -123,22 +123,32 @@ class Solution {
 ### Python
 
 ```python
-def spans(demand: list[int]) -> list[int]:
-    n = len(demand)
-    result = [0] * n
-    stack = [] # Stores indices
+def spans(prices: list[int]) -> list[int]:
+    n = len(prices)
+    result = [1] * n
+    stack = []
     
     for i in range(n):
-        # Pop strictly smaller elements
-        while stack and demand[stack[-1]] < demand[i]:
+        while stack and prices[stack[-1]] <= prices[i]:
             stack.pop()
-            
-        prev_idx = stack[-1] if stack else -1
-        result[i] = i - prev_idx - 1
         
+        result[i] = i + 1 if not stack else i - stack[-1]
         stack.append(i)
-        
+    
     return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    arr = list(map(int, lines[1].split()))
+    
+    result = spans(arr)
+    print(' '.join(map(str, result)))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -194,6 +204,42 @@ class Solution {
     return Array.from(result);
   }
 }
+```
+
+### Python
+
+```python
+
+def token_climb_span(arr):
+    n = len(arr)
+    result = [1] * n
+    stack = []
+    
+    for i in range(n):
+        while stack and arr[stack[-1]] <= arr[i]:
+            stack.pop()
+        
+        if stack:
+            result[i] = i - stack[-1]
+        else:
+            result[i] = i + 1
+        
+        stack.append(i)
+    
+    return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    arr = list(map(int, lines[1].split()))
+    
+    result = token_climb_span(arr)
+    print(' '.join(map(str, result)))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

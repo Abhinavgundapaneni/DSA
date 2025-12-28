@@ -116,7 +116,8 @@ class Solution {
 
 ```python
 def reduce_stack(s: str, w: list[int]) -> tuple[str, int]:
-    stack = [] # List of tuples (char, weight)
+    """Remove adjacent matching chars if weight sum is even"""
+    stack = []
     total_removed = 0
     
     for char, weight in zip(s, w):
@@ -127,7 +128,23 @@ def reduce_stack(s: str, w: list[int]) -> tuple[str, int]:
             stack.append((char, weight))
             
     reduced_s = "".join(item[0] for item in stack)
+    if not reduced_s:
+        reduced_s = "EMPTY"
     return reduced_s, total_removed
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    s = lines[0]
+    weights = list(map(int, lines[1].split()))
+    
+    reduced, total = reduce_stack(s, weights)
+    print(reduced)
+    print(total)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -200,6 +217,46 @@ class Solution {
     return [reducedS, totalRemoved.toString()];
   }
 }
+```
+
+### Python
+
+```python
+
+def weighted_deduplication(s: str, weights: list[int]) -> tuple[str, int]:
+    """Remove adjacent matching chars if weight sum is even"""
+    stack = []
+    total_removed = 0
+    
+    for i, c in enumerate(s):
+        if stack and stack[-1][0] == c:
+            if (stack[-1][1] + weights[i]) % 2 == 0:
+                total_removed += stack[-1][1] + weights[i]
+                stack.pop()
+            else:
+                stack.append((c, weights[i]))
+        else:
+            stack.append((c, weights[i]))
+    
+    reduced = ''.join(c for c, w in stack)
+    if not reduced:
+        reduced = "EMPTY"
+    
+    return reduced, total_removed
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    s = lines[0]
+    weights = list(map(int, lines[1].split()))
+    
+    reduced, total = weighted_deduplication(s, weights)
+    print(reduced)
+    print(total)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

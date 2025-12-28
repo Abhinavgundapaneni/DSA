@@ -188,7 +188,7 @@ def main():
         m = int(input())
         lst = list(map(int, input().split()))
         lists.append(lst)
-    result = balanced_range(lists)
+    result = smallest_range(lists)
     if result:
         print(result[0], result[1])
     else:

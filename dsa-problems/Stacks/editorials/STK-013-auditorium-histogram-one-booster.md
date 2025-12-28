@@ -340,6 +340,18 @@ def max_area_with_boost(h: list[int], b: int) -> int:
             max_area = max(max_area, normal_h * (R2 - L1 - 1))
             
     return max_area
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n, b = map(int, lines[0].split())
+    heights = list(map(int, lines[1].split()))
+    
+    print(max_area_with_boost(heights, b))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -512,6 +524,43 @@ class Solution {
     return maxArea;
   }
 }
+```
+
+### Python
+
+```python
+
+def max_rectangle_histogram(heights):
+    stack = []
+    max_area = 0
+    
+    for i, h in enumerate(heights):
+        while stack and heights[stack[-1]] > h:
+            height_idx = stack.pop()
+            height = heights[height_idx]
+            width = i if not stack else i - stack[-1] - 1
+            max_area = max(max_area, height * width)
+        stack.append(i)
+    
+    while stack:
+        height_idx = stack.pop()
+        height = heights[height_idx]
+        width = len(heights) if not stack else len(heights) - stack[-1] - 1
+        max_area = max(max_area, height * width)
+    
+    return max_area
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    heights = list(map(int, lines[1].split()))
+    
+    print(max_rectangle_histogram(heights))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

@@ -122,6 +122,19 @@ def count_assignments(nums: list[int], K: int, target: int) -> int:
         return count
 
     return backtrack(0, 0, 0)
+
+def main():
+    first_line = input().split()
+    n, K, target = int(first_line[0]), int(first_line[1]), int(first_line[2])
+    nums = list(map(int, input().split()))
+    count = count_assignments(nums, K, target)
+    if count > 0:
+        print("YES")
+    else:
+        print("NO")
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

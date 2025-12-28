@@ -304,6 +304,9 @@ def traverse_all(n, nodes):
     return [pre_order, in_order, post_order]
 
 def structural_identical(n1, t1, n2, t2):
+    # Different number of nodes means not identical
+    if n1 != n2:
+        return False
     if n1 == 0 and n2 == 0:
         return True
     if n1 == 0 or n2 == 0:
@@ -329,11 +332,13 @@ def structural_identical(n1, t1, n2, t2):
         
     return check(0, 0)
 
-def matching_traversals(t1, t2):
+def matching_traversals(n1, n2, t1, t2):
     matches = []
-    if t1[0] == t2[0]: matches.append("preorder")
-    if t1[1] == t2[1]: matches.append("inorder")
-    if t1[2] == t2[2]: matches.append("postorder")
+    # Only compare traversals if both trees are non-empty
+    if n1 > 0 and n2 > 0:
+        if t1[0] == t2[0]: matches.append("preorder")
+        if t1[1] == t2[1]: matches.append("inorder")
+        if t1[2] == t2[2]: matches.append("postorder")
     return matches
 
 def main():
@@ -367,7 +372,7 @@ def main():
     trav1 = traverse_all(n1, t1)
     trav2 = traverse_all(n2, t2)
     same = structural_identical(n1, t1, n2, t2)
-    matches = matching_traversals(trav1, trav2)
+    matches = matching_traversals(n1, n2, trav1, trav2)
 
     out = []
     for i in range(3):

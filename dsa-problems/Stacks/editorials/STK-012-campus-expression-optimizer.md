@@ -172,7 +172,6 @@ class Solution {
 def solve(expr: str) -> str:
     postfix = []
     ops = []
-    redundant = 0
     
     prec = {'+': 1, '-': 1, '*': 2, '/': 2, '%': 2, '^': 3, '(': 0}
     
@@ -180,6 +179,8 @@ def solve(expr: str) -> str:
     last_type = 0
     
     for c in expr:
+        if c == ' ':  # Skip spaces
+            continue
         if c.isalnum():
             if last_type == 1 or last_type == 4:
                 return "ERROR Invalid syntax 0"
@@ -194,17 +195,12 @@ def solve(expr: str) -> str:
             if last_type == 0 or last_type == 2 or last_type == 3:
                 return "ERROR Invalid syntax 0"
             
-            has_op = False
             while ops and ops[-1] != '(':
                 postfix.append(ops.pop())
-                has_op = True
             
             if not ops:
                 return "ERROR Mismatched parentheses 0"
             ops.pop() # Pop '('
-            
-            if not has_op:
-                redundant += 1
             
             last_type = 4
         elif c in prec:
@@ -221,14 +217,23 @@ def solve(expr: str) -> str:
             return "ERROR Invalid character 0"
             
     if last_type == 0 or last_type == 2 or last_type == 3:
-        return "ERROR Invalid syntax 0"
+        return "ERROR"
         
     while ops:
         if ops[-1] == '(':
-            return "ERROR Mismatched parentheses 0"
+            return "ERROR"
         postfix.append(ops.pop())
         
-    return f"POSTFIX {''.join(postfix)} {redundant}"
+    return ' '.join(postfix)
+
+def main():
+    import sys
+    expression = sys.stdin.read().strip()
+    print(solve(expression))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -377,6 +382,46 @@ class Solution {
     return `POSTFIX `postfix`{redundant}`;
   }
 }
+```
+
+### Python
+
+```python
+
+def infix_to_postfix(expression):
+    precedence = {'+': 1, '-': 1, '*': 2, '/': 2}
+    stack = []
+    result = []
+    
+    tokens = expression.split()
+    
+    for token in tokens:
+        if token.isalpha():
+            result.append(token)
+        elif token == '(':
+            stack.append(token)
+        elif token == ')':
+            while stack and stack[-1] != '(':
+                result.append(stack.pop())
+            stack.pop()
+        else:
+            while stack and stack[-1] != '(' and precedence.get(stack[-1], 0) >= precedence.get(token, 0):
+                result.append(stack.pop())
+            stack.append(token)
+    
+    while stack:
+        result.append(stack.pop())
+    
+    return ' '.join(result)
+
+def main():
+    import sys
+    expression = sys.stdin.read().strip()
+    print(infix_to_postfix(expression))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

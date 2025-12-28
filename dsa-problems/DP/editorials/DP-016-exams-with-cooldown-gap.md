@@ -152,6 +152,17 @@ def max_score(exams: List[Tuple[int, int, int]], g: int) -> int:
         j = bisect_right(ends, s - g)
         dp[i] = max(dp[i - 1], dp[j] + w)
     return dp[n]
+
+def main():
+    n, g = map(int, input().split())
+    exams = []
+    for _ in range(n):
+        s, e, w = map(int, input().split())
+        exams.append((s, e, w))
+    print(max_score(exams, g))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

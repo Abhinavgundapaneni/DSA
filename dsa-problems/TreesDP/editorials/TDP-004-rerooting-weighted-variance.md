@@ -321,13 +321,15 @@ def solve():
 
     n = int(data[idx])
     idx += 1
+    
+    if n == 1:
+        print(1)
+        return
 
     weight = [0] * (n + 1)
     for i in range(1, n + 1):
         weight[i] = int(data[idx])
         idx += 1
-
-    total_weight = sum(weight)
 
     graph = defaultdict(list)
     for _ in range(n - 1):
@@ -337,54 +339,71 @@ def solve():
         graph[u].append(v)
         graph[v].append(u)
 
-    subtree_weight = [0] * (n + 1)
-    down = [0] * (n + 1)
-    up = [0] * (n + 1)
+    # For squared distances, we track:
+    # W[v] = sum of weights in subtree of v
+    # D[v] = sum of w[j] * dist(v, j) for j in subtree of v
+    # S[v] = sum of w[j] * dist(v, j)^2 for j in subtree of v
+    W = [0] * (n + 1)
+    D = [0] * (n + 1)
+    S = [0] * (n + 1)
 
     def dfs_down(u, parent):
-        subtree_weight[u] = weight[u]
-        down[u] = 0
+        W[u] = weight[u]
+        D[u] = 0
+        S[u] = 0
 
         for v in graph[u]:
             if v == parent:
                 continue
 
             dfs_down(v, u)
+            # For j in subtree of v: dist(u, j) = dist(v, j) + 1
+            # D[u] += sum(w[j] * (dist(v,j) + 1)) = D[v] + W[v]
+            # S[u] += sum(w[j] * (dist(v,j) + 1)^2) = S[v] + 2*D[v] + W[v]
+            W[u] += W[v]
+            D[u] += D[v] + W[v]
+            S[u] += S[v] + 2 * D[v] + W[v]
 
-            child_contribution = down[v] + 2 * subtree_weight[v] + subtree_weight[v]
-            down[u] += child_contribution
-            subtree_weight[u] += subtree_weight[v]
+    full_S = [0] * (n + 1)
 
-    def dfs_up(u, parent):
-        if parent != -1:
-            outside_weight = total_weight - subtree_weight[u]
-
-            parent_total_down = down[parent]
-            u_contribution = down[u] + 2 * subtree_weight[u] + subtree_weight[u]
-            parent_down_without_u = parent_total_down - u_contribution
-
-            up[u] = up[parent] + parent_down_without_u + 2 * outside_weight + outside_weight
+    def dfs_up(u, parent, up_W, up_D, up_S):
+        # full_S[u] = cost when u is root = S[u] (subtree) + up_S (outside)
+        full_S[u] = S[u] + up_S
 
         for v in graph[u]:
             if v == parent:
                 continue
-            dfs_up(v, u)
+
+            # Compute contribution from u's other children + outside u
+            other_D = D[u] - (D[v] + W[v])
+            other_S = S[u] - (S[v] + 2 * D[v] + W[v])
+            other_W = W[u] - W[v]
+
+            # When v becomes root, these nodes are one edge further
+            new_up_W = other_W + up_W
+            new_up_D = (other_D + up_D) + (other_W + up_W)
+            new_up_S = (other_S + up_S) + 2 * (other_D + up_D) + (other_W + up_W)
+
+            dfs_up(v, u, new_up_W, new_up_D, new_up_S)
 
     dfs_down(1, -1)
-    dfs_up(1, -1)
+    dfs_up(1, -1, 0, 0, 0)
 
     min_cost = float('inf')
     best_node = 1
 
     for i in range(1, n + 1):
-        total_cost = down[i] + up[i]
-        if total_cost < min_cost:
-            min_cost = total_cost
+        if full_S[i] < min_cost:
+            min_cost = full_S[i]
             best_node = i
 
     print(best_node)
 
-solve()
+def main():
+    solve()
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

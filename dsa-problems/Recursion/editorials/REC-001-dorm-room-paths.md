@@ -113,8 +113,6 @@ class Solution {
 
 ```python
 import sys
-
-# Increase recursion depth for deep grids
 sys.setrecursionlimit(2000)
 
 def count_paths(r: int, c: int) -> int:
@@ -135,6 +133,14 @@ def count_paths(r: int, c: int) -> int:
         return res
 
     return helper(r - 1, c - 1)
+
+def main():
+    line = input().split()
+    r, c = int(line[0]), int(line[1])
+    print(count_paths(r, c))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

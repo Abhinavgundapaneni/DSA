@@ -281,6 +281,44 @@ def course_schedule(n: int, prerequisites: List[Tuple[int, int]], pairs: List[Tu
                 result.append(i)
     
     return result
+
+def main():
+    n = int(input())
+    m = int(input())
+    
+    adj = [[] for _ in range(n)]
+    indegree = [0] * n
+    
+    for _ in range(m):
+        u, v = map(int, input().split())
+        adj[u].append(v)
+        indegree[v] += 1
+    
+    # Topological sort using Kahn's algorithm
+    from collections import deque
+    queue = deque()
+    
+    for i in range(n):
+        if indegree[i] == 0:
+            queue.append(i)
+    
+    result = []
+    while queue:
+        u = queue.popleft()
+        result.append(u)
+        
+        for v in adj[u]:
+            indegree[v] -= 1
+            if indegree[v] == 0:
+                queue.append(v)
+    
+    if len(result) == n:
+        print(len(result))
+    else:
+        print(0)  # Has cycle
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

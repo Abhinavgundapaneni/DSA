@@ -118,7 +118,7 @@ def spans(counts: list[int]) -> list[int]:
     stack = []
     
     for i in range(n):
-        while stack and counts[stack[-1]] < counts[i]:
+        while stack and counts[stack[-1]] <= counts[i]:
             stack.pop()
             
         if not stack:
@@ -129,6 +129,47 @@ def spans(counts: list[int]) -> list[int]:
         stack.append(i)
         
     return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    
+    prices = []
+    result = []
+    stack = []  # Stack of (index, price)
+    
+    idx = 0
+    for i in range(1, n + 1):
+        parts = lines[i].split()
+        if parts[0] == "RESET":
+            # Reset the stack
+            stack = []
+            prices = []
+            idx = 0
+        else:  # PRICE
+            price = int(parts[1])
+            prices.append(price)
+            
+            # Pop prices that are <= current price
+            while stack and stack[-1][1] <= price:
+                stack.pop()
+            
+            if not stack:
+                span = idx + 1
+            else:
+                span = idx - stack[-1][0]
+            
+            result.append(span)
+            stack.append((idx, price))
+            idx += 1
+    
+    for r in result:
+        print(r)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -190,6 +231,43 @@ class Solution {
     return Array.from(result);
   }
 }
+```
+
+### Python
+
+```python
+
+def assembly_span_reset(arr):
+    n = len(arr)
+    result = []
+    stack = []
+    
+    for i in range(n):
+        while stack and arr[stack[-1]] <= arr[i]:
+            stack.pop()
+        
+        if stack:
+            result.append(i - stack[-1])
+        else:
+            result.append(i + 1)
+        
+        stack.append(i)
+    
+    return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    arr = list(map(int, lines[1].split()))
+    
+    result = assembly_span_reset(arr)
+    for r in result:
+        print(r)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

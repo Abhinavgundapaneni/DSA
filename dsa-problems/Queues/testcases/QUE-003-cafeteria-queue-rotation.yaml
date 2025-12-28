@@ -1,1921 +1,237 @@
-problem_id: QUE_CAFETERIA_QUEUE_ROTATION__6043
 samples:
-- input: |-
-    59
-    DEQUEUE
-    ENQUEUE 935
-    ENQUEUE 671
-    SIZE
-    SIZE
-    FRONT
-    ENQUEUE 501
-    ENQUEUE 136
-    DEQUEUE
-    ENQUEUE 46
-    DEQUEUE
-    ENQUEUE 709
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    SIZE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 378
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 494
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-    ENQUEUE 493
-    FRONT
-    ENQUEUE 861
-    ENQUEUE 314
-    SIZE
-    ENQUEUE 935
-    ENQUEUE 726
-    SIZE
-    FRONT
-    ENQUEUE 564
-    SIZE
-    SIZE
-    SIZE
-    SIZE
-    FRONT
-    ENQUEUE 181
-    SIZE
-    ENQUEUE 333
-    FRONT
-    ENQUEUE 557
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-  output: |-
-    19
-- input: |-
-    11
-    SIZE
-    ENQUEUE 489
-    SIZE
-    FRONT
-    ENQUEUE 568
-    DEQUEUE
-    ENQUEUE 336
-    FRONT
-    DEQUEUE
-    ENQUEUE 467
-    FRONT
-  output: |-
-    50
-- input: |-
-    24
-    FRONT
-    FRONT
-    ENQUEUE 717
-    SIZE
-    FRONT
-    DEQUEUE
-    FRONT
-    ENQUEUE 866
-    ENQUEUE 637
-    SIZE
-    DEQUEUE
-    SIZE
-    SIZE
-    FRONT
-    FRONT
-    FRONT
-    SIZE
-    FRONT
-    FRONT
-    ENQUEUE 410
-    SIZE
-    FRONT
-    SIZE
-    DEQUEUE
-  output: |-
-    17
+- input: '4
+
+    4 9 1 7
+
+    3'
+  output: 7 4 9 1
+- input: '5
+
+    1 2 3 4 5
+
+    0'
+  output: 1 2 3 4 5
+- input: '5
+
+    1 2 3 4 5
+
+    5'
+  output: 1 2 3 4 5
 public:
-- input: |-
+- input: '5
+
+    1 2 3 4 5
+
+    11'
+  output: 2 3 4 5 1
+- input: '1
+
     100
-    SIZE
-    ENQUEUE 123
-    SIZE
-    ENQUEUE 851
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    SIZE
-    ENQUEUE 268
-    ENQUEUE 665
-    ENQUEUE 630
-    ENQUEUE 141
-    DEQUEUE
-    FRONT
-    ENQUEUE 770
-    FRONT
-    DEQUEUE
-    FRONT
-    SIZE
-    ENQUEUE 814
-    FRONT
-    SIZE
-    SIZE
-    FRONT
-    DEQUEUE
-    SIZE
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 365
-    FRONT
-    FRONT
-    ENQUEUE 954
-    SIZE
-    SIZE
-    SIZE
-    ENQUEUE 676
-    FRONT
-    SIZE
-    ENQUEUE 138
-    DEQUEUE
-    ENQUEUE 622
-    DEQUEUE
-    FRONT
-    FRONT
-    FRONT
-    SIZE
-    FRONT
-    DEQUEUE
-    ENQUEUE 111
-    ENQUEUE 666
-    FRONT
-    SIZE
-    FRONT
-    DEQUEUE
-    SIZE
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 575
-    SIZE
-    ENQUEUE 308
-    FRONT
-    DEQUEUE
-    SIZE
-    FRONT
-    FRONT
-    SIZE
-    FRONT
-    ENQUEUE 719
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    SIZE
-    ENQUEUE 1000
-    FRONT
-    FRONT
-    SIZE
-    ENQUEUE 274
-    FRONT
-    ENQUEUE 738
-    FRONT
-    ENQUEUE 690
-    ENQUEUE 859
-    SIZE
-    DEQUEUE
-    FRONT
-    FRONT
-    ENQUEUE 341
-    FRONT
-    ENQUEUE 898
-    FRONT
-    ENQUEUE 839
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-  output: |-
-    52
-- input: |-
-    28
-    FRONT
-    DEQUEUE
-    SIZE
-    FRONT
-    ENQUEUE 796
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    SIZE
-    FRONT
-    FRONT
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE 641
-    SIZE
-    SIZE
-    FRONT
-    ENQUEUE 224
-    ENQUEUE 722
-    ENQUEUE 23
-    FRONT
-    DEQUEUE
-    SIZE
-    DEQUEUE
-  output: |-
-    91
-- input: |-
-    23
-    FRONT
-    SIZE
-    ENQUEUE 136
-    DEQUEUE
-    ENQUEUE 746
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 101
-    SIZE
-    FRONT
-    SIZE
-    DEQUEUE
-    ENQUEUE 877
-    SIZE
-    ENQUEUE 949
-    SIZE
-    ENQUEUE 464
-    SIZE
-    FRONT
-    DEQUEUE
-    SIZE
-    SIZE
-  output: |-
-    23
-- input: |-
-    36
-    DEQUEUE
-    ENQUEUE 309
-    DEQUEUE
-    ENQUEUE 874
-    FRONT
-    DEQUEUE
-    ENQUEUE 92
-    SIZE
-    FRONT
-    ENQUEUE 519
-    FRONT
-    ENQUEUE 592
-    SIZE
-    SIZE
-    FRONT
-    ENQUEUE 851
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 215
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    SIZE
-    ENQUEUE 469
-    ENQUEUE 649
-    FRONT
-    FRONT
-    ENQUEUE 750
-    DEQUEUE
-    SIZE
-  output: |-
-    89
-- input: |-
-    56
-    SIZE
-    SIZE
-    DEQUEUE
-    ENQUEUE 602
-    SIZE
-    FRONT
-    ENQUEUE 597
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 622
-    SIZE
-    SIZE
-    DEQUEUE
-    ENQUEUE 105
-    SIZE
-    FRONT
-    ENQUEUE 900
-    FRONT
-    ENQUEUE 386
-    DEQUEUE
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 263
-    SIZE
-    SIZE
-    ENQUEUE 106
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 609
-    ENQUEUE 59
-    SIZE
-    ENQUEUE 381
-    ENQUEUE 651
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 798
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 133
-    ENQUEUE 215
-    FRONT
-    SIZE
-    DEQUEUE
-    SIZE
-    ENQUEUE 881
-    ENQUEUE 282
-    SIZE
-    DEQUEUE
-    SIZE
-    FRONT
-  output: |-
-    92
+
+    1000000000'
+  output: '100'
+- input: '10
+
+    0 1 2 3 4 5 6 7 8 9
+
+    9'
+  output: 9 0 1 2 3 4 5 6 7 8
+- input: '2
+
+    1 2
+
+    1'
+  output: 2 1
+- input: '3
+
+    10 20 30
+
+    3'
+  output: 10 20 30
 hidden:
-- input: |-
-    9
-    SIZE
-    DEQUEUE
-    SIZE
-    FRONT
-    SIZE
-    SIZE
-    ENQUEUE 417
-    SIZE
-    SIZE
-  output: |-
-    92
-- input: |-
-    20
-    DEQUEUE
-    FRONT
-    SIZE
-    ENQUEUE 913
-    SIZE
-    SIZE
-    ENQUEUE 898
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    SIZE
-    FRONT
-    SIZE
-    ENQUEUE 548
-    DEQUEUE
-    SIZE
-    FRONT
-    ENQUEUE 745
-    DEQUEUE
-    DEQUEUE
-  output: |-
-    63
-- input: |-
-    66
-    DEQUEUE
-    ENQUEUE 313
-    FRONT
-    FRONT
-    SIZE
-    FRONT
-    ENQUEUE 33
-    FRONT
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 177
-    FRONT
-    DEQUEUE
-    FRONT
-    SIZE
-    FRONT
-    SIZE
-    FRONT
-    SIZE
-    DEQUEUE
-    ENQUEUE 666
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 988
-    FRONT
-    ENQUEUE 435
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 316
-    ENQUEUE 414
-    SIZE
-    ENQUEUE 786
-    DEQUEUE
-    FRONT
-    ENQUEUE 742
-    DEQUEUE
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE 385
-    FRONT
-    FRONT
-    SIZE
-    DEQUEUE
-    ENQUEUE 24
-    ENQUEUE 603
-    FRONT
-    ENQUEUE 53
-    FRONT
-    FRONT
-    ENQUEUE 341
-    DEQUEUE
-    SIZE
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 704
-    DEQUEUE
-    DEQUEUE
-    SIZE
-  output: |-
-    92
-- input: |-
-    74
-    FRONT
-    FRONT
-    SIZE
-    SIZE
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    SIZE
-    FRONT
-    FRONT
-    ENQUEUE 31
-    SIZE
-    FRONT
-    ENQUEUE 1000
-    DEQUEUE
-    SIZE
-    SIZE
-    ENQUEUE 461
-    DEQUEUE
-    FRONT
-    ENQUEUE 656
-    DEQUEUE
-    FRONT
-    SIZE
-    SIZE
-    DEQUEUE
-    ENQUEUE 693
-    ENQUEUE 766
-    FRONT
-    ENQUEUE 38
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 716
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 727
-    ENQUEUE 485
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE 778
-    ENQUEUE 556
-    SIZE
-    ENQUEUE 810
-    ENQUEUE 488
-    ENQUEUE 621
-    FRONT
-    ENQUEUE 224
-    ENQUEUE 861
-    ENQUEUE 268
-    SIZE
-    ENQUEUE 40
-    FRONT
-    SIZE
-    ENQUEUE 467
-    ENQUEUE 291
-    DEQUEUE
-    FRONT
-    FRONT
-    ENQUEUE 93
-    FRONT
-    ENQUEUE 955
-    DEQUEUE
-    ENQUEUE 571
-    ENQUEUE 742
-    ENQUEUE 225
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 124
-    ENQUEUE 434
-  output: |-
-    65
-- input: |-
-    9
-    ENQUEUE 23
-    ENQUEUE 730
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-  output: |-
-    66
-- input: |-
-    70
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    SIZE
-    DEQUEUE
-    FRONT
-    SIZE
-    FRONT
-    DEQUEUE
-    SIZE
-    FRONT
-    FRONT
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 936
-    SIZE
-    ENQUEUE 69
-    DEQUEUE
-    SIZE
-    ENQUEUE 972
-    ENQUEUE 492
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-    ENQUEUE 704
-    ENQUEUE 813
-    DEQUEUE
-    ENQUEUE 756
-    ENQUEUE 371
-    SIZE
-    ENQUEUE 114
-    ENQUEUE 909
-    ENQUEUE 601
-    DEQUEUE
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE 198
-    ENQUEUE 960
-    ENQUEUE 247
-    DEQUEUE
-    SIZE
-    ENQUEUE 141
-    ENQUEUE 199
-    SIZE
-    ENQUEUE 736
-    FRONT
-    FRONT
-    ENQUEUE 892
-    SIZE
-    FRONT
-    SIZE
-    ENQUEUE 251
-    SIZE
-    DEQUEUE
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    ENQUEUE 159
-    FRONT
-    DEQUEUE
-    ENQUEUE 723
-    FRONT
-    DEQUEUE
-  output: |-
-    73
-- input: |-
-    42
-    SIZE
-    SIZE
-    SIZE
-    SIZE
-    ENQUEUE 938
-    SIZE
-    SIZE
-    ENQUEUE 983
-    SIZE
-    SIZE
-    FRONT
-    SIZE
-    FRONT
-    FRONT
-    ENQUEUE 18
-    DEQUEUE
-    FRONT
-    ENQUEUE 143
-    FRONT
-    SIZE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 181
-    ENQUEUE 584
-    DEQUEUE
-    ENQUEUE 791
-    ENQUEUE 853
-    ENQUEUE 910
-    SIZE
-    SIZE
-    FRONT
-    SIZE
-    DEQUEUE
-    ENQUEUE 783
-    ENQUEUE 760
-    FRONT
-    ENQUEUE 335
-    SIZE
-    FRONT
-    ENQUEUE 676
-    ENQUEUE 720
-  output: |-
-    44
-- input: |-
-    41
-    DEQUEUE
-    ENQUEUE 149
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    SIZE
-    FRONT
-    ENQUEUE 816
-    FRONT
-    SIZE
-    DEQUEUE
-    ENQUEUE 599
-    FRONT
-    SIZE
-    SIZE
-    SIZE
-    FRONT
-    ENQUEUE 548
-    DEQUEUE
-    ENQUEUE 172
-    FRONT
-    FRONT
-    ENQUEUE 287
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE 102
-    SIZE
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 699
-    FRONT
-    ENQUEUE 624
-    FRONT
-    SIZE
-    FRONT
-    ENQUEUE 89
-  output: |-
-    85
-- input: |-
-    18
-    SIZE
-    ENQUEUE 579
-    FRONT
-    ENQUEUE 342
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    SIZE
-    SIZE
-    SIZE
-    SIZE
-    SIZE
-    FRONT
-    ENQUEUE 983
-    SIZE
-    SIZE
-    SIZE
-    SIZE
-  output: |-
-    29
-- input: |-
-    14
-    SIZE
-    SIZE
-    ENQUEUE 824
-    SIZE
-    SIZE
-    FRONT
-    FRONT
-    ENQUEUE 746
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-    SIZE
-  output: |-
-    44
-- input: |-
-    58
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 493
-    FRONT
-    DEQUEUE
-    FRONT
-    ENQUEUE 358
-    SIZE
-    SIZE
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    SIZE
-    FRONT
-    SIZE
-    SIZE
-    DEQUEUE
-    ENQUEUE 557
-    FRONT
-    DEQUEUE
-    ENQUEUE 180
-    ENQUEUE 654
-    ENQUEUE 355
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-    ENQUEUE 667
-    DEQUEUE
-    SIZE
-    SIZE
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    SIZE
-    SIZE
-    FRONT
-    ENQUEUE 831
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    FRONT
-  output: |-
-    73
-- input: |-
-    100
-    ENQUEUE 98
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    ENQUEUE 767
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    ENQUEUE 865
-    FRONT
-    FRONT
-    FRONT
-    SIZE
-    DEQUEUE
-    SIZE
-    SIZE
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 580
-    ENQUEUE 49
-    FRONT
-    ENQUEUE 544
-    SIZE
-    ENQUEUE 24
-    DEQUEUE
-    ENQUEUE 522
-    ENQUEUE 842
-    ENQUEUE 942
-    FRONT
-    FRONT
-    SIZE
-    DEQUEUE
-    ENQUEUE 282
-    SIZE
-    ENQUEUE 81
-    SIZE
-    ENQUEUE 301
-    SIZE
-    SIZE
-    ENQUEUE 980
-    SIZE
-    ENQUEUE 598
-    FRONT
-    SIZE
-    SIZE
-    FRONT
-    ENQUEUE 526
-    SIZE
-    FRONT
-    ENQUEUE 904
-    ENQUEUE 733
-    SIZE
-    FRONT
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 726
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    SIZE
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    SIZE
-    FRONT
-    FRONT
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    SIZE
-    FRONT
-    FRONT
-    ENQUEUE 643
-    FRONT
-    FRONT
-    FRONT
-    SIZE
-  output: |-
-    10
-- input: |-
-    84
-    ENQUEUE 220
-    FRONT
-    ENQUEUE 151
-    ENQUEUE 889
-    ENQUEUE 970
-    SIZE
-    FRONT
-    ENQUEUE 523
-    DEQUEUE
-    FRONT
-    FRONT
-    ENQUEUE 548
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-    ENQUEUE 808
-    DEQUEUE
-    ENQUEUE 124
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 467
-    ENQUEUE 265
-    DEQUEUE
-    ENQUEUE 980
-    DEQUEUE
-    ENQUEUE 402
-    FRONT
-    ENQUEUE 546
-    ENQUEUE 344
-    SIZE
-    SIZE
-    ENQUEUE 923
-    DEQUEUE
-    ENQUEUE 817
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    FRONT
-    ENQUEUE 486
-    DEQUEUE
-    SIZE
-    SIZE
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    ENQUEUE 730
-    DEQUEUE
-    SIZE
-    ENQUEUE 888
-    FRONT
-    ENQUEUE 498
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 80
-    FRONT
-    ENQUEUE 27
-    ENQUEUE 621
-    SIZE
-    ENQUEUE 506
-    FRONT
-    ENQUEUE 888
-    FRONT
-    SIZE
-    FRONT
-    FRONT
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE 521
-    DEQUEUE
-    ENQUEUE 14
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 849
-    SIZE
-  output: |-
-    15
-- input: |-
-    88
-    FRONT
-    FRONT
-    ENQUEUE 517
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    ENQUEUE 110
-    SIZE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    ENQUEUE 828
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-    ENQUEUE 894
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 984
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    ENQUEUE 303
-    SIZE
-    FRONT
-    FRONT
-    SIZE
-    SIZE
-    SIZE
-    FRONT
-    DEQUEUE
-    FRONT
-    ENQUEUE 968
-    ENQUEUE 611
-    SIZE
-    ENQUEUE 590
-    ENQUEUE 472
-    FRONT
-    SIZE
-    SIZE
-    ENQUEUE 307
-    DEQUEUE
-    FRONT
-    ENQUEUE 225
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE 327
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    SIZE
-    SIZE
-    ENQUEUE 641
-    FRONT
-    ENQUEUE 253
-    SIZE
-    ENQUEUE 73
-    ENQUEUE 199
-    DEQUEUE
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    FRONT
-    DEQUEUE
-  output: |-
-    30
-- input: |-
-    13
-    DEQUEUE
-    ENQUEUE 10
-    DEQUEUE
-    SIZE
-    SIZE
-    DEQUEUE
-    SIZE
-    SIZE
-    FRONT
-    FRONT
-    SIZE
-    ENQUEUE 390
-    SIZE
-  output: |-
-    68
-- input: |-
-    11
-    FRONT
-    FRONT
-    FRONT
-    FRONT
-    FRONT
-    SIZE
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    SIZE
-  output: |-
-    43
-- input: |-
-    72
-    DEQUEUE
-    SIZE
-    ENQUEUE 385
-    SIZE
-    ENQUEUE 820
-    FRONT
-    DEQUEUE
-    ENQUEUE 379
-    FRONT
-    FRONT
-    FRONT
-    SIZE
-    SIZE
-    DEQUEUE
-    ENQUEUE 496
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 285
-    FRONT
-    SIZE
-    SIZE
-    ENQUEUE 954
-    ENQUEUE 224
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 589
-    SIZE
-    FRONT
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    ENQUEUE 303
-    FRONT
-    DEQUEUE
-    FRONT
-    ENQUEUE 673
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 960
-    FRONT
-    DEQUEUE
-    ENQUEUE 998
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 110
-    FRONT
-    SIZE
-    FRONT
-    ENQUEUE 923
-    ENQUEUE 732
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    SIZE
-    SIZE
-    FRONT
-    ENQUEUE 900
-    ENQUEUE 208
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    SIZE
-  output: |-
-    18
-- input: |-
-    54
-    SIZE
-    FRONT
-    ENQUEUE 344
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    ENQUEUE 785
-    ENQUEUE 921
-    FRONT
-    SIZE
-    SIZE
-    FRONT
-    SIZE
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE 636
-    SIZE
-    SIZE
-    ENQUEUE 930
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 902
-    DEQUEUE
-    FRONT
-    FRONT
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 887
-    ENQUEUE 543
-    DEQUEUE
-    SIZE
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    ENQUEUE 273
-    SIZE
-    FRONT
-    SIZE
-    ENQUEUE 84
-    SIZE
-    ENQUEUE 968
-    FRONT
-    SIZE
-    ENQUEUE 327
-    SIZE
-  output: |-
-    63
-- input: |-
-    26
-    SIZE
-    SIZE
-    SIZE
-    SIZE
-    FRONT
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    ENQUEUE 894
-    ENQUEUE 73
-    ENQUEUE 992
-    ENQUEUE 74
-    FRONT
-    FRONT
-    ENQUEUE 123
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    SIZE
-    ENQUEUE 742
-    SIZE
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-  output: |-
-    10
-- input: |-
-    99
-    ENQUEUE 248
-    DEQUEUE
-    FRONT
-    ENQUEUE 595
-    DEQUEUE
-    ENQUEUE 43
-    SIZE
-    SIZE
-    DEQUEUE
-    ENQUEUE 818
-    SIZE
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 659
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    SIZE
-    SIZE
-    FRONT
-    SIZE
-    ENQUEUE 607
-    FRONT
-    SIZE
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE 128
-    SIZE
-    FRONT
-    ENQUEUE 335
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 785
-    DEQUEUE
-    ENQUEUE 163
-    FRONT
-    ENQUEUE 878
-    SIZE
-    FRONT
-    FRONT
-    ENQUEUE 761
-    FRONT
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 770
-    ENQUEUE 583
-    SIZE
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-    ENQUEUE 531
-    SIZE
-    ENQUEUE 104
-    ENQUEUE 358
-    DEQUEUE
-    FRONT
-    FRONT
-    SIZE
-    SIZE
-    ENQUEUE 899
-    ENQUEUE 346
-    ENQUEUE 360
-    FRONT
-    FRONT
-    ENQUEUE 265
-    ENQUEUE 537
-    FRONT
-    SIZE
-    ENQUEUE 675
-    DEQUEUE
-    ENQUEUE 990
-    DEQUEUE
-    ENQUEUE 887
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 753
-    FRONT
-    SIZE
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    ENQUEUE 350
-    FRONT
-    DEQUEUE
-    FRONT
-    ENQUEUE 244
-  output: |-
-    64
-- input: |-
-    23
-    FRONT
-    DEQUEUE
-    ENQUEUE 290
-    ENQUEUE 265
-    SIZE
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-    FRONT
-    ENQUEUE 706
-    SIZE
-    FRONT
-    FRONT
-    ENQUEUE 33
-    DEQUEUE
-    SIZE
-    ENQUEUE 423
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE 389
-  output: |-
-    53
-- input: |-
-    67
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    SIZE
-    ENQUEUE 93
-    FRONT
-    DEQUEUE
-    ENQUEUE 782
-    FRONT
-    DEQUEUE
-    ENQUEUE 899
-    DEQUEUE
-    SIZE
-    SIZE
-    DEQUEUE
-    ENQUEUE 948
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 159
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 951
-    ENQUEUE 195
-    SIZE
-    ENQUEUE 152
-    DEQUEUE
-    SIZE
-    FRONT
-    ENQUEUE 593
-    SIZE
-    DEQUEUE
-    SIZE
-    FRONT
-    DEQUEUE
-    ENQUEUE 11
-    ENQUEUE 491
-    DEQUEUE
-    SIZE
-    ENQUEUE 380
-    SIZE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    SIZE
-    SIZE
-    SIZE
-    FRONT
-    SIZE
-    ENQUEUE 68
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE 734
-    SIZE
-    ENQUEUE 181
-    SIZE
-    SIZE
-    SIZE
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    DEQUEUE
-  output: |-
-    51
-- input: |-
-    32
-    DEQUEUE
-    ENQUEUE 218
-    DEQUEUE
-    SIZE
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    ENQUEUE 260
-    FRONT
-    ENQUEUE 727
-    ENQUEUE 837
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    FRONT
-    DEQUEUE
-    SIZE
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 606
-    FRONT
-    ENQUEUE 931
-    FRONT
-    DEQUEUE
-    SIZE
-    ENQUEUE 654
-    DEQUEUE
-    SIZE
-  output: |-
-    44
-- input: |-
-    14
-    SIZE
-    FRONT
-    FRONT
-    SIZE
-    SIZE
-    FRONT
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 921
-    ENQUEUE 136
-    ENQUEUE 803
-    SIZE
-    FRONT
-  output: |-
-    15
-- input: |-
-    53
-    SIZE
-    DEQUEUE
-    ENQUEUE 28
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    SIZE
-    ENQUEUE 242
-    FRONT
-    SIZE
-    FRONT
-    ENQUEUE 261
-    ENQUEUE 834
-    ENQUEUE 330
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE 54
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    FRONT
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 747
-    FRONT
-    SIZE
-    DEQUEUE
-    FRONT
-    SIZE
-    ENQUEUE 689
-    SIZE
-    DEQUEUE
-    ENQUEUE 235
-    SIZE
-    FRONT
-    FRONT
-    DEQUEUE
-    FRONT
-    DEQUEUE
-  output: |-
-    94
-- input: |-
-    50
-    DEQUEUE
-    SIZE
-    ENQUEUE 441
-    FRONT
-    SIZE
-    FRONT
-    ENQUEUE 970
-    SIZE
-    DEQUEUE
-    ENQUEUE 773
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 926
-    ENQUEUE 147
-    DEQUEUE
-    SIZE
-    ENQUEUE 276
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 877
-    ENQUEUE 53
-    DEQUEUE
-    SIZE
-    SIZE
-    SIZE
-    SIZE
-    SIZE
-    SIZE
-    ENQUEUE 888
-    ENQUEUE 521
-    SIZE
-    SIZE
-    FRONT
-    SIZE
-    FRONT
-    DEQUEUE
-    SIZE
-    FRONT
-    FRONT
-    ENQUEUE 775
-    DEQUEUE
-    FRONT
-  output: |-
-    23
-- input: |-
-    75
-    ENQUEUE 856
-    DEQUEUE
-    ENQUEUE 300
-    ENQUEUE 343
-    SIZE
-    DEQUEUE
-    ENQUEUE 352
-    ENQUEUE 174
-    ENQUEUE 777
-    ENQUEUE 300
-    SIZE
-    FRONT
-    DEQUEUE
-    SIZE
-    FRONT
-    SIZE
-    ENQUEUE 168
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    ENQUEUE 52
-    SIZE
-    ENQUEUE 565
-    FRONT
-    ENQUEUE 214
-    FRONT
-    ENQUEUE 195
-    FRONT
-    FRONT
-    SIZE
-    FRONT
-    DEQUEUE
-    ENQUEUE 858
-    ENQUEUE 771
-    SIZE
-    DEQUEUE
-    ENQUEUE 520
-    DEQUEUE
-    FRONT
-    ENQUEUE 356
-    FRONT
-    SIZE
-    ENQUEUE 601
-    SIZE
-    ENQUEUE 422
-    ENQUEUE 492
-    FRONT
-    ENQUEUE 987
-    SIZE
-    DEQUEUE
-    FRONT
-    DEQUEUE
-    FRONT
-    SIZE
-    FRONT
-    FRONT
-    FRONT
-    FRONT
-    FRONT
-    ENQUEUE 1
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    ENQUEUE 741
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    SIZE
-    DEQUEUE
-    FRONT
-    SIZE
-    SIZE
-    FRONT
-    FRONT
-  output: |-
-    25
-- input: |-
-    75
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    ENQUEUE 143
-    ENQUEUE 439
-    ENQUEUE 946
-    FRONT
-    ENQUEUE 680
-    DEQUEUE
-    FRONT
-    FRONT
-    ENQUEUE 57
-    SIZE
-    ENQUEUE 326
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 769
-    FRONT
-    FRONT
-    ENQUEUE 781
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    ENQUEUE 489
-    SIZE
-    ENQUEUE 298
-    DEQUEUE
-    ENQUEUE 972
-    ENQUEUE 363
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    ENQUEUE 948
-    ENQUEUE 639
-    FRONT
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 501
-    ENQUEUE 824
-    SIZE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    SIZE
-    SIZE
-    FRONT
-    SIZE
-    FRONT
-    ENQUEUE 323
-    ENQUEUE 923
-    ENQUEUE 206
-    FRONT
-    ENQUEUE 825
-    ENQUEUE 121
-    DEQUEUE
-    SIZE
-    FRONT
-    DEQUEUE
-    ENQUEUE 608
-    ENQUEUE 994
-    SIZE
-    DEQUEUE
-    FRONT
-    ENQUEUE 732
-    FRONT
-    ENQUEUE 423
-    DEQUEUE
-    SIZE
-    DEQUEUE
-  output: |-
-    91
-- input: |-
-    34
-    DEQUEUE
-    ENQUEUE 141
-    DEQUEUE
-    SIZE
-    FRONT
-    ENQUEUE 355
-    FRONT
-    ENQUEUE 792
-    ENQUEUE 432
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 487
-    DEQUEUE
-    SIZE
-    DEQUEUE
-    DEQUEUE
-    SIZE
-    SIZE
-    FRONT
-    DEQUEUE
-    ENQUEUE 821
-    FRONT
-    FRONT
-    DEQUEUE
-    DEQUEUE
-    DEQUEUE
-    FRONT
-    FRONT
-    ENQUEUE 969
-    FRONT
-    FRONT
-    SIZE
-    SIZE
-    SIZE
-  output: |-
-    29
-- input: |-
-    37
-    SIZE
-    FRONT
-    ENQUEUE 977
-    ENQUEUE 585
-    SIZE
-    SIZE
-    ENQUEUE 36
-    SIZE
-    SIZE
-    FRONT
-    FRONT
-    DEQUEUE
-    ENQUEUE 913
-    FRONT
-    ENQUEUE 4
-    DEQUEUE
-    ENQUEUE 102
-    ENQUEUE 294
-    ENQUEUE 569
-    ENQUEUE 90
-    SIZE
-    FRONT
-    ENQUEUE 824
-    SIZE
-    SIZE
-    SIZE
-    ENQUEUE 592
-    DEQUEUE
-    DEQUEUE
-    ENQUEUE 731
-    FRONT
-    ENQUEUE 891
-    SIZE
-    SIZE
-    ENQUEUE 545
-    ENQUEUE 728
-    ENQUEUE 380
-  output: |-
-    95
+- input: '1
+
+    1
+
+    0'
+  output: '1'
+- input: '1
+
+    1
+
+    1'
+  output: '1'
+- input: '2
+
+    1 2
+
+    0'
+  output: 1 2
+- input: '2
+
+    1 2
+
+    2'
+  output: 1 2
+- input: '3
+
+    5 10 15
+
+    0'
+  output: 5 10 15
+- input: '3
+
+    5 10 15
+
+    3'
+  output: 5 10 15
+- input: '4
+
+    1 2 3 4
+
+    1'
+  output: 2 3 4 1
+- input: '6
+
+    1 2 3 4 5 6
+
+    6'
+  output: 1 2 3 4 5 6
+- input: '1
+
+    1000000000
+
+    1000000000'
+  output: '1000000000'
+- input: '3
+
+    -1000000000 0 1000000000
+
+    2'
+  output: 1000000000 -1000000000 0
+- input: '4
+
+    0 0 0 0
+
+    2'
+  output: 0 0 0 0
+- input: '5
+
+    1 2 3 4 5
+
+    1000000000'
+  output: 1 2 3 4 5
+- input: '4
+
+    -1 -2 -3 -4
+
+    3'
+  output: -4 -1 -2 -3
+- input: '3
+
+    100 100 100
+
+    1'
+  output: 100 100 100
+- input: '50
+
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+    30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
+
+    49'
+  output: 49 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+    27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48
+- input: '20
+
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+
+    20'
+  output: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+- input: '5
+
+    1 2 3 4 5
+
+    2'
+  output: 3 4 5 1 2
+- input: '6
+
+    10 20 30 40 50 60
+
+    3'
+  output: 40 50 60 10 20 30
+- input: '10
+
+    0 1 2 3 4 5 6 7 8 9
+
+    5'
+  output: 5 6 7 8 9 0 1 2 3 4
+- input: '8
+
+    0 10 20 30 40 50 60 70
+
+    3'
+  output: 30 40 50 60 70 0 10 20
+- input: '5
+
+    5 4 3 2 1
+
+    2'
+  output: 3 2 1 5 4
+- input: '15
+
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+
+    7'
+  output: 7 8 9 10 11 12 13 14 0 1 2 3 4 5 6
+- input: '12
+
+    42 -72 81 -96 32 -94 -83 -65 -48 -4 68 19
+
+    4'
+  output: 32 -94 -83 -65 -48 -4 68 19 42 -72 81 -96
+- input: '20
+
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+
+    13'
+  output: 13 14 15 16 17 18 19 0 1 2 3 4 5 6 7 8 9 10 11 12
+- input: '18
+
+    0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85
+
+    9'
+  output: 45 50 55 60 65 70 75 80 85 0 5 10 15 20 25 30 35 40
+- input: '25
+
+    -576 -854 643 413 -572 301 448 246 73 -509 -487 162 419 734 336 252 -168 -559
+    -802 711 757 -460 299 0 14
+
+    15'
+  output: 252 -168 -559 -802 711 757 -460 299 0 14 -576 -854 643 413 -572 301 448
+    246 73 -509 -487 162 419 734 336
+- input: '30
+
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+
+    17'
+  output: 17 18 19 20 21 22 23 24 25 26 27 28 29 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+    15 16
+- input: '16
+
+    0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30
+
+    8'
+  output: 16 18 20 22 24 26 28 30 0 2 4 6 8 10 12 14
+- input: '20
+
+    10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+
+    12'
+  output: 22 23 24 25 26 27 28 29 10 11 12 13 14 15 16 17 18 19 20 21
+- input: '20
+
+    -37 -32 33 27 -24 -30 3 -41 -36 -6 47 -31 25 24 27 -33 35 -45 -24 -19
+
+    11'
+  output: -31 25 24 27 -33 35 -45 -24 -19 -37 -32 33 27 -24 -30 3 -41 -36 -6 47
+

@@ -158,15 +158,16 @@ class Solution {
             } else if (cmd.equals("ENQ_OVR")) {
                 int val = Integer.parseInt(op[1]);
                 if (count == k) {
+                    int overwrittenVal = buffer[head];
                     head = (head + 1) % k; // Drop oldest
                     buffer[tail] = val;
                     tail = (tail + 1) % k;
-                    result.add("overwritten");
+                    result.add(String.valueOf(overwrittenVal));
                 } else {
                     buffer[tail] = val;
                     tail = (tail + 1) % k;
                     count++;
-                    result.add("true"); // Or just success, problem says "true" for normal ENQ, let's assume consistent
+                    result.add("NONE");
                 }
             } else if (cmd.equals("DEQ")) {
                 if (count == 0) {
@@ -252,15 +253,16 @@ def process_operations(k: int, operations: List[List[str]]) -> List[str]:
         elif cmd == "ENQ_OVR":
             val = int(op_data[1])
             if count == k:
+                overwritten_val = buffer[head]
                 head = (head + 1) % k
                 buffer[tail] = val
                 tail = (tail + 1) % k
-                result.append("overwritten")
+                result.append(str(overwritten_val))
             else:
                 buffer[tail] = val
                 tail = (tail + 1) % k
                 count += 1
-                result.append("true")
+                result.append("NONE")
                 
         elif cmd == "DEQ":
             if count == 0:
@@ -351,15 +353,16 @@ public:
             } else if (cmd == "ENQ_OVR") {
                 int val = stoi(op_data[1]);
                 if (count == k) {
+                    int overwrittenVal = buffer[head];
                     head = (head + 1) % k;
                     buffer[tail] = val;
                     tail = (tail + 1) % k;
-                    result.push_back("overwritten");
+                    result.push_back(to_string(overwrittenVal));
                 } else {
                     buffer[tail] = val;
                     tail = (tail + 1) % k;
                     count++;
-                    result.push_back("true");
+                    result.push_back("NONE");
                 }
             } else if (cmd == "DEQ") {
                 if (count == 0) {
@@ -446,15 +449,16 @@ class Solution {
       } else if (cmd === "ENQ_OVR") {
         const val = parseInt(opData[1], 10);
         if (count === k) {
+          const overwrittenVal = buffer[head];
           head = (head + 1) % k;
           buffer[tail] = val;
           tail = (tail + 1) % k;
-          result.push("overwritten");
+          result.push(String(overwrittenVal));
         } else {
           buffer[tail] = val;
           tail = (tail + 1) % k;
           count++;
-          result.push("true");
+          result.push("NONE");
         }
       } else if (cmd === "DEQ") {
         if (count === 0) {

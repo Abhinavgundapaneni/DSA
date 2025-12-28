@@ -135,6 +135,15 @@ def lcs_with_skip_limit(a: str, b: str, s: int) -> int:
 
     L = prev[m]
     return L if n - L <= s else -1
+
+def main():
+    a = input().strip()
+    b = input().strip()
+    s = int(input())
+    print(lcs_with_skip_limit(a, b, s))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

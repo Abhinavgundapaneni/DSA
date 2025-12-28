@@ -62,26 +62,29 @@ Answer: 0 (no valid pairs at distance 2 avoiding forbidden color)
 
 1. **Root the tree** at node 1 and perform DFS
 2. **Initialize** each node: `dp[u][0][has_forbidden] = 1` where has_forbidden = 1 if color[u] == F
-3. **For each child subtree**, merge contributions:
-   - **Count valid pairs**: When d1 + d2 + 1 = K and BOTH paths are clean (h1=0, h2=0) AND current node u is not forbidden
-   - **Update DP**: Combine paths, marking as "dirty" if ANY segment has forbidden color
-4. **Key Formula**: `new_has = h1 | h2 | (color[u] == F ? 1 : 0)`
+3. **For each child subtree**:
+   - **Count valid pairs**: When d1 + d2 + 1 = K and BOTH paths are clean (h1=0, h2=0) AND current node u is not forbidden, add `dp[u][d1][h1] * dp[v][d2][h2]` to answer
+   - **Update DP**: For each node in v's subtree at distance d, add to `dp[u][d+1][new_h]` where `new_h = h | has_forbidden_u`
+4. **Key Insight**: dp[u] accumulates node counts as we process children, so pairs are counted between nodes from DIFFERENT subtrees
 
-### Why We Need to Save `temp` Before Merging
+### Why This Approach Avoids Double Counting
 
-When processing multiple children, we must avoid counting paths within the same subtree as pairs. By saving the current dp[u] before merging each child, we ensure we only pair paths from different subtrees.
+When processing children sequentially, dp[u] only contains nodes from previously processed subtrees. When we pair dp[u] with dp[v], we're pairing nodes from different subtrees that meet at u.
 
 ```
         u
        /|\
-      a b c   (children)
+      a b c   (children, processed in order)
 
 When processing child b:
-- temp = dp[u] (contains only paths through subtree a)
-- Pair temp (paths via a) with dp[b] (paths via b)
-- Then update dp[u] to include paths via b
+- dp[u] contains nodes from subtree a only
+- We pair paths through a with paths through b
+- Then we add b's nodes to dp[u]
 
-This prevents pairing two paths both from subtree b.
+When processing child c:
+- dp[u] now contains nodes from subtrees a and b
+- We pair these with paths through c
+- No double counting since each pair is counted exactly once
 ```
 
 ---
@@ -111,7 +114,7 @@ public class TreePathsColorConstraint {
     static int[] color;
     static int n, K, F;
     static long answer = 0;
-    static int[][][] dp;
+    static long[][][] dp;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -131,43 +134,43 @@ public class TreePathsColorConstraint {
             adj.get(v).add(u);
         }
 
-        dp = new int[n + 1][K + 1][2];
+        // dp[u][d][h] = count of nodes in u's subtree at distance d from u
+        // h=0: path has no forbidden, h=1: path has forbidden
+        dp = new long[n + 1][K + 2][2];
         dfs(1, 0);
         System.out.println(answer);
     }
 
     static void dfs(int u, int p) {
-        dp[u][0][color[u] == F ? 1 : 0] = 1;
+        int hasForbiddenU = (color[u] == F) ? 1 : 0;
+        dp[u][0][hasForbiddenU] = 1;
 
         for (int v : adj.get(u)) {
             if (v == p) continue;
             dfs(v, u);
 
-            // Save current dp[u] before merging
-            int[][] temp = new int[K + 1][2];
-            for (int d = 0; d <= K; d++) {
-                for (int h = 0; h < 2; h++) {
-                    temp[d][h] = dp[u][d][h];
+            // Count valid pairs: one from previously processed children, one from v's subtree
+            for (int d1 = 0; d1 <= K; d1++) {
+                for (int d2 = 0; d2 <= K; d2++) {
+                    if (d1 + 1 + d2 == K) {
+                        for (int h1 = 0; h1 < 2; h1++) {
+                            for (int h2 = 0; h2 < 2; h2++) {
+                                if (h1 == 0 && h2 == 0 && hasForbiddenU == 0) {
+                                    answer += dp[u][d1][h1] * dp[v][d2][h2];
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
-            // Merge contributions
-            for (int d1 = 0; d1 < K; d1++) {
-                for (int d2 = 0; d1 + d2 + 1 <= K; d2++) {
-                    for (int h1 = 0; h1 < 2; h1++) {
-                        for (int h2 = 0; h2 < 2; h2++) {
-                            if (d1 + d2 + 1 == K) {
-                                // Count pairs only if path is clean
-                                if (h1 == 0 && h2 == 0 && color[u] != F) {
-                                    answer += (long)temp[d1][h1] * dp[v][d2][h2];
-                                }
-                            }
-
-                            // Merge: path has forbidden if any segment has it or u has it
-                            int newHas = h1 | h2 | (color[u] == F ? 1 : 0);
-                            if (d1 + d2 + 1 <= K) {
-                                dp[u][d1 + d2 + 1][newHas] += temp[d1][h1] * dp[v][d2][h2];
-                            }
+            // Update dp[u] to include v's subtree nodes
+            for (int d = 0; d <= K; d++) {
+                for (int h = 0; h < 2; h++) {
+                    if (dp[v][d][h] > 0) {
+                        int newH = h | hasForbiddenU;
+                        if (d + 1 <= K) {
+                            dp[u][d + 1][newH] += dp[v][d][h];
                         }
                     }
                 }
@@ -199,32 +202,39 @@ def main():
         adj[u].append(v)
         adj[v].append(u)
 
-    dp = [[[0]*2 for _ in range(K + 1)] for _ in range(n + 1)]
+    # dp[u][d][h] = count of nodes in u's subtree at distance d from u
+    # h=0: path from u to that node has no forbidden color
+    # h=1: path from u to that node passes through forbidden color
+    dp = [[[0]*2 for _ in range(K + 2)] for _ in range(n + 1)]
     answer = [0]
 
     def dfs(u, p):
-        dp[u][0][1 if color[u] == F else 0] = 1
+        has_forbidden_u = 1 if color[u] == F else 0
+        dp[u][0][has_forbidden_u] = 1
 
         for v in adj[u]:
             if v == p: continue
             dfs(v, u)
 
-            # Save current dp[u] before merging
-            temp = [[dp[u][d][h] for h in range(2)] for d in range(K + 1)]
+            # Count valid pairs: one node from previously processed children, one from v's subtree
+            # They meet at u, so total distance = d1 + 1 + d2
+            for d1 in range(K + 1):
+                for d2 in range(K + 1):
+                    if d1 + 1 + d2 == K:
+                        for h1 in range(2):
+                            for h2 in range(2):
+                                # Path is valid only if neither segment has forbidden AND u is not forbidden
+                                if h1 == 0 and h2 == 0 and has_forbidden_u == 0:
+                                    answer[0] += dp[u][d1][h1] * dp[v][d2][h2]
 
-            for d1 in range(K):
-                for d2 in range(K - d1):
-                    for h1 in range(2):
-                        for h2 in range(2):
-                            if d1 + d2 + 1 == K:
-                                # Count pairs only if path is clean (no forbidden color)
-                                if h1 == 0 and h2 == 0 and color[u] != F:
-                                    answer[0] += temp[d1][h1] * dp[v][d2][h2]
-
-                            # Merge: path has forbidden if any segment has it or u has it
-                            new_has = h1 | h2 | (1 if color[u] == F else 0)
-                            if d1 + d2 + 1 <= K:
-                                dp[u][d1 + d2 + 1][new_has] += temp[d1][h1] * dp[v][d2][h2]
+            # Update dp[u] to include v's subtree nodes
+            # Node at distance d from v is at distance d+1 from u
+            for d in range(K + 1):
+                for h in range(2):
+                    if dp[v][d][h] > 0:
+                        new_h = h | has_forbidden_u
+                        if d + 1 <= K:
+                            dp[u][d + 1][new_h] += dp[v][d][h]
 
     dfs(1, 0)
     print(answer[0])
@@ -246,34 +256,35 @@ vector<vector<array<long long, 2>>> dp;
 long long answer = 0;
 
 void dfs(int u, int p) {
-    dp[u][0][color[u] == F ? 1 : 0] = 1;
+    int hasForbiddenU = (color[u] == F) ? 1 : 0;
+    dp[u][0][hasForbiddenU] = 1;
 
     for (int v : adj[u]) {
         if (v == p) continue;
         dfs(v, u);
 
-        // Save current dp[u] before merging
-        vector<array<long long, 2>> temp(K + 1);
-        for (int d = 0; d <= K; d++) {
-            temp[d] = dp[u][d];
-        }
-
-        for (int d1 = 0; d1 < K; d1++) {
-            for (int d2 = 0; d1 + d2 + 1 <= K; d2++) {
-                for (int h1 = 0; h1 < 2; h1++) {
-                    for (int h2 = 0; h2 < 2; h2++) {
-                        if (d1 + d2 + 1 == K) {
-                            // Count pairs only if path is clean
-                            if (h1 == 0 && h2 == 0 && color[u] != F) {
-                                answer += temp[d1][h1] * dp[v][d2][h2];
+        // Count valid pairs: one from previously processed children, one from v's subtree
+        for (int d1 = 0; d1 <= K; d1++) {
+            for (int d2 = 0; d2 <= K; d2++) {
+                if (d1 + 1 + d2 == K) {
+                    for (int h1 = 0; h1 < 2; h1++) {
+                        for (int h2 = 0; h2 < 2; h2++) {
+                            if (h1 == 0 && h2 == 0 && hasForbiddenU == 0) {
+                                answer += dp[u][d1][h1] * dp[v][d2][h2];
                             }
                         }
+                    }
+                }
+            }
+        }
 
-                        // Merge: path has forbidden if any segment has it or u has it
-                        int newHas = h1 | h2 | (color[u] == F ? 1 : 0);
-                        if (d1 + d2 + 1 <= K) {
-                            dp[u][d1 + d2 + 1][newHas] += temp[d1][h1] * dp[v][d2][h2];
-                        }
+        // Update dp[u] to include v's subtree nodes
+        for (int d = 0; d <= K; d++) {
+            for (int h = 0; h < 2; h++) {
+                if (dp[v][d][h] > 0) {
+                    int newH = h | hasForbiddenU;
+                    if (d + 1 <= K) {
+                        dp[u][d + 1][newH] += dp[v][d][h];
                     }
                 }
             }
@@ -293,7 +304,7 @@ int main() {
         adj[v].push_back(u);
     }
 
-    dp.assign(n + 1, vector<array<long long, 2>>(K + 1, {0, 0}));
+    dp.assign(n + 1, vector<array<long long, 2>>(K + 2, {0, 0}));
     dfs(1, 0);
     cout << answer << "\n";
     return 0;
@@ -324,37 +335,43 @@ rl.on("close", () => {
     adj[v].push(u);
   }
 
+  // dp[u][d][h] = count of nodes in u's subtree at distance d from u
+  // h=0: path has no forbidden, h=1: path has forbidden
   const dp = Array.from({ length: n + 1 }, () =>
-    Array.from({ length: K + 1 }, () => [0, 0])
+    Array.from({ length: K + 2 }, () => [0, 0])
   );
   let answer = 0;
 
   function dfs(u, p) {
-    dp[u][0][color[u] === F ? 1 : 0] = 1;
+    const hasForbiddenU = color[u] === F ? 1 : 0;
+    dp[u][0][hasForbiddenU] = 1;
 
     for (const v of adj[u]) {
       if (v === p) continue;
       dfs(v, u);
 
-      // Save current dp[u] before merging
-      const temp = dp[u].map((row) => [...row]);
-
-      for (let d1 = 0; d1 < K; d1++) {
-        for (let d2 = 0; d1 + d2 + 1 <= K; d2++) {
-          for (let h1 = 0; h1 < 2; h1++) {
-            for (let h2 = 0; h2 < 2; h2++) {
-              if (d1 + d2 + 1 === K) {
-                // Count pairs only if path is clean
-                if (h1 === 0 && h2 === 0 && color[u] !== F) {
-                  answer += temp[d1][h1] * dp[v][d2][h2];
+      // Count valid pairs: one from previously processed children, one from v's subtree
+      for (let d1 = 0; d1 <= K; d1++) {
+        for (let d2 = 0; d2 <= K; d2++) {
+          if (d1 + 1 + d2 === K) {
+            for (let h1 = 0; h1 < 2; h1++) {
+              for (let h2 = 0; h2 < 2; h2++) {
+                if (h1 === 0 && h2 === 0 && hasForbiddenU === 0) {
+                  answer += dp[u][d1][h1] * dp[v][d2][h2];
                 }
               }
+            }
+          }
+        }
+      }
 
-              // Merge: path has forbidden if any segment has it or u has it
-              const newHas = h1 | h2 | (color[u] === F ? 1 : 0);
-              if (d1 + d2 + 1 <= K) {
-                dp[u][d1 + d2 + 1][newHas] += temp[d1][h1] * dp[v][d2][h2];
-              }
+      // Update dp[u] to include v's subtree nodes
+      for (let d = 0; d <= K; d++) {
+        for (let h = 0; h < 2; h++) {
+          if (dp[v][d][h] > 0) {
+            const newH = h | hasForbiddenU;
+            if (d + 1 <= K) {
+              dp[u][d + 1][newH] += dp[v][d][h];
             }
           }
         }

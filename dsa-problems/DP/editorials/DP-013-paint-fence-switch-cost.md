@@ -192,6 +192,14 @@ def min_cost(n: int, k: int, s: List[int]) -> int:
         dp1, dp2 = ndp1, ndp2
     ans = min(min(dp1), min(dp2))
     return -1 if ans >= INF else ans
+
+def main():
+    n, k = map(int, input().split())
+    s = list(map(int, input().split()))
+    print(min_cost(n, k, s))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

@@ -146,6 +146,18 @@ def place_lights(n: int, k: int, d: int) -> list[list[int]]:
 
     backtrack(0, k, [])
     return result
+
+def main():
+    n, k, d = map(int, input().split())
+    placements = place_lights(n, k, d)
+    if placements:
+        for p in placements:
+            print(' '.join(map(str, p)))
+    else:
+        print("NONE")
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

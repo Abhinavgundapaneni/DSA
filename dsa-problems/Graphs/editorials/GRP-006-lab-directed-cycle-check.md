@@ -211,6 +211,43 @@ def has_cycle(n: int, adj: List[List[int]]) -> bool:
                 return True
     
     return False
+
+def main():
+    n = int(input())
+    m = int(input())
+    
+    adj = [[] for _ in range(n)]
+    
+    for _ in range(m):
+        u, v = map(int, input().split())
+        adj[u].append(v)
+    
+    # Count back edges in directed graph (cycles)
+    visited = [False] * n
+    rec_stack = [False] * n
+    cycle_count = 0
+    
+    def dfs(u):
+        nonlocal cycle_count
+        visited[u] = True
+        rec_stack[u] = True
+        
+        for v in adj[u]:
+            if not visited[v]:
+                dfs(v)
+            elif rec_stack[v]:
+                cycle_count += 1
+        
+        rec_stack[u] = False
+    
+    for i in range(n):
+        if not visited[i]:
+            dfs(i)
+    
+    print(cycle_count)
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

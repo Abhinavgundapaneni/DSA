@@ -475,7 +475,8 @@ def main():
     print("TREES TEST CASE GENERATION - ALL PROBLEMS (TRE-001 to TRE-018)")
     print("=" * 80)
     
-    base_path = "/Users/nikhilgundala/Desktop/NTB/DSA/dsa-problems/Trees/testcases"
+    import os
+    base_path = os.path.join(os.path.dirname(__file__), "Trees", "testcases")
     
     generators = [
         ("TRE-001", "campus-directory-multi-tree", generate_tre001_cases),

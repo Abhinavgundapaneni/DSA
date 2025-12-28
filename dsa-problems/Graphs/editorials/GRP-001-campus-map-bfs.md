@@ -300,6 +300,10 @@ def main():
         adj[u].append(v)
         adj[v].append(u)
     
+    # Sort adjacency lists for deterministic order
+    for i in range(n):
+        adj[i].sort()
+    
     result = bfs_traversal(n, adj)
     print(' '.join(map(str, result)))
 

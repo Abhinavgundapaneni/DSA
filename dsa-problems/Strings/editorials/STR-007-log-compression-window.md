@@ -122,13 +122,30 @@ def compress_with_window(s: str, w: int) -> str:
 
         run_length = i - start
 
-        # Compress if >= threshold
+        # Compress if >= threshold AND it actually saves space
         if run_length >= w:
-            result.append(char + str(run_length))
+            compressed = char + str(run_length)
+            original = char * run_length
+            if len(compressed) < len(original):
+                result.append(compressed)
+            else:
+                result.append(original)
         else:
             result.append(char * run_length)
 
     return ''.join(result)
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    s = lines[0]
+    w = int(lines[1])
+    result = compress_with_window(s, w)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

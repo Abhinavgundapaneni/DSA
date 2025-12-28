@@ -229,7 +229,7 @@ def main():
     n = int(input())
     arr = list(map(int, input().split()))
     s = int(input())
-    result = sort_colors_swaps(arr, s)
+    result = sort_with_swaps(arr, s)
     print(' '.join(map(str, result)))
 
 if __name__ == "__main__":

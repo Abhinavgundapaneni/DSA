@@ -140,7 +140,7 @@ def main():
     n = int(input())
     arr = list(map(int, input().split()))
     target = int(input())
-    result = closest_sum(arr, target)
+    result = closest_pair(arr, target)
     print(result[0], result[1])
 
 if __name__ == "__main__":

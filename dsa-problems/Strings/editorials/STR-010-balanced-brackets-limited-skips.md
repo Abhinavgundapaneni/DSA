@@ -134,6 +134,18 @@ def can_balance_with_skips(s: str, k: int) -> bool:
     # Remaining balance are unmatched '(' - need skips for them
     total_skips_needed = skips_used + balance
     return total_skips_needed <= k
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    s = lines[0]
+    k = int(lines[1])
+    result = can_balance_with_skips(s, k)
+    print("true" if result else "false")
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

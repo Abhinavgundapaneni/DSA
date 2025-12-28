@@ -155,7 +155,7 @@ def min_swaps_to_sort(arr: list[int]) -> int:
 def main():
     n, k = map(int, input().split())
     arr = list(map(int, input().split()))
-    result = min_swaps_k_sorted(arr, k)
+    result = min_swaps_to_sort(arr)
     print(result)
 
 if __name__ == "__main__":

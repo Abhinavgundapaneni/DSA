@@ -280,7 +280,11 @@ def solve():
     result = max(dp[1][0], dp[1][1], dp[1][2])
     print(result)
 
-solve()
+def main():
+    solve()
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

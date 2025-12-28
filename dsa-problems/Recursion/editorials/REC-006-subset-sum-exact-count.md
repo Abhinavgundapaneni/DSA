@@ -143,6 +143,19 @@ def find_subset(arr: list[int], k: int, target: int) -> list[int]:
     if backtrack(0, 0, 0):
         return result
     return []
+
+def main():
+    first_line = input().split()
+    n, k, target = int(first_line[0]), int(first_line[1]), int(first_line[2])
+    arr = list(map(int, input().split()))
+    result = find_subset(arr, k, target)
+    if result:
+        print(' '.join(map(str, result)))
+    else:
+        print("NONE")
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

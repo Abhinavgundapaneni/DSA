@@ -139,51 +139,38 @@ class Solution {
 
 ```python
 def threshold_jump(prices: list[int], t: int) -> list[int]:
+    """For each index, find steps to next price >= p[i] + t"""
     n = len(prices)
-    # Coordinate Compression
-    distinct = sorted(list(set(prices)))
-    rank_map = {val: i for i, val in enumerate(distinct)}
-    m = len(distinct)
+    result = []
     
-    # Segment Tree (Min)
-    tree = [float('inf')] * (4 * m)
-    
-    def update(node, start, end, idx, val):
-        if start == end:
-            tree[node] = val
-            return
-        mid = (start + end) // 2
-        if idx <= mid:
-            update(2 * node, start, mid, idx, val)
-        else:
-            update(2 * node + 1, mid + 1, end, idx, val)
-        tree[node] = min(tree[2 * node], tree[2 * node + 1])
-        
-    def query(node, start, end, l, r):
-        if r < start or end < l:
-            return float('inf')
-        if l <= start and end <= r:
-            return tree[node]
-        mid = (start + end) // 2
-        return min(query(2 * node, start, mid, l, r),
-                   query(2 * node + 1, mid + 1, end, l, r))
-                   
-    import bisect
-    result = [0] * n
-    
-    for i in range(n - 1, -1, -1):
+    for i in range(n):
         target = prices[i] + t
-        # Find rank >= target
-        r = bisect.bisect_left(distinct, target)
+        steps = 0
+        found = False
         
-        if r < m:
-            nearest_idx = query(1, 0, m - 1, r, m - 1)
-            if nearest_idx != float('inf'):
-                result[i] = nearest_idx - i
+        # Search forward for first price >= target
+        for j in range(i + 1, n):
+            steps += 1
+            if prices[j] >= target:
+                found = True
+                break
         
-        update(1, 0, m - 1, rank_map[prices[i]], i)
-        
+        result.append(steps if found else 0)
+    
     return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n, threshold = map(int, lines[0].split())
+    prices = list(map(int, lines[1].split()))
+    
+    result = threshold_jump(prices, threshold)
+    print(' '.join(map(str, result)))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -315,6 +302,35 @@ class Solution {
     return Array.from(result);
   }
 }
+```
+
+### Python
+
+```python
+
+def threshold_jump(prices, threshold):
+    count = 0
+    stack = []
+    
+    for price in prices:
+        while stack and stack[-1] <= price - threshold:
+            stack.pop()
+            count += 1
+        stack.append(price)
+    
+    return count
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n, threshold = map(int, lines[0].split())
+    prices = list(map(int, lines[1].split()))
+    
+    print(threshold_jump(prices, threshold))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

@@ -291,6 +291,16 @@ def count_equal_distinct_splits(s: str) -> int:
             count += 1
 
     return count
+
+def main():
+    import sys
+    s = sys.stdin.read().strip()
+    result = count_equal_distinct_splits(s)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

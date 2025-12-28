@@ -151,6 +151,22 @@ def shortest_covering_window(arr: list[str], T: set[str]) -> tuple[int, list[str
         return (0, [])
 
     return (min_len, arr[result_left:result_right + 1])
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    arr = lines[1:n+1]
+    k = int(lines[n+1])
+    T = set(lines[n+2:n+2+k])
+    count, window = shortest_covering_window(arr, T)
+    print(count)
+    for item in window:
+        print(item)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

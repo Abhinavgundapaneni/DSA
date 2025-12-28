@@ -325,6 +325,18 @@ def cyclic_shift_equivalence_classes(strings: list[str]) -> int:
         canonical_set.add(canonical)
 
     return len(canonical_set)
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    strings = lines[1:n+1]
+    result = cyclic_shift_equivalence_classes(strings)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

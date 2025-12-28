@@ -337,10 +337,31 @@ def main():
         adj[u].append(v)
         adj[v].append(u)
     
-    locked = list(map(int, input().split()))
+    # Sort adjacency lists for deterministic output
+    for i in range(n):
+        adj[i].sort()
     
-    result = can_color_bipartite(n, adj, locked)
-    print("true" if result else "false")
+    # Problem: Count nodes in larger bipartite partition
+    # Use BFS to color graph, return size of larger partition
+    color = [-1] * n
+    count = [0, 0]  # count[0] = color 0, count[1] = color 1
+    
+    from collections import deque
+    for start in range(n):
+        if color[start] == -1:
+            queue = deque([start])
+            color[start] = 0
+            count[0] += 1
+            
+            while queue:
+                u = queue.popleft()
+                for v in adj[u]:
+                    if color[v] == -1:
+                        color[v] = 1 - color[u]
+                        count[color[v]] += 1
+                        queue.append(v)
+    
+    print(max(count))
 
 if __name__ == "__main__":
     main()

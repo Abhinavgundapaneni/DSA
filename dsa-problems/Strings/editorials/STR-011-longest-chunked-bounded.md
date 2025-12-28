@@ -272,6 +272,18 @@ def longest_chunked_decomposition(s: str, L: int) -> int:
         chunks += 1
 
     return chunks
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    s = lines[0]
+    L = int(lines[1])
+    result = longest_chunked_decomposition(s, L)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

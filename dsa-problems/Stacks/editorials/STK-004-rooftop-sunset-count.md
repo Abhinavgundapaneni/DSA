@@ -97,15 +97,29 @@ class Solution {
 
 ```python
 def count_visible(h: list[int]) -> int:
+    """Count buildings that can see sunset (no taller building to the right)"""
     count = 0
-    max_h = -1
+    max_height = -1
     
-    for height in h:
-        if height > max_h:
+    # Process from right to left
+    for height in reversed(h):
+        if height > max_height:
             count += 1
-            max_h = height
-            
+            max_height = height
+    
     return count
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    heights = list(map(int, lines[1].split()))
+    
+    print(count_visible(heights))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -150,6 +164,34 @@ class Solution {
     return count;
   }
 }
+```
+
+### Python
+
+```python
+
+def rooftop_sunset_count(heights):
+    stack = []
+    count = 0
+    
+    for h in heights:
+        while stack and stack[-1] <= h:
+            stack.pop()
+        stack.append(h)
+    
+    return len(stack)
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    heights = list(map(int, lines[1].split()))
+    
+    print(rooftop_sunset_count(heights))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

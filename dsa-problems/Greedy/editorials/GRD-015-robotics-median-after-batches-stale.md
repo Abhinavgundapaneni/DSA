@@ -485,24 +485,28 @@ def median_after_batches(k: int, t: int, batches: list) -> list:
     return results
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read()
+    data = data.split()
     if not data:
         return
         
-    iterator = iter(data)
+    idx = 0
     try:
-        k = int(next(iterator))
-        t = int(next(iterator))
+        k = int(data[idx])
+        idx += 1
+        t = int(data[idx])
+        idx += 1
     except StopIteration:
         return
 
     batches = []
     for _ in range(k):
-        m = int(next(iterator))
+        m = int(data[idx])
+        idx += 1
         batch = []
         for _ in range(m):
-            batch.append(int(next(iterator)))
+            batch.append(int(data[idx]))
+            idx += 1
         batches.append(batch)
 
     result = median_after_batches(k, t, batches)

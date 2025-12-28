@@ -157,6 +157,16 @@ def normalize_badge(s: str) -> str:
         result.pop()
 
     return ''.join(result)
+
+def main():
+    import sys
+    s = sys.stdin.read().strip()
+    result = normalize_badge(s)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++

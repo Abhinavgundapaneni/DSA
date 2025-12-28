@@ -187,7 +187,7 @@ def min_inversions_after_swap(arr: list[int]) -> int:
 def main():
     n = int(input())
     arr = list(map(int, input().split()))
-    result = min_inversions_swap(arr)
+    result = min_inversions_after_swap(arr)
     print(result)
 
 if __name__ == "__main__":

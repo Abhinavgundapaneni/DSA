@@ -239,6 +239,17 @@ def min_cost_with_free_cells(cost: list[list[int]], f: int) -> int:
                         dp[r + 1][c][k + 1] = min(dp[r + 1][c][k + 1], cur)
 
     return min(dp[-1][-1])
+
+def main():
+    m, n = map(int, input().split())
+    cost = []
+    for _ in range(m):
+        cost.append(list(map(int, input().split())))
+    f = int(input())
+    print(min_cost_with_free_cells(cost, f))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

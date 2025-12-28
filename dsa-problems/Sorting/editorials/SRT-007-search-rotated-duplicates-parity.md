@@ -230,7 +230,7 @@ def main():
     n = int(input())
     arr = list(map(int, input().split()))
     x = int(input())
-    result = search_rotated(arr, x)
+    result = count_even_indices(arr, x)
     print(result)
 
 if __name__ == "__main__":

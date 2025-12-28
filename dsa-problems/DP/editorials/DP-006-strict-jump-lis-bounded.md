@@ -382,6 +382,119 @@ def longest_bounded_diff_subsequence(a: list[int], d: int, g: int) -> int:
             ans = dp
 
     return ans
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d, g = map(int, input().split())
+    print(longest_bounded_diff_subsequence(a, d, g))
+
+if __name__ == "__main__":
+    main()
+```
+
+### Java
+
+```java
+import java.util.*;
+
+class SegTree {
+    int n;
+    int[] t;
+    
+    SegTree(int n) {
+        this.n = n;
+        this.t = new int[4 * n];
+    }
+    
+    void update(int idx, int val) { update(1, 0, n - 1, idx, val); }
+    
+    void update(int node, int l, int r, int idx, int val) {
+        if (l == r) {
+            t[node] = Math.max(t[node], val);
+            return;
+        }
+        int mid = (l + r) / 2;
+        if (idx <= mid) update(node * 2, l, mid, idx, val);
+        else update(node * 2 + 1, mid + 1, r, idx, val);
+        t[node] = Math.max(t[node * 2], t[node * 2 + 1]);
+    }
+    
+    int query(int ql, int qr) {
+        if (ql > qr) return 0;
+        return query(1, 0, n - 1, ql, qr);
+    }
+    
+    int query(int node, int l, int r, int ql, int qr) {
+        if (qr < l || r < ql) return 0;
+        if (ql <= l && r <= qr) return t[node];
+        int mid = (l + r) / 2;
+        return Math.max(query(node * 2, l, mid, ql, qr), query(node * 2 + 1, mid + 1, r, ql, qr));
+    }
+}
+
+class Solution {
+    public int longestBoundedDiffSubsequence(long[] a, long d, long g) {
+        long[] vals = a.clone();
+        Arrays.sort(vals);
+        
+        int m = 0;
+        for (int i = 0; i < vals.length; i++) {
+            if (i == 0 || vals[i] != vals[i - 1]) {
+                vals[m++] = vals[i];
+            }
+        }
+        
+        SegTree st = new SegTree(m);
+        int ans = 1;
+        
+        for (long x : a) {
+            long lo = x - g;
+            long hi = x - d;
+            int L = lowerBound(vals, m, lo);
+            int R = upperBound(vals, m, hi) - 1;
+            int best = st.query(L, R);
+            int dp = best + 1;
+            int idx = lowerBound(vals, m, x);
+            st.update(idx, dp);
+            ans = Math.max(ans, dp);
+        }
+        return ans;
+    }
+    
+    private int lowerBound(long[] arr, int len, long x) {
+        int l = 0, r = len;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (arr[mid] >= x) r = mid;
+            else l = mid + 1;
+        }
+        return l;
+    }
+    
+    private int upperBound(long[] arr, int len, long x) {
+        int l = 0, r = len;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (arr[mid] <= x) l = mid + 1;
+            else r = mid;
+        }
+        return l;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        long[] a = new long[n];
+        for (int i = 0; i < n; i++) a[i] = sc.nextLong();
+        long d = sc.nextLong();
+        long g = sc.nextLong();
+        System.out.println(new Solution().longestBoundedDiffSubsequence(a, d, g));
+        sc.close();
+    }
+}
 ```
 
 ### C++ (Segment Tree)
@@ -438,6 +551,22 @@ public:
         return ans;
     }
 };
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+    vector<long long> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+    long long d, g;
+    cin >> d >> g;
+
+    Solution sol;
+    cout << sol.longestBoundedDiffSubsequence(a, d, g) << "\n";
+    return 0;
+}
 ```
 
 ### JavaScript (Segment Tree)

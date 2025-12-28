@@ -352,6 +352,13 @@ def count_paths_with_turn_limit(m: int, n: int, T: int) -> int:
     for t in range(T + 1):
         ans = (ans + dpR[m - 1][n - 1][t] + dpD[m - 1][n - 1][t]) % MOD
     return ans
+
+def main():
+    m, n, T = map(int, input().split())
+    print(count_paths_with_turn_limit(m, n, T))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

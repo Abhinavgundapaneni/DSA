@@ -1,194 +1,230 @@
-problem_id: QUE_TASK_STREAM_RATE_LIMIT__7043
 samples:
-- input: |-
-    2
-    84 -30
-  output: |-
-    -96
-- input: |-
-    31
-    -11 -39 11 -93 -83 -23 -68 53 -24 26 -28 -23 10 -14 1 -51 19 -2 -21 87 -91 33 -10 -56 58 94 -44 55 -32 65 26
-  output: |-
-    75
-- input: |-
-    30
-    -30 4 71 -29 74 -51 -51 76 -96 -91 14 -55 -92 81 45 91 -23 35 57 -67 -61 -93 -58 93 20 -79 32 -76 32 69
-  output: |-
-    54
+- input: '4 4 1
+
+    2 4 6 9'
+  output: true false false true
+- input: '5 1 1
+
+    1 1 1 2 2'
+  output: true false false false false
+- input: '10 10 10
+
+    0 1 2 3 4 5 6 7 8 9'
+  output: true true true true true true true true true true
 public:
-- input: |-
-    8
-    -17 38 56 52 -22 -65 -87 77
-  output: |-
-    19
-- input: |-
-    7
-    70 51 69 -40 59 -40 21
-  output: |-
-    -49
-- input: |-
-    7
-    92 -61 -29 54 -21 -8 -39
-  output: |-
-    -84
-- input: |-
-    41
-    -56 93 -39 25 -60 65 53 -48 -21 -28 -7 95 -37 80 -97 -93 4 -48 50 7 4 46 -54 -11 -46 -5 -91 -2 15 13 53 -17 45 35 12 -58 -36 18 99 -40 -59
-  output: |-
-    59
-- input: |-
-    13
-    23 -49 26 -55 -27 25 67 23 38 44 64 -30 -26
-  output: |-
-    16
+- input: '8 5 2
+
+    0 1 2 3 4 10 11 12'
+  output: true true false false false true true false
+- input: '10 1 100
+
+    0 0 0 0 0 0 0 0 0 0'
+  output: true true true true true true true true true true
+- input: '3 1000000000 1
+
+    1 100000000 1000000000'
+  output: true false false
+- input: '10 1 1
+
+    0 2 4 6 8 10 12 14 16 18'
+  output: true true true true true true true true true true
+- input: '6 3 3
+
+    1 2 3 10 11 12'
+  output: true true true true true true
 hidden:
-- input: |-
-    25
-    -9 55 58 57 49 24 91 -43 -12 25 -32 57 -87 17 -7 -74 -32 30 76 -64 62 -47 -91 32 -35
-  output: |-
-    -64
-- input: |-
-    44
-    24 32 -26 82 50 -89 -10 29 -10 -29 -61 75 -36 54 62 -16 -24 -37 96 -100 49 -75 -44 -51 6 6 -36 88 43 -9 -71 -49 -57 5 -64 24 7 18 -31 -15 -29 -97 -56 -51
-  output: |-
-    -87
-- input: |-
-    6
-    68 -76 -5 9 18 64
-  output: |-
-    -37
-- input: |-
-    37
-    -5 54 10 30 63 -55 -9 30 -55 100 23 -24 29 45 -38 3 16 41 -5 74 -80 -6 56 35 -95 45 15 -79 -64 -22 -66 -89 -94 64 69 28 78
-  output: |-
-    -23
-- input: |-
-    29
-    32 -49 73 -72 98 72 -52 5 11 -51 34 -57 -30 48 -79 75 -90 7 -35 -23 1 11 -83 5 83 13 -40 -22 49
-  output: |-
-    3
-- input: |-
-    50
-    -33 92 50 97 -9 95 -15 -14 49 -96 70 -45 85 13 57 58 -17 95 54 -71 -72 -4 20 -77 79 89 29 -72 27 13 67 -60 49 -8 43 -94 44 -67 -1 97 40 -46 -100 -18 56 -43 -43 87 70 -30
-  output: |-
-    -82
-- input: |-
-    50
-    84 -24 85 20 27 -24 86 -8 -75 46 -43 -31 88 -44 -63 -69 98 -16 25 41 13 -42 -4 30 32 -72 -90 -68 -97 13 31 -14 -27 18 48 -70 -80 85 68 94 69 -75 -33 -58 -98 31 71 -84 88 -85
-  output: |-
-    -7
-- input: |-
-    47
-    -79 -92 -83 -79 97 23 2 -47 84 -76 -2 -93 -39 -96 87 -45 -72 -49 28 6 89 1 46 -73 -82 -44 70 -30 -30 95 96 89 -93 30 -28 -36 11 71 -56 84 63 -20 39 72 99 85 85
-  output: |-
-    67
-- input: |-
-    6
-    -3 23 44 23 -72 -37
-  output: |-
-    66
-- input: |-
-    41
-    -50 20 -8 74 -33 95 92 81 41 -80 -75 97 13 80 25 6 -91 47 36 63 -85 0 -24 23 -20 -30 -15 -86 -74 -68 -33 -9 -21 59 39 55 -37 -38 -65 -76 -35
-  output: |-
-    78
-- input: |-
-    4
-    -45 -53 -85 -74
-  output: |-
-    84
-- input: |-
-    14
-    -19 13 -54 -99 -50 28 82 -32 73 -47 6 16 -87 -86
-  output: |-
-    -84
-- input: |-
-    50
-    93 -81 28 -9 -96 16 -43 -76 -61 51 -50 -3 75 28 43 14 19 -67 -59 -34 -55 69 38 -22 23 -45 24 23 98 -20 -98 -25 90 58 -43 -13 -75 -16 75 34 -11 -38 21 64 26 -9 -10 3 16 -25
-  output: |-
-    80
-- input: |-
-    31
-    -34 19 -6 -3 -19 11 -51 84 -86 -91 91 56 -25 -21 -94 -58 -8 -2 -92 24 -19 -55 -20 -45 -36 -86 -58 28 19 96 -35
-  output: |-
-    -20
-- input: |-
-    20
-    39 -51 -67 -33 58 67 -61 2 10 24 86 68 -43 63 18 0 95 -33 -95 20
-  output: |-
-    -63
-- input: |-
-    17
-    98 60 74 27 2 -92 -37 -75 47 100 -82 62 50 46 -21 79 27
-  output: |-
-    -86
-- input: |-
-    9
-    58 22 77 -42 -13 -89 96 13 95
-  output: |-
-    -99
-- input: |-
-    36
-    92 5 -37 48 98 81 84 -22 -88 67 -17 52 25 -37 99 30 27 -65 58 68 28 -21 53 88 53 -55 -7 -34 -8 -59 14 41 -1 -75 -92 58
-  output: |-
-    -78
-- input: |-
-    2
-    -34 28
-  output: |-
-    45
-- input: |-
-    9
-    -95 -65 -50 71 60 10 48 -62 50
-  output: |-
-    58
-- input: |-
-    38
-    18 -39 -31 18 -96 -78 -32 0 40 11 -83 45 4 -61 -76 39 31 53 -15 8 65 -96 27 36 90 49 -73 28 -78 -94 93 16 -12 -6 44 47 13 89
-  output: |-
-    -29
-- input: |-
-    7
-    -19 15 -70 -4 63 32 -31
-  output: |-
-    70
-- input: |-
-    2
-    35 -92
-  output: |-
-    72
-- input: |-
-    25
-    5 77 -71 48 -49 -30 89 34 -63 -13 -34 77 78 -79 63 -33 -29 92 22 64 -42 -83 22 -1 64
-  output: |-
-    92
-- input: |-
-    46
-    14 -18 -12 -69 56 -60 -42 17 45 6 40 38 17 71 40 -94 -27 11 -95 56 -36 84 -64 23 46 49 12 9 -36 13 -99 19 40 -51 -86 67 -93 -85 40 -100 75 23 37 15 10 -73
-  output: |-
-    -70
-- input: |-
-    41
-    -97 49 97 -56 -28 -10 -57 79 -16 -85 53 52 -80 -79 36 22 -86 -78 -86 -71 59 -91 -6 1 -31 68 78 -65 97 74 -74 99 26 -27 50 -81 -90 9 -14 -64 -88
-  output: |-
-    -73
-- input: |-
-    11
-    -63 31 70 14 51 -16 -11 -93 70 76 -51
-  output: |-
-    -8
-- input: |-
-    8
-    -19 91 -90 -48 -51 -95 21 -11
-  output: |-
-    80
-- input: |-
-    10
-    -26 27 45 18 76 15 28 -43 -16 8
-  output: |-
-    -11
-- input: |-
-    7
-    -38 -25 -77 13 38 36 2
-  output: |-
-    -48
+- input: '1 1 1
+
+    1'
+  output: 'true'
+- input: '2 1 1
+
+    1 1'
+  output: true false
+- input: '3 10 1
+
+    1 2 3'
+  output: true false false
+- input: '10 1 10
+
+    1 1 1 1 1 1 1 1 1 1'
+  output: true true true true true true true true true true
+- input: '4 5 2
+
+    0 1 10 11'
+  output: true true true true
+- input: '20 100 5
+
+    0 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190'
+  output: true true true true true false false false false false false true true true
+    true true false false false false
+- input: '100 1 1
+
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+    30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55
+    56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81
+    82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99'
+  output: true false true false true false true false true false true false true false
+    true false true false true false true false true false true false true false true
+    false true false true false true false true false true false true false true false
+    true false true false true false true false true false true false true false true
+    false true false true false true false true false true false true false true false
+    true false true false true false true false true false true false true false true
+    false true false true false true false true false true false
+- input: '15 1000000000 10
+
+    0 100000000 200000000 300000000 400000000 500000000 600000000 700000000 800000000
+    900000000 1000000000 1100000000 1200000000 1300000000 1400000000'
+  output: true true true true true true true true true true false true true true true
+- input: '2 1000000000 1
+
+    0 1000000000'
+  output: true false
+- input: '100 1 1000
+
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'
+  output: true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true
+- input: '20 1000000 10
+
+    10829570 196893280 456578850 471521141 881648041 344008456 287186088 604264728
+    637083815 537917965 185691357 747469872 392108212 363875216 855137604 856438664
+    579696905 487005808 703054852 52343881'
+  output: true true true true true true true true true true true true true true false
+    false false false false false
+- input: '8 1 5
+
+    1 1 1 1 1 2 2 2'
+  output: true true true true true false false false
+- input: '50 100 20
+
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+    30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49'
+  output: true true true true true true true true true true true true true true true
+    true true true true true false false false false false false false false false
+    false false false false false false false false false false false false false
+    false false false false false false false false
+- input: '25 100000000 5
+
+    0 10000000 20000000 30000000 40000000 50000000 60000000 70000000 80000000 90000000
+    100000000 110000000 120000000 130000000 140000000 150000000 160000000 170000000
+    180000000 190000000 200000000 210000000 220000000 230000000 240000000'
+  output: true true true true true false false false false false false true true true
+    true true false false false false false false true true true
+- input: '30 50 10
+
+    150 872 198 16 585 822 152 875 242 675 366 934 140 3 824 512 566 292 1000 929
+    327 592 886 564 594 532 490 441 500 100'
+  output: true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true false false
+- input: '40 1000 50
+
+    0 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220
+    230 240 250 260 270 280 290 300 310 320 330 340 350 360 370 380 390'
+  output: true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true true true true true
+- input: '15 5 2
+
+    47 14 44 35 22 2 25 1 26 1 37 42 11 44 44'
+  output: true true false false false false false false false false false false false
+    false false
+- input: '20 10 3
+
+    0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38'
+  output: true true true false false false true true true false false false true true
+    true false false false true true
+- input: '25 20 5
+
+    13 13 178 185 29 109 69 20 116 158 112 12 77 175 60 146 134 148 179 86 38 104
+    72 162 70'
+  output: true true true true true true true false false false false false false false
+    false false false false false false false false false false false
+- input: '30 15 4
+
+    0 3 6 9 12 15 18 21 24 27 30 33 36 39 42 45 48 51 54 57 60 63 66 69 72 75 78 81
+    84 87'
+  output: true true true true false false true true true true false false true true
+    true true false false true true true true false false true true true true false
+    false
+- input: '35 50 10
+
+    61 101 184 203 400 169 234 401 139 378 76 253 219 497 430 275 87 141 0 287 159
+    370 42 0 231 295 413 268 431 212 302 191 168 298 287'
+  output: true true true true true true true true true true true true true true true
+    true true true true true true true true false false false false false false false
+    false false false false false
+- input: '40 30 6
+
+    0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100 105 110 115 120
+    125 130 135 140 145 150 155 160 165 170 175 180 185 190 195'
+  output: true true true true true true false true true true true true true false
+    true true true true true true false true true true true true true false true true
+    true true true true false true true true true true
+- input: '45 100 15
+
+    141 327 245 761 329 532 515 512 812 406 961 45 983 948 687 833 188 718 882 18
+    566 527 56 718 578 177 806 627 973 476 124 880 476 587 443 55 122 809 566 131
+    953 140 323 264 818'
+  output: true true true true true true true true true true true true true true true
+    true true true true true true true true true true false false false false false
+    false false false false false false false false false false false false false
+    false false
+- input: '50 40 8
+
+    0 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104
+    108 112 116 120 124 128 132 136 140 144 148 152 156 160 164 168 172 176 180 184
+    188 192 196'
+  output: true true true true true true true true false false false true true true
+    true true true true true false false false true true true true true true true
+    true false false false true true true true true true true true false false false
+    true true true true true true
+- input: '55 200 20
+
+    602 794 646 269 1136 676 1789 1840 930 1815 1047 751 1217 1992 1761 1526 1652
+    984 4 1437 897 1279 330 203 646 1483 285 1751 1007 643 414 1658 899 1808 1157
+    743 1719 999 528 747 1628 1259 1714 55 95 1165 964 857 649 1531 1607 1826 888
+    521 1869'
+  output: true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true false false false
+    false false false false false false false false false false false false false
+    false false false false false false false false false false false false
+- input: '60 60 12
+
+    0 6 12 18 24 30 36 42 48 54 60 66 72 78 84 90 96 102 108 114 120 126 132 138 144
+    150 156 162 168 174 180 186 192 198 204 210 216 222 228 234 240 246 252 258 264
+    270 276 282 288 294 300 306 312 318 324 330 336 342 348 354'
+  output: true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true
+- input: '65 500 25
+
+    1515 3440 3007 2945 4910 1544 287 2308 4450 272 288 1513 474 3110 2291 4335 185
+    2653 4218 2213 4868 4852 2175 3201 944 3502 4833 331 34 1482 79 4123 3099 3401
+    1586 2730 4979 3567 3943 1344 4467 1277 1632 821 2441 1941 297 43 4163 4162 2156
+    4234 2841 4051 4624 4384 2139 145 978 4026 1735 2759 1613 1157 4309'
+  output: true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true false false
+    false false false false false false false false false false false false false
+    false false false false false false false false false false false false false
+    false false false false false false false false
+- input: '70 80 15
+
+    0 8 16 24 32 40 48 56 64 72 80 88 96 104 112 120 128 136 144 152 160 168 176 184
+    192 200 208 216 224 232 240 248 256 264 272 280 288 296 304 312 320 328 336 344
+    352 360 368 376 384 392 400 408 416 424 432 440 448 456 464 472 480 488 496 504
+    512 520 528 536 544 552'
+  output: true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true true true true true true true true true true true true
+    true true true true true true true
+

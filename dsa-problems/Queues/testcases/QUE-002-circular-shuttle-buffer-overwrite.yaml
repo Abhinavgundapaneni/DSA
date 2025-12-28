@@ -1,2304 +1,1120 @@
-problem_id: QUE_CIRCULAR_SHUTTLE_BUFFER_OVERWRITE__7314
 samples:
-- input: |-
-    2
+- input: '2
+
     6
+
     ENQ 5
+
     ENQ 6
+
     ENQ 7
+
     ENQ_OVR 8
+
     FRONT
-    REAR
-  output: |-
+
+    REAR'
+  output: 'true
+
     true
-    true
+
     false
+
     5
+
     6
-    8
-- input: |-
-    3
-    6
-    ENQ 1
-    ENQ 2
-    DEQ
-    FRONT
-    DEQ
-    ISEMPTY
-  output: |-
-    true
-    true
-    1
-    2
-    2
-    true
-- input: |-
-    2
-    7
-    ENQ 10
-    ENQ 20
-    ENQ_OVR 30
-    ENQ_OVR 40
-    DEQ
-    DEQ
-    ISEMPTY
-  output: |-
-    true
-    true
-    10
-    20
-    30
-    40
-    true
-public:
-- input: |-
-    6
-    34
-    FRONT
-    ISFULL
-    ENQ_OVR 444
-    FRONT
-    ISEMPTY
-    DEQ
-    FRONT
-    REAR
-    ISFULL
-    ENQ 91
-    ENQ -836
-    ISEMPTY
-    FRONT
-    DEQ
-    ENQ 349
-    ISEMPTY
-    ENQ_OVR -314
-    ENQ_OVR -367
-    ISFULL
-    ISFULL
-    ENQ_OVR 967
-    ENQ_OVR -712
-    ENQ_OVR 828
-    DEQ
-    DEQ
-    ISEMPTY
-    FRONT
-    ISFULL
-    ENQ_OVR -175
-    FRONT
-    REAR
-    DEQ
-    ISFULL
-    ISFULL
-  output: |-
-    EMPTY
-    false
-    NONE
-    444
-    false
-    444
-    EMPTY
-    EMPTY
-    false
-    true
-    true
-    false
-    91
-    91
-    true
-    false
-    NONE
-    NONE
-    false
-    false
-    NONE
-    NONE
-    -836
-    349
-    -314
-    false
-    -367
-    false
-    NONE
-    -367
-    -175
-    -367
-    false
-    false
-- input: |-
-    14
-    15
-    ISFULL
-    ISEMPTY
-    ISEMPTY
-    ENQ -631
-    ENQ 234
-    FRONT
-    ENQ_OVR 584
-    ISFULL
-    REAR
-    ENQ_OVR -606
-    ENQ_OVR 722
-    ENQ 871
-    ISEMPTY
-    ENQ_OVR 986
-    FRONT
-  output: |-
-    false
-    true
-    true
-    true
-    true
-    -631
-    NONE
-    false
-    584
-    NONE
-    NONE
-    true
-    false
-    NONE
-    -631
-- input: |-
-    14
-    13
-    REAR
-    REAR
-    ISFULL
-    ENQ 247
-    ENQ_OVR 469
-    REAR
-    ISFULL
-    REAR
-    ISEMPTY
-    DEQ
-    ISEMPTY
-    REAR
-    DEQ
-  output: |-
-    EMPTY
-    EMPTY
-    false
-    true
-    NONE
-    469
-    false
-    469
-    false
-    247
-    false
-    469
-    469
-- input: |-
-    18
-    48
-    DEQ
-    REAR
-    ISFULL
-    DEQ
-    FRONT
-    FRONT
-    ISFULL
-    ENQ 666
-    ENQ 823
-    DEQ
-    ISEMPTY
-    FRONT
-    DEQ
-    ENQ_OVR 735
-    ISFULL
-    ISEMPTY
-    ISEMPTY
-    FRONT
-    ISFULL
-    REAR
-    ISFULL
-    FRONT
-    REAR
-    DEQ
-    ENQ_OVR -881
-    ISEMPTY
-    REAR
-    ISFULL
-    DEQ
-    ENQ_OVR -889
-    ISFULL
-    DEQ
-    ISEMPTY
-    ISEMPTY
-    ENQ 470
-    ENQ 601
-    REAR
-    ENQ_OVR 814
-    DEQ
-    REAR
-    REAR
-    ENQ_OVR 332
-    ISFULL
-    ISEMPTY
-    ISEMPTY
-    REAR
-    DEQ
-    DEQ
-  output: |-
-    EMPTY
-    EMPTY
-    false
-    EMPTY
-    EMPTY
-    EMPTY
-    false
-    true
-    true
-    666
-    false
-    823
-    823
-    NONE
-    false
-    false
-    false
-    735
-    false
-    735
-    false
-    735
-    735
-    735
-    NONE
-    false
-    -881
-    false
-    -881
-    NONE
-    false
-    -889
-    true
-    true
-    true
-    true
-    601
-    NONE
-    470
-    814
-    814
-    NONE
-    false
-    false
-    false
-    332
-    601
-    814
-- input: |-
-    16
-    5
-    ISEMPTY
-    ENQ -27
-    ENQ_OVR 683
-    REAR
-    ENQ 474
-  output: |-
-    true
-    true
-    NONE
-    683
-    true
-hidden:
-- input: |-
-    8
-    7
-    FRONT
-    ISEMPTY
-    ENQ -180
-    ISEMPTY
-    ISEMPTY
-    ENQ_OVR 266
-    ISEMPTY
-  output: |-
-    EMPTY
-    true
-    true
-    false
-    false
-    NONE
-    false
-- input: |-
-    17
-    39
-    ENQ 435
-    FRONT
-    ENQ_OVR -899
-    ISFULL
-    FRONT
-    ISFULL
-    ISFULL
-    ENQ -595
-    ENQ_OVR -678
-    ENQ -921
-    ENQ_OVR -567
-    ISEMPTY
-    ENQ -749
-    DEQ
-    ENQ 408
-    ISEMPTY
-    FRONT
-    ENQ 107
-    FRONT
-    FRONT
-    FRONT
-    DEQ
-    ISEMPTY
-    FRONT
-    REAR
-    ENQ_OVR 242
-    REAR
-    ISFULL
-    DEQ
-    FRONT
-    ENQ_OVR 692
-    ENQ_OVR 696
-    FRONT
-    ENQ 905
-    REAR
-    DEQ
-    FRONT
-    ISFULL
-    DEQ
-  output: |-
-    true
-    435
-    NONE
-    false
-    435
-    false
-    false
-    true
-    NONE
-    true
-    NONE
-    false
-    true
-    435
-    true
-    false
-    -899
-    true
-    -899
-    -899
-    -899
-    -899
-    false
-    -595
-    107
-    NONE
-    242
-    false
-    -595
-    -678
-    NONE
-    NONE
-    -678
-    true
-    905
-    -678
-    -921
-    false
-    -921
-- input: |-
-    5
-    17
-    ENQ_OVR -904
-    FRONT
-    DEQ
-    ENQ -445
-    ISFULL
-    DEQ
-    ENQ 918
-    ENQ 684
-    REAR
-    DEQ
-    ENQ_OVR -176
-    ENQ 338
-    ENQ -551
-    DEQ
-    ISEMPTY
-    ISEMPTY
-    ISEMPTY
-  output: |-
-    NONE
-    -904
-    -904
-    true
-    false
-    -445
-    true
-    true
-    684
-    918
-    NONE
-    true
-    true
-    684
-    false
-    false
-    false
-- input: |-
-    2
-    10
-    ISFULL
-    REAR
-    DEQ
-    DEQ
-    ISEMPTY
-    FRONT
-    ENQ 491
-    ISFULL
-    ENQ_OVR 852
-    ENQ -954
-  output: |-
-    false
-    EMPTY
-    EMPTY
-    EMPTY
-    true
-    EMPTY
-    true
-    false
-    NONE
-    false
-- input: |-
-    13
-    40
-    ENQ_OVR -675
-    ISEMPTY
-    ENQ 397
-    ISEMPTY
-    ENQ 440
-    DEQ
-    REAR
-    FRONT
-    ENQ_OVR -221
-    FRONT
-    ISEMPTY
-    FRONT
-    ENQ_OVR -565
-    ENQ_OVR 230
-    ISFULL
-    REAR
-    REAR
-    DEQ
-    ENQ 280
-    FRONT
-    ISEMPTY
-    ISEMPTY
-    ENQ_OVR -105
-    REAR
-    ISFULL
-    REAR
-    REAR
-    ENQ 334
-    DEQ
-    ENQ_OVR 767
-    ENQ 185
-    REAR
-    ENQ_OVR -904
-    FRONT
-    ISFULL
-    FRONT
-    FRONT
-    ISEMPTY
-    DEQ
-    ISFULL
-  output: |-
-    NONE
-    false
-    true
-    false
-    true
-    -675
-    440
-    397
-    NONE
-    397
-    false
-    397
-    NONE
-    NONE
-    false
-    230
-    230
-    397
-    true
-    440
-    false
-    false
-    NONE
-    -105
-    false
-    -105
-    -105
-    true
-    440
-    NONE
-    true
-    185
-    NONE
-    -221
-    false
-    -221
-    -221
-    false
-    -221
-    false
-- input: |-
+
+    8'
+- input: '1
+
     4
-    9
-    ENQ 859
-    FRONT
-    FRONT
-    ENQ 159
-    ENQ_OVR -16
-    ENQ 411
-    ENQ -399
-    ISEMPTY
-    ISEMPTY
-  output: |-
-    true
-    859
-    859
-    true
-    NONE
-    true
-    false
-    false
-    false
-- input: |-
-    5
-    40
-    REAR
-    ISFULL
-    ENQ_OVR -713
-    ISFULL
-    REAR
-    REAR
-    ENQ_OVR -652
-    DEQ
-    ISEMPTY
-    REAR
-    FRONT
-    ISEMPTY
-    ISEMPTY
-    ENQ 322
-    ISFULL
-    FRONT
-    ISFULL
-    DEQ
-    ENQ 379
-    ISFULL
-    FRONT
-    ISFULL
-    DEQ
-    ENQ_OVR 512
-    ISFULL
-    ISFULL
-    DEQ
-    ENQ_OVR -929
-    ENQ -540
-    REAR
-    ENQ 122
-    ENQ -744
-    FRONT
-    ISEMPTY
-    ENQ 510
-    FRONT
-    DEQ
-    REAR
-    FRONT
-    ENQ_OVR 8
-  output: |-
-    EMPTY
-    false
-    NONE
-    false
-    -713
-    -713
-    NONE
-    -713
-    false
-    -652
-    -652
-    false
-    false
-    true
-    false
-    -652
-    false
-    -652
-    true
-    false
-    322
-    false
-    322
-    NONE
-    false
-    false
-    379
-    NONE
-    true
-    -540
-    true
-    true
-    512
-    false
-    false
-    512
-    512
-    -744
-    -929
-    NONE
-- input: |-
-    3
-    47
-    ISFULL
-    REAR
-    REAR
-    DEQ
-    ENQ 238
-    REAR
-    REAR
-    ISFULL
-    ISFULL
-    ENQ 410
-    ENQ_OVR -919
-    REAR
-    ISEMPTY
-    ENQ_OVR -52
-    ISEMPTY
-    ENQ -767
-    ENQ_OVR -249
-    DEQ
-    ENQ 284
-    DEQ
-    ENQ -373
-    DEQ
-    ISFULL
-    ISEMPTY
-    FRONT
-    REAR
-    ENQ_OVR -334
-    ENQ -680
-    DEQ
-    REAR
-    ISFULL
-    ISEMPTY
-    REAR
-    ENQ_OVR 915
-    ENQ_OVR 459
-    FRONT
-    ENQ -821
-    DEQ
-    REAR
-    ENQ_OVR -357
-    DEQ
-    ENQ_OVR 365
-    ENQ -92
-    ISFULL
-    ENQ -582
-    REAR
-    ENQ_OVR -33
-  output: |-
-    false
-    EMPTY
-    EMPTY
-    EMPTY
-    true
-    238
-    238
-    false
-    false
-    true
-    NONE
-    -919
-    false
-    238
-    false
-    false
-    410
-    -919
-    true
-    -52
-    true
-    -249
-    false
-    false
-    284
-    -373
-    NONE
-    false
-    284
-    -334
-    false
-    false
-    -334
-    NONE
-    -373
-    -334
-    false
-    -334
-    459
-    NONE
-    915
-    NONE
-    false
-    true
-    false
-    365
-    459
-- input: |-
-    3
-    39
-    FRONT
-    DEQ
-    ENQ -830
-    FRONT
-    ENQ -130
-    FRONT
-    ENQ_OVR -602
-    FRONT
-    ENQ_OVR -581
-    DEQ
-    DEQ
-    ENQ_OVR 951
-    DEQ
-    FRONT
-    FRONT
-    DEQ
-    DEQ
-    ENQ 489
-    DEQ
-    ENQ_OVR 754
-    REAR
-    ENQ_OVR -893
-    ISEMPTY
-    FRONT
-    ENQ 474
-    DEQ
-    ENQ -653
-    ISFULL
-    REAR
-    FRONT
-    DEQ
-    ENQ_OVR 584
-    ISEMPTY
-    REAR
-    ENQ_OVR -174
-    ENQ -45
-    ISFULL
-    DEQ
-    ENQ -458
-  output: |-
-    EMPTY
-    EMPTY
-    true
-    -830
-    true
-    -830
-    NONE
-    -830
-    -830
-    -130
-    -602
-    NONE
-    -581
-    951
-    951
-    951
-    EMPTY
-    true
-    489
-    NONE
-    754
-    NONE
-    false
-    754
-    true
-    754
-    true
-    true
-    -653
-    -893
-    -893
-    NONE
-    false
-    584
-    474
-    false
-    true
-    -653
-    true
-- input: |-
-    17
-    43
-    ENQ 619
-    ENQ -272
-    ENQ 904
-    ISEMPTY
-    DEQ
-    ISFULL
-    REAR
-    FRONT
-    REAR
-    REAR
-    ISEMPTY
-    ISFULL
-    DEQ
-    REAR
-    FRONT
-    DEQ
-    DEQ
-    ENQ_OVR 881
-    ENQ_OVR 511
-    ENQ_OVR -304
-    FRONT
-    ISFULL
-    FRONT
-    REAR
-    FRONT
-    ENQ_OVR 565
-    FRONT
-    ISEMPTY
-    ENQ 86
-    ENQ_OVR -639
-    ENQ -497
-    ENQ -962
-    REAR
-    ISFULL
-    ISFULL
-    DEQ
-    ISFULL
-    FRONT
-    ENQ_OVR 931
-    DEQ
-    FRONT
-    ISEMPTY
-    ENQ 219
-  output: |-
-    true
-    true
-    true
-    false
-    619
-    false
-    904
-    -272
-    904
-    904
-    false
-    false
-    -272
-    904
-    904
-    904
-    EMPTY
-    NONE
-    NONE
-    NONE
-    881
-    false
-    881
-    -304
-    881
-    NONE
-    881
-    false
-    true
-    NONE
-    true
-    true
-    -962
-    false
-    false
-    881
-    false
-    511
-    NONE
-    511
-    -304
-    false
-    true
-- input: |-
-    10
-    35
-    DEQ
-    ISEMPTY
-    DEQ
-    ISEMPTY
-    ISEMPTY
-    ENQ 42
-    DEQ
-    ISFULL
-    REAR
-    ISEMPTY
-    ENQ_OVR -234
-    DEQ
-    ENQ_OVR -174
-    FRONT
-    ENQ -991
-    DEQ
-    ENQ 96
-    ISEMPTY
-    ISFULL
-    ISEMPTY
-    ISFULL
-    ENQ 687
-    ISFULL
-    DEQ
-    ISEMPTY
-    FRONT
-    FRONT
-    REAR
-    DEQ
-    ISEMPTY
-    ISFULL
-    ISEMPTY
-    REAR
-    ISEMPTY
-    ISFULL
-  output: |-
-    EMPTY
-    true
-    EMPTY
-    true
-    true
-    true
-    42
-    false
-    EMPTY
-    true
-    NONE
-    -234
-    NONE
-    -174
-    true
-    -174
-    true
-    false
-    false
-    false
-    false
-    true
-    false
-    -991
-    false
-    96
-    96
-    687
-    96
-    false
-    false
-    false
-    687
-    false
-    false
-- input: |-
-    3
-    36
-    ISEMPTY
-    ISEMPTY
-    DEQ
-    ENQ_OVR -824
-    ENQ 565
-    FRONT
-    REAR
-    ISEMPTY
-    ISEMPTY
-    ENQ_OVR 84
-    ENQ -307
-    REAR
-    ISEMPTY
-    ENQ_OVR -169
-    REAR
-    ENQ -191
-    DEQ
-    FRONT
-    ENQ_OVR 653
-    REAR
-    FRONT
-    ISFULL
-    ENQ_OVR 618
-    ISEMPTY
-    ISEMPTY
-    REAR
-    ISEMPTY
-    ENQ -79
-    DEQ
-    ENQ -410
-    FRONT
-    ENQ -78
-    ISFULL
-    ISEMPTY
-    REAR
-    DEQ
-  output: |-
-    true
-    true
-    EMPTY
-    NONE
-    true
-    -824
-    565
-    false
-    false
-    NONE
-    false
-    84
-    false
-    -824
-    -169
-    false
-    565
-    84
-    NONE
-    653
-    84
-    true
-    84
-    false
-    false
-    618
-    false
-    false
-    -169
-    true
-    653
-    false
-    true
-    false
-    -410
-    653
-- input: |-
-    8
-    33
-    FRONT
-    ISEMPTY
-    ISEMPTY
-    REAR
-    ISFULL
-    ISFULL
-    ENQ_OVR -32
-    ENQ_OVR -580
-    ISFULL
-    ISEMPTY
-    DEQ
-    FRONT
-    ENQ -949
-    FRONT
-    ENQ 578
-    ISEMPTY
-    ISFULL
-    ISEMPTY
-    REAR
-    ENQ_OVR -708
-    ISFULL
-    ISFULL
-    ISFULL
-    ENQ_OVR 697
-    FRONT
-    ISFULL
-    ENQ_OVR -161
-    DEQ
-    DEQ
-    REAR
-    ISFULL
-    FRONT
-    FRONT
-  output: |-
-    EMPTY
-    true
-    true
-    EMPTY
-    false
-    false
-    NONE
-    NONE
-    false
-    false
-    -32
-    -580
-    true
-    -580
-    true
-    false
-    false
-    false
-    578
-    NONE
-    false
-    false
-    false
-    NONE
-    -580
-    false
-    NONE
-    -580
-    -949
-    -161
-    false
-    578
-    578
-- input: |-
-    14
-    41
-    ISEMPTY
-    ISFULL
-    ISEMPTY
-    FRONT
-    ENQ 143
-    REAR
-    ISFULL
-    ENQ_OVR -935
-    REAR
-    ISEMPTY
-    ENQ -959
-    REAR
-    FRONT
-    FRONT
-    FRONT
-    ENQ_OVR -959
-    ENQ -848
-    ENQ_OVR 372
-    FRONT
-    DEQ
-    DEQ
-    REAR
-    ISEMPTY
-    ENQ_OVR 832
-    REAR
-    FRONT
-    REAR
-    ISFULL
-    REAR
-    DEQ
-    ISEMPTY
-    DEQ
-    DEQ
-    FRONT
-    DEQ
-    ENQ -136
-    ENQ_OVR 686
-    FRONT
-    ENQ -405
-    REAR
-    ENQ 303
-  output: |-
-    true
-    false
-    true
-    EMPTY
-    true
-    143
-    false
-    NONE
-    -935
-    false
-    true
-    -959
-    143
-    143
-    143
-    NONE
-    true
-    NONE
-    143
-    143
-    -935
-    372
-    false
-    NONE
-    832
-    -959
-    832
-    false
-    832
-    -959
-    false
-    -959
-    -848
-    372
-    372
-    true
-    NONE
-    832
-    true
-    -405
-    true
-- input: |-
-    13
-    50
-    ISEMPTY
-    ISEMPTY
-    FRONT
-    FRONT
-    DEQ
-    FRONT
-    ENQ_OVR 439
-    FRONT
-    REAR
-    ISFULL
-    REAR
-    DEQ
-    DEQ
-    ENQ -844
-    FRONT
-    ENQ 68
-    ISFULL
-    FRONT
-    ENQ_OVR 355
-    ENQ_OVR -447
-    ENQ -919
-    ISEMPTY
-    ENQ 80
-    ISFULL
-    ISFULL
-    ISEMPTY
-    ISFULL
-    ISFULL
-    FRONT
-    ISFULL
-    DEQ
-    ENQ 871
-    ISFULL
-    ISFULL
-    DEQ
-    REAR
-    ISEMPTY
-    ENQ_OVR 664
-    ISEMPTY
-    ISFULL
-    DEQ
-    ISEMPTY
-    ENQ_OVR 176
-    DEQ
-    REAR
-    REAR
-    ISFULL
-    DEQ
-    DEQ
-    ISEMPTY
-  output: |-
-    true
-    true
-    EMPTY
-    EMPTY
-    EMPTY
-    EMPTY
-    NONE
-    439
-    439
-    false
-    439
-    439
-    EMPTY
-    true
-    -844
-    true
-    false
-    -844
-    NONE
-    NONE
-    true
-    false
-    true
-    false
-    false
-    false
-    false
-    false
-    -844
-    false
-    -844
-    true
-    false
-    false
-    68
-    871
-    false
-    NONE
-    false
-    false
-    355
-    false
-    NONE
-    -447
-    176
-    176
-    false
-    -919
-    80
-    false
-- input: |-
-    12
-    25
-    DEQ
-    ENQ -679
-    ISEMPTY
-    DEQ
-    FRONT
-    REAR
-    ISEMPTY
-    ENQ_OVR -522
-    ENQ_OVR -310
-    ENQ_OVR -188
-    FRONT
-    FRONT
-    ENQ_OVR -175
-    DEQ
-    ISEMPTY
-    ENQ_OVR 486
-    ISEMPTY
-    ENQ_OVR 270
-    ENQ_OVR 465
-    DEQ
-    DEQ
-    ISFULL
-    FRONT
-    DEQ
-    REAR
-  output: |-
-    EMPTY
-    true
-    false
-    -679
-    EMPTY
-    EMPTY
-    true
-    NONE
-    NONE
-    NONE
-    -522
-    -522
-    NONE
-    -522
-    false
-    NONE
-    false
-    NONE
-    NONE
-    -310
-    -188
-    false
-    -175
-    -175
-    465
-- input: |-
-    20
-    22
-    REAR
-    DEQ
-    ENQ 619
-    FRONT
-    REAR
-    FRONT
-    REAR
-    FRONT
-    FRONT
-    ISFULL
-    DEQ
-    REAR
-    FRONT
-    ISEMPTY
-    ISEMPTY
-    ENQ 453
-    REAR
-    FRONT
-    ISEMPTY
-    ENQ_OVR -328
-    REAR
-    DEQ
-  output: |-
-    EMPTY
-    EMPTY
-    true
-    619
-    619
-    619
-    619
-    619
-    619
-    false
-    619
-    EMPTY
-    EMPTY
-    true
-    true
-    true
-    453
-    453
-    false
-    NONE
-    -328
-    453
-- input: |-
-    13
-    28
-    FRONT
-    ENQ 187
-    ENQ_OVR 779
-    ISEMPTY
-    ENQ_OVR 451
-    ENQ -833
-    FRONT
-    ENQ_OVR -590
-    ENQ_OVR -874
-    REAR
-    ISEMPTY
-    ISFULL
-    REAR
-    FRONT
-    FRONT
-    ISEMPTY
-    ISEMPTY
-    REAR
-    DEQ
-    ENQ -190
-    ENQ -314
-    FRONT
-    ISEMPTY
-    FRONT
-    FRONT
-    ISFULL
-    REAR
-    DEQ
-  output: |-
-    EMPTY
-    true
-    NONE
-    false
-    NONE
-    true
-    187
-    NONE
-    NONE
-    -874
-    false
-    false
-    -874
-    187
-    187
-    false
-    false
-    -874
-    187
-    true
-    true
-    779
-    false
-    779
-    779
-    false
-    -314
-    779
-- input: |-
-    19
-    41
-    ENQ 166
-    ISFULL
-    ISEMPTY
-    ENQ_OVR -858
-    ENQ 520
-    FRONT
-    REAR
-    ENQ 517
-    DEQ
-    ENQ 175
-    ENQ 390
-    REAR
-    REAR
-    ISEMPTY
-    ENQ 74
-    ISFULL
-    ENQ -813
-    DEQ
-    ISFULL
-    FRONT
-    ISEMPTY
-    REAR
-    ISFULL
-    ENQ -403
-    ENQ 252
-    DEQ
-    ENQ -66
-    ISFULL
-    ENQ_OVR 498
-    ENQ 444
-    ISFULL
-    FRONT
-    ENQ 514
-    ISEMPTY
-    ISEMPTY
-    ISEMPTY
-    REAR
-    ISEMPTY
-    REAR
-    DEQ
-    ISFULL
-  output: |-
-    true
-    false
-    false
-    NONE
-    true
-    166
-    520
-    true
-    166
-    true
-    true
-    390
-    390
-    false
-    true
-    false
-    true
-    -858
-    false
-    520
-    false
-    -813
-    false
-    true
-    true
-    520
-    true
-    false
-    NONE
-    true
-    false
-    517
-    true
-    false
-    false
-    false
-    514
-    false
-    514
-    517
-    false
-- input: |-
-    10
-    36
-    ENQ -894
-    ISFULL
-    ISEMPTY
-    FRONT
-    FRONT
-    REAR
-    ISEMPTY
-    ISFULL
-    DEQ
-    ISEMPTY
-    ENQ_OVR -201
-    ENQ 133
-    FRONT
-    ISFULL
-    REAR
-    ENQ -792
-    DEQ
-    ENQ_OVR 411
-    FRONT
-    ISFULL
-    ENQ -620
-    ISFULL
-    FRONT
-    ENQ_OVR 838
-    ISEMPTY
-    REAR
-    ENQ_OVR -364
-    ENQ_OVR -854
-    ENQ_OVR 290
-    REAR
-    ENQ 126
-    DEQ
-    ISFULL
-    ENQ 697
-    REAR
-    ISEMPTY
-  output: |-
-    true
-    false
-    false
-    -894
-    -894
-    -894
-    false
-    false
-    -894
-    true
-    NONE
-    true
-    -201
-    false
-    133
-    true
-    -201
-    NONE
-    133
-    false
-    true
-    false
-    133
-    NONE
-    false
-    838
-    NONE
-    NONE
-    NONE
-    290
-    true
-    133
-    false
-    true
-    697
-    false
-- input: |-
-    20
-    23
-    REAR
-    ISEMPTY
-    ISEMPTY
-    ENQ_OVR -799
-    ISEMPTY
-    FRONT
-    REAR
-    DEQ
-    ISFULL
-    ENQ 850
-    DEQ
-    FRONT
-    ENQ 795
-    ISEMPTY
-    REAR
-    REAR
-    ISEMPTY
-    ISEMPTY
-    ISFULL
-    ISFULL
-    ISEMPTY
-    DEQ
-    ENQ_OVR 535
-  output: |-
-    EMPTY
-    true
-    true
-    NONE
-    false
-    -799
-    -799
-    -799
-    false
-    true
-    850
-    EMPTY
-    true
-    false
-    795
-    795
-    false
-    false
-    false
-    false
-    false
-    795
-    NONE
-- input: |-
-    12
-    24
-    REAR
-    ENQ_OVR -872
-    ISFULL
-    ISFULL
-    REAR
-    ISEMPTY
-    FRONT
-    ISFULL
-    FRONT
-    ENQ -989
-    ENQ -326
-    ISEMPTY
-    ISEMPTY
-    ISEMPTY
-    REAR
-    DEQ
-    REAR
-    ISFULL
-    ISFULL
-    ISFULL
-    ISFULL
-    ISEMPTY
-    REAR
-    ISEMPTY
-  output: |-
-    EMPTY
-    NONE
-    false
-    false
-    -872
-    false
-    -872
-    false
-    -872
-    true
-    true
-    false
-    false
-    false
-    -326
-    -872
-    -326
-    false
-    false
-    false
-    false
-    false
-    -326
-    false
-- input: |-
-    18
-    40
-    ENQ_OVR 656
-    ISFULL
-    FRONT
-    ENQ 378
-    ENQ_OVR -807
-    REAR
-    ENQ -248
-    REAR
-    ENQ -385
-    REAR
-    FRONT
-    ISEMPTY
-    ENQ_OVR 291
-    ISFULL
-    ENQ -262
-    ENQ_OVR 468
-    ISFULL
-    ISEMPTY
-    ENQ_OVR -79
-    ENQ -765
-    FRONT
-    ISEMPTY
-    ENQ 0
-    ISFULL
-    ENQ_OVR 607
-    FRONT
-    FRONT
-    FRONT
-    ISEMPTY
-    FRONT
-    FRONT
-    REAR
-    ISFULL
-    ISEMPTY
-    DEQ
-    ISEMPTY
-    FRONT
-    ENQ -486
-    DEQ
-    FRONT
-  output: |-
-    NONE
-    false
-    656
-    true
-    NONE
-    -807
-    true
-    -248
-    true
-    -385
-    656
-    false
-    NONE
-    false
-    true
-    NONE
-    false
-    false
-    NONE
-    true
-    656
-    false
-    true
-    false
-    NONE
-    656
-    656
-    656
-    false
-    656
-    656
-    607
-    false
-    false
-    656
-    false
-    378
-    true
-    378
-    -807
-- input: |-
-    8
-    11
-    REAR
-    ISFULL
-    ENQ_OVR -853
-    ISEMPTY
-    ISFULL
-    REAR
-    ENQ -325
-    ISFULL
-    ENQ_OVR -903
-    REAR
-    FRONT
-  output: |-
-    EMPTY
-    false
-    NONE
-    false
-    false
-    -853
-    true
-    false
-    NONE
-    -903
-    -853
-- input: |-
-    17
-    45
-    REAR
-    ISFULL
-    ENQ -470
-    ISFULL
-    DEQ
-    REAR
-    DEQ
-    ENQ -837
-    ENQ -356
-    ISEMPTY
-    ENQ_OVR -14
-    ENQ 166
-    FRONT
-    DEQ
-    ENQ 356
-    ISEMPTY
-    FRONT
-    ENQ 286
-    FRONT
-    ENQ_OVR 89
-    ENQ 303
-    DEQ
-    ISFULL
-    ENQ_OVR 223
-    ENQ 512
-    ISFULL
-    REAR
-    ISEMPTY
-    FRONT
-    ISFULL
-    ISFULL
-    ISFULL
-    ISFULL
-    ISFULL
-    REAR
-    ISFULL
-    ENQ_OVR -996
-    REAR
-    ISEMPTY
-    ISEMPTY
-    ENQ 198
-    DEQ
-    ISFULL
-    ISFULL
-    REAR
-  output: |-
-    EMPTY
-    false
-    true
-    false
-    -470
-    EMPTY
-    EMPTY
-    true
-    true
-    false
-    NONE
-    true
-    -837
-    -837
-    true
-    false
-    -356
-    true
-    -356
-    NONE
-    true
-    -356
-    false
-    NONE
-    true
-    false
-    512
-    false
-    -14
-    false
-    false
-    false
-    false
-    false
-    512
-    false
-    NONE
-    -996
-    false
-    false
-    true
-    -14
-    false
-    false
-    198
-- input: |-
-    2
-    32
-    ENQ_OVR 407
-    ISEMPTY
-    DEQ
-    ISFULL
-    ISEMPTY
-    ENQ_OVR 969
-    REAR
-    ENQ -451
-    FRONT
-    DEQ
-    ISFULL
-    ENQ -632
-    DEQ
-    DEQ
-    DEQ
-    ISFULL
-    ISEMPTY
-    REAR
-    DEQ
-    FRONT
-    FRONT
-    ISEMPTY
-    DEQ
-    ENQ_OVR 43
-    ENQ 843
-    ENQ_OVR 479
-    DEQ
-    FRONT
-    FRONT
-    ISEMPTY
-    ISFULL
-    ENQ -980
-  output: |-
-    NONE
-    false
-    407
-    false
-    true
-    NONE
-    969
-    true
-    969
-    969
-    false
-    true
-    -451
-    -632
-    EMPTY
-    false
-    true
-    EMPTY
-    EMPTY
-    EMPTY
-    EMPTY
-    true
-    EMPTY
-    NONE
-    true
-    43
-    843
-    479
-    479
-    false
-    false
-    true
-- input: |-
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ_OVR 3
+
+    DEQ'
+  output: 'true
+
+    false
+
+    1
+
+    3'
+- input: '3
+
     7
-    45
-    ENQ_OVR 111
-    ENQ_OVR 762
-    ENQ -921
-    ENQ_OVR -788
-    REAR
+
     ISEMPTY
-    ISEMPTY
-    FRONT
-    REAR
-    FRONT
-    ISEMPTY
-    REAR
-    REAR
-    DEQ
-    ISEMPTY
-    ISEMPTY
-    FRONT
-    ENQ_OVR 334
-    FRONT
-    FRONT
-    REAR
-    ENQ 284
-    ENQ -576
-    DEQ
-    FRONT
+
     ISFULL
-    ENQ_OVR -854
-    DEQ
-    FRONT
-    ISFULL
-    ENQ_OVR -509
+
+    ENQ 10
+
     ISEMPTY
+
+    ENQ 20
+
+    ENQ 30
+
+    ISFULL'
+  output: 'true
+
+    false
+
+    true
+
+    false
+
+    true
+
+    true
+
+    true'
+public:
+- input: '1
+
+    6
+
+    ENQ_OVR 0
+
+    ENQ_OVR 1
+
+    ENQ_OVR 2
+
+    ENQ_OVR 3
+
+    ENQ_OVR 4
+
+    FRONT'
+  output: 'NONE
+
+    0
+
+    1
+
+    2
+
+    3
+
+    4'
+- input: '5
+
+    8
+
+    ENQ 0
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    ENQ 4
+
+    ISFULL
+
+    ENQ_OVR 100
+
+    FRONT'
+  output: 'true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    0
+
+    1'
+- input: '4
+
+    6
+
+    ENQ 1
+
+    ENQ 2
+
     DEQ
-    ENQ_OVR 232
-    ENQ_OVR 716
-    DEQ
+
+    ENQ_OVR 3
+
+    FRONT
+
+    REAR'
+  output: 'true
+
+    true
+
+    1
+
+    NONE
+
+    2
+
+    3'
+- input: '2
+
+    4
+
     ISEMPTY
-    DEQ
-    ENQ_OVR -346
-    FRONT
-    FRONT
-    ENQ -80
-    FRONT
-    FRONT
-    ISFULL
-  output: |-
-    NONE
-    NONE
-    true
-    NONE
-    -788
-    false
-    false
-    111
-    -788
-    111
-    false
-    -788
-    -788
-    111
-    false
-    false
-    762
-    NONE
-    762
-    762
-    334
-    true
-    true
-    762
-    -921
-    false
-    NONE
-    -921
-    -788
-    false
-    NONE
-    false
-    -788
-    NONE
-    NONE
-    334
-    false
-    284
-    NONE
-    -576
-    -576
-    true
-    -576
-    -576
-    true
-- input: |-
-    15
-    15
-    ENQ_OVR -31
-    ENQ 817
-    ISFULL
-    DEQ
-    ISFULL
-    ENQ_OVR 523
-    FRONT
-    FRONT
-    FRONT
+
+    ENQ 5
+
     ISEMPTY
-    ENQ_OVR 191
-    ENQ 106
-    REAR
-    ISFULL
-    REAR
-  output: |-
-    NONE
+
+    ISFULL'
+  output: 'true
+
     true
+
     false
-    -31
-    false
-    NONE
-    817
-    817
-    817
-    false
-    NONE
+
+    false'
+- input: '3
+
+    6
+
+    ENQ 10
+
+    ENQ 20
+
+    ENQ 30
+
+    DEQ
+
+    FRONT
+
+    REAR'
+  output: 'true
+
     true
-    106
-    false
-    106
-- input: |-
+
+    true
+
     10
-    38
-    REAR
-    ISEMPTY
-    ENQ 357
-    ENQ_OVR 518
-    REAR
-    REAR
-    REAR
-    ISFULL
-    REAR
-    ISEMPTY
-    REAR
-    ISFULL
-    ISEMPTY
-    ISFULL
-    ENQ -739
-    ENQ -90
-    ISFULL
-    ISEMPTY
-    ISEMPTY
-    DEQ
-    FRONT
-    REAR
-    FRONT
-    DEQ
-    ENQ_OVR 938
-    DEQ
-    REAR
-    DEQ
-    DEQ
-    ENQ_OVR 532
-    REAR
-    ISFULL
-    REAR
-    ISEMPTY
-    ISEMPTY
-    REAR
-    ENQ -515
-    ISEMPTY
-  output: |-
-    EMPTY
-    true
-    true
-    NONE
-    518
-    518
-    518
-    false
-    518
-    false
-    518
-    false
-    false
-    false
-    true
-    true
-    false
-    false
-    false
-    357
-    518
-    -90
-    518
-    518
-    NONE
-    -739
-    938
-    -90
-    938
-    NONE
-    532
-    false
-    532
-    false
-    false
-    532
-    true
-    false
-- input: |-
+
+    20
+
+    30'
+hidden:
+- input: '1
+
     5
-    29
-    REAR
-    ISEMPTY
-    ENQ_OVR -765
-    ENQ_OVR 137
+
+    ENQ_OVR 1
+
     FRONT
-    ENQ_OVR 662
-    ISEMPTY
-    DEQ
-    ENQ -445
-    DEQ
-    ENQ -635
-    ISFULL
+
     REAR
-    REAR
+
     ISEMPTY
-    ENQ 824
-    ISFULL
-    REAR
+
+    ISFULL'
+  output: 'NONE
+
+    1
+
+    1
+
+    false
+
+    true'
+- input: '5
+
+    2
+
     ISEMPTY
-    ISEMPTY
-    REAR
-    ISEMPTY
-    ENQ_OVR 140
-    ISEMPTY
+
+    ISFULL'
+  output: 'true
+
+    false'
+- input: '1
+
+    1
+
+    ENQ_OVR 1'
+  output: NONE
+- input: '2
+
+    6
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ_OVR 3
+
+    ENQ_OVR 4
+
     FRONT
+
+    REAR'
+  output: 'true
+
+    true
+
+    1
+
+    2
+
+    3
+
+    4'
+- input: '3
+
+    6
+
+    ENQ 1
+
+    ENQ 2
+
+    FRONT
+
     REAR
-    ISFULL
+
+    ISEMPTY
+
+    ISFULL'
+  output: 'true
+
+    true
+
+    1
+
+    2
+
+    false
+
+    false'
+- input: '4
+
+    6
+
+    ENQ 0
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
     DEQ
-    ENQ 92
-  output: |-
-    EMPTY
+
+    ENQ_OVR 100'
+  output: 'true
+
     true
+
+    true
+
+    true
+
+    0
+
+    NONE'
+- input: '5
+
+    1
+
+    ENQ_OVR 1'
+  output: NONE
+- input: '3
+
+    5
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    FRONT
+
+    REAR'
+  output: 'true
+
+    true
+
+    true
+
+    1
+
+    3'
+- input: '1
+
+    3
+
+    ENQ_OVR 1000000000
+
+    ENQ_OVR -1000000000
+
+    FRONT'
+  output: 'NONE
+
+    1000000000
+
+    -1000000000'
+- input: '3
+
+    6
+
+    ENQ -1000000000
+
+    ENQ 0
+
+    ENQ 1000000000
+
+    ENQ_OVR 999
+
+    FRONT
+
+    REAR'
+  output: 'true
+
+    true
+
+    true
+
+    -1000000000
+
+    0
+
+    999'
+- input: '2
+
+    5
+
+    ENQ 0
+
+    ENQ 0
+
+    ENQ_OVR 0
+
+    FRONT
+
+    REAR'
+  output: 'true
+
+    true
+
+    0
+
+    0
+
+    0'
+- input: '4
+
+    6
+
+    ENQ 1
+
+    DEQ
+
+    ENQ 2
+
+    DEQ
+
+    ENQ 3
+
+    FRONT'
+  output: 'true
+
+    1
+
+    true
+
+    2
+
+    true
+
+    3'
+- input: '5
+
+    12
+
+    ENQ 0
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    ENQ 4
+
+    ENQ_OVR 0
+
+    ENQ_OVR 1
+
+    ENQ_OVR 2
+
+    ENQ_OVR 3
+
+    ENQ_OVR 4
+
+    FRONT
+
+    REAR'
+  output: 'true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    0
+
+    1
+
+    2
+
+    3
+
+    4
+
+    0
+
+    4'
+- input: '2
+
+    5
+
+    ENQ -1
+
+    ENQ -2
+
+    ENQ_OVR -3
+
+    DEQ
+
+    FRONT'
+  output: 'true
+
+    true
+
+    -1
+
+    -2
+
+    -3'
+- input: '3
+
+    6
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    DEQ
+
+    DEQ
+
+    ENQ_OVR 4'
+  output: 'true
+
+    true
+
+    true
+
+    1
+
+    2
+
+    NONE'
+- input: '1
+
+    6
+
+    ENQ_OVR 1
+
+    ENQ_OVR 2
+
+    ENQ_OVR 3
+
+    ENQ_OVR 4
+
+    ENQ_OVR 5
+
+    FRONT'
+  output: 'NONE
+
+    1
+
+    2
+
+    3
+
+    4
+
+    5'
+- input: '5
+
+    6
+
+    ENQ 0
+
+    ENQ 1
+
+    ENQ 2
+
+    FRONT
+
+    REAR
+
+    ISEMPTY'
+  output: 'true
+
+    true
+
+    true
+
+    0
+
+    2
+
+    false'
+- input: '8
+
+    9
+
+    ENQ 0
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    ENQ 4
+
+    DEQ
+
+    DEQ
+
+    ENQ_OVR 100
+
+    FRONT'
+  output: 'true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    0
+
+    1
+
     NONE
+
+    2'
+- input: '10
+
+    14
+
+    ENQ 0
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    ENQ 4
+
+    ENQ 5
+
+    ENQ 6
+
+    ENQ 7
+
+    ENQ 8
+
+    ENQ 9
+
+    ISFULL
+
+    ENQ_OVR 999
+
+    DEQ
+
+    FRONT'
+  output: 'true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    0
+
+    1
+
+    2'
+- input: '6
+
+    7
+
+    ENQ 10
+
+    ENQ 20
+
+    ENQ 30
+
+    DEQ
+
+    ENQ 40
+
+    FRONT
+
+    REAR'
+  output: 'true
+
+    true
+
+    true
+
+    10
+
+    true
+
+    20
+
+    40'
+- input: '7
+
+    10
+
+    ENQ 0
+
+    ENQ 10
+
+    ENQ 20
+
+    ENQ 30
+
+    ENQ 40
+
+    ENQ 50
+
+    ENQ 60
+
+    ISFULL
+
+    FRONT
+
+    REAR'
+  output: 'true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    0
+
+    60'
+- input: '4
+
+    6
+
+    ENQ 5
+
+    ENQ 10
+
+    DEQ
+
+    ENQ 15
+
+    ENQ 20
+
+    FRONT'
+  output: 'true
+
+    true
+
+    5
+
+    true
+
+    true
+
+    10'
+- input: '12
+
+    13
+
+    ENQ 0
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    ENQ 4
+
+    ENQ 5
+
+    ENQ 6
+
+    ENQ 7
+
+    DEQ
+
+    DEQ
+
+    DEQ
+
+    ENQ_OVR 100
+
+    FRONT'
+  output: 'true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    0
+
+    1
+
+    2
+
     NONE
-    -765
+
+    3'
+- input: '15
+
+    13
+
+    ENQ 0
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    ENQ 4
+
+    ENQ 5
+
+    ENQ 6
+
+    ENQ 7
+
+    ENQ 8
+
+    ENQ 9
+
+    ISEMPTY
+
+    ISFULL
+
+    REAR'
+  output: 'true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    false
+
+    false
+
+    9'
+- input: '5
+
+    9
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    ENQ 4
+
+    ENQ 5
+
+    ENQ_OVR 6
+
+    DEQ
+
+    FRONT
+
+    REAR'
+  output: 'true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    1
+
+    2
+
+    3
+
+    6'
+- input: '8
+
+    11
+
+    ENQ 0
+
+    ENQ 5
+
+    ENQ 10
+
+    ENQ 15
+
+    ENQ 20
+
+    ENQ 25
+
+    DEQ
+
+    DEQ
+
+    ENQ_OVR 999
+
+    ISEMPTY
+
+    ISFULL'
+  output: 'true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    0
+
+    5
+
     NONE
+
     false
-    -765
+
+    false'
+- input: '20
+
+    17
+
+    ENQ 0
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    ENQ 4
+
+    ENQ 5
+
+    ENQ 6
+
+    ENQ 7
+
+    ENQ 8
+
+    ENQ 9
+
+    ENQ 10
+
+    ENQ 11
+
+    ENQ 12
+
+    ENQ 13
+
+    ENQ 14
+
+    FRONT
+
+    REAR'
+  output: 'true
+
     true
-    137
+
     true
-    false
-    -635
-    -635
-    false
+
     true
-    false
-    824
-    false
-    false
-    824
-    false
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    0
+
+    14'
+- input: '10
+
+    18
+
+    ENQ 0
+
+    ENQ 1
+
+    ENQ 2
+
+    ENQ 3
+
+    ENQ 4
+
+    ENQ 5
+
+    ENQ 6
+
+    ENQ 7
+
+    ENQ 8
+
+    ENQ 9
+
+    DEQ
+
+    DEQ
+
+    DEQ
+
+    DEQ
+
+    DEQ
+
+    ENQ_OVR 100
+
+    FRONT
+
+    REAR'
+  output: 'true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    true
+
+    0
+
+    1
+
+    2
+
+    3
+
+    4
+
     NONE
-    false
-    662
-    140
-    true
-    662
-    true
+
+    5
+
+    100'
+

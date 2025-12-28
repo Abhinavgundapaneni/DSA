@@ -254,6 +254,19 @@ def minimal_removal_unique_prefixes(L: int, strings: list[str]) -> int:
 
     find_conflicts(root, 0)
     return total_deletions
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    L = int(lines[0])
+    n = int(lines[1])
+    strings = lines[2:2+n]
+    result = minimal_removal_unique_prefixes(L, strings)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

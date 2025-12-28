@@ -344,23 +344,26 @@ def merge_queues(queues: List[List[int]]) -> List[int]:
     return result
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read()
+    data = data.split()
     if not data:
         return
         
-    iterator = iter(data)
+    idx = 0
     try:
-        k = int(next(iterator))
+        k = int(data[idx])
+        idx += 1
     except StopIteration:
         return
 
     queues = []
     for _ in range(k):
-        length = int(next(iterator))
+        length = int(data[idx])
+        idx += 1
         queue = []
         for _ in range(length):
-            queue.append(int(next(iterator)))
+            queue.append(int(data[idx]))
+            idx += 1
         queues.append(queue)
 
     result = merge_queues(queues)

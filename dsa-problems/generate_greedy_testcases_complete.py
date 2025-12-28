@@ -275,7 +275,8 @@ def main():
     print("GREEDY TEST CASE GENERATION - ALL PROBLEMS (GRD-001 to GRD-016)")
     print("=" * 80)
     
-    base_path = "/Users/nikhilgundala/Desktop/NTB/DSA/dsa-problems/Greedy/testcases"
+    import os
+    base_path = os.path.join(os.path.dirname(__file__), "Greedy", "testcases")
     
     problems = [
         ("GRD-001", "campus-shuttle-driver-swaps", generate_grd001_cases),

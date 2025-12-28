@@ -131,39 +131,43 @@ class Solution {
 
 ```python
 def can_repair(s: str) -> bool:
-    n = len(s)
-    if n % 2 != 0:
-        return False
-        
-    left_stack = []
-    star_stack = []
+    """Check if wildcards can make brackets balanced"""
+    stack = []
+    stars = []
     
     pairs = {')': '(', ']': '[', '}': '{'}
     
     for i, c in enumerate(s):
-        if c in "([{":
-            left_stack.append(i)
-        elif c == "?":
-            star_stack.append(i)
+        if c in '([{':
+            stack.append((c, i))
+        elif c == '?':
+            stars.append(i)
         else:
-            # Closer
-            if left_stack and left_stack[-1] in "([{" and s[left_stack[-1]] == pairs[c]:
-                left_stack.pop()
-            elif star_stack:
-                star_stack.pop()
+            if stack and stack[-1][0] == pairs[c]:
+                stack.pop()
+            elif stars:
+                stars.pop()
             else:
                 return False
-                
-    while left_stack:
-        if not star_stack:
-            return False
-        if left_stack[-1] < star_stack[-1]:
-            left_stack.pop()
-            star_stack.pop()
+    
+    while stack and stars:
+        if stack[-1][1] < stars[-1]:
+            stack.pop()
+            stars.pop()
         else:
-            return False
-            
-    return len(star_stack) % 2 == 0
+            break
+    
+    return not stack
+
+def main():
+    import sys
+    s = sys.stdin.read().strip()
+    result = can_repair(s)
+    print("true" if result else "false")
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -271,6 +275,36 @@ class Solution {
     return starStack.length % 2 === 0;
   }
 }
+```
+
+### Python
+
+```python
+
+def min_deletions(s):
+    stack = []
+    deletions = 0
+    
+    for char in s:
+        if char == '(':
+            stack.append(char)
+        elif char == ')':
+            if stack:
+                stack.pop()
+            else:
+                deletions += 1
+    
+    deletions += len(stack)
+    return deletions
+
+def main():
+    import sys
+    s = sys.stdin.read().strip()
+    print(min_deletions(s))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

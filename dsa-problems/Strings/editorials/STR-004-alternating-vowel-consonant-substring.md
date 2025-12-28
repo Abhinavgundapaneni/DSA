@@ -234,6 +234,17 @@ def longest_alternating_vc(s: str) -> tuple:
         prev_is_vowel = curr_is_vowel
 
     return (max_len, s[best_start:best_start + max_len])
+
+def main():
+    import sys
+    s = sys.stdin.read().strip()
+    length, substring = longest_alternating_vc(s)
+    print(length)
+    print(substring)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

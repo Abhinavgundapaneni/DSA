@@ -64,7 +64,7 @@ Your goal is to maximize the total number of tickets sold.
 **Output:**
 
 ```
-7
+10
 ```
 
 **Explanation:**

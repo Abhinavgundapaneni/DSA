@@ -359,7 +359,11 @@ def solve():
     dfs(1, -1)
     print(max_sum[0])
 
-solve()
+def main():
+    solve()
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

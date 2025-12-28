@@ -105,34 +105,61 @@ def make_test_case(gain, cost):
 def generate_yaml():
     tc = {
         "samples": [
-            make_test_case([4, 5, 1], [3, 3, 2])
+            make_test_case([3, 1, 2], [1, 2, 2]),
+            make_test_case([1, 2, 3, 4], [2, 3, 4, 5]),
+            make_test_case([4, 5, 6], [3, 4, 5])
         ],
         "public": [
-            make_test_case([1, 2, 3], [4, 4, 4]), # Impossible
-            make_test_case([10, 0, 10], [5, 5, 5]) # Skip 0
+            make_test_case([2, 2, 2], [1, 1, 1]),  # Simple sufficient
+            make_test_case([1, 1, 1], [2, 2, 2]),  # Impossible
+            make_test_case([10, 1, 1], [1, 1, 9]),  # One skip
+            make_test_case([5, 5, 5], [4, 4, 4]),  # Exact
+            make_test_case([1, 2, 3, 4, 5], [2, 1, 2, 1, 2])  # Mixed
         ],
         "hidden": []
     }
 
-    # Edge cases: n=1
-    tc["hidden"].append(make_test_case([10], [5])) # Skip the only gain -> 0 gain, 5 cost -> impossible
-    tc["hidden"].append(make_test_case([10], [0])) # Skip 10 -> 0 gain, 0 cost -> 0
-    
-    # All gain 0
-    tc["hidden"].append(make_test_case([0, 0, 0], [0, 0, 0]))
+    # Edge cases (8-10)
+    tc["hidden"].append(make_test_case([10], [5]))  # Single
+    tc["hidden"].append(make_test_case([10, 10], [5, 5]))  # Two same
+    tc["hidden"].append(make_test_case([1, 2], [2, 1]))  # Two swap
+    tc["hidden"].append(make_test_case([5]*5, [4]*5))  # All same sufficient
+    tc["hidden"].append(make_test_case([1]*5, [2]*5))  # All same insufficient
+    tc["hidden"].append(make_test_case([10, 1, 1, 1], [1, 1, 1, 8]))  # One dominant
+    tc["hidden"].append(make_test_case([i for i in range(1, 6)], [i//2 for i in range(1, 6)]))  # Half cost
+    tc["hidden"].append(make_test_case([i*2 for i in range(1, 7)], [i for i in range(1, 7)]))  # Double gain
 
-    # Large sequence
-    n_large = 100000
-    gain_large = [random.randint(10**8, 10**9) for _ in range(n_large)]
-    cost_large = [random.randint(10**7, 10**8) for _ in range(n_large)]
-    tc["hidden"].append(make_test_case(gain_large, cost_large))
+    # Corner cases (8-10)
+    tc["hidden"].append(make_test_case([10**9], [1]))  # Extreme gain
+    tc["hidden"].append(make_test_case([10**9]*3, [1, 1, 10**9-1]))  # Extreme with one skip
+    tc["hidden"].append(make_test_case([random.randint(1, 100) for _ in range(10)], 
+                                      [random.randint(1, 100) for _ in range(10)]))  # Random small
+    tc["hidden"].append(make_test_case([100]*10, [99]*10))  # Close margins
+    tc["hidden"].append(make_test_case([i*10 for i in range(1, 13)], [i*5 for i in range(1, 13)]))  # Pattern
+    tc["hidden"].append(make_test_case([random.randint(1, 1000) for _ in range(15)], 
+                                      [random.randint(1, 1000) for _ in range(15)]))  # Medium random
+    tc["hidden"].append(make_test_case([10**6]*5, [10**6-1]*5))  # Large values
+    tc["hidden"].append(make_test_case([i for i in range(1, 21)], [i//2 for i in range(1, 21)]))  # Larger pattern
 
-    # Stress case: barely possible
-    n_stress = 1000
-    cost_stress = [10] * n_stress
-    gain_stress = [11] * n_stress
-    gain_stress[500] = 0 # This will be the skip
-    tc["hidden"].append(make_test_case(gain_stress, cost_stress))
+    # Normal cases (10-14)
+    tc["hidden"].append(make_test_case([random.randint(1, 50) for _ in range(8)], 
+                                      [random.randint(1, 50) for _ in range(8)]))  # Small random
+    tc["hidden"].append(make_test_case([i*5 for i in range(1, 11)], [i*3 for i in range(1, 11)]))  # Pattern
+    tc["hidden"].append(make_test_case([random.randint(1, 200) for _ in range(12)], 
+                                      [random.randint(1, 200) for _ in range(12)]))  # Medium random
+    tc["hidden"].append(make_test_case([i*10 for i in range(1, 16)], [i*7 for i in range(1, 16)]))  # Pattern medium
+    tc["hidden"].append(make_test_case([random.randint(1, 500) for _ in range(18)], 
+                                      [random.randint(1, 500) for _ in range(18)]))  # Larger random
+    tc["hidden"].append(make_test_case([i*20 for i in range(1, 21)], [i*15 for i in range(1, 21)]))  # Pattern large
+    tc["hidden"].append(make_test_case([random.randint(1, 1000) for _ in range(25)], 
+                                      [random.randint(1, 1000) for _ in range(25)]))  # Large random
+    tc["hidden"].append(make_test_case([i*50 for i in range(1, 26)], [i*40 for i in range(1, 26)]))  # Pattern larger
+    tc["hidden"].append(make_test_case([random.randint(1, 2000) for _ in range(30)], 
+                                      [random.randint(1, 2000) for _ in range(30)]))  # Very large random
+    tc["hidden"].append(make_test_case([i*100 for i in range(1, 31)], [i*80 for i in range(1, 31)]))  # Pattern max
+    tc["hidden"].append(make_test_case([random.randint(1, 5000) for _ in range(35)], 
+                                      [random.randint(1, 5000) for _ in range(35)]))  # Max random
+    tc["hidden"].append(make_test_case([i*200 for i in range(1, 36)], [i*150 for i in range(1, 36)]))  # Max pattern
 
     print(yaml.dump(tc, sort_keys=False, default_flow_style=False))
 

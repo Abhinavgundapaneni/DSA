@@ -183,7 +183,7 @@ def kth_triple_sum(arr: list[int], k: int) -> int:
 def main():
     n, k = map(int, input().split())
     arr = list(map(int, input().split()))
-    result = kth_smallest(arr, k)
+    result = kth_triple_sum(arr, k)
     print(result)
 
 if __name__ == "__main__":

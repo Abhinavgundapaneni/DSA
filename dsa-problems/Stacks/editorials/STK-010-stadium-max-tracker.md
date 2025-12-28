@@ -142,25 +142,34 @@ def process(ops: list[list[str]]) -> list[str]:
             if not max_stack or val >= max_stack[-1]:
                 max_stack.append(val)
         elif cmd == "POP":
-            if not main_stack:
-                result.append("EMPTY")
-            else:
+            if main_stack:
                 val = main_stack.pop()
-                result.append(str(val))
                 if val == max_stack[-1]:
                     max_stack.pop()
-        elif cmd == "TOP":
-            if not main_stack:
-                result.append("EMPTY")
-            else:
-                result.append(str(main_stack[-1]))
-        elif cmd == "GETMAX":
+        elif cmd == "MAX":
             if not main_stack:
                 result.append("EMPTY")
             else:
                 result.append(str(max_stack[-1]))
                 
     return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    m = int(lines[0])
+    ops = []
+    for i in range(1, m + 1):
+        parts = lines[i].split()
+        ops.append(parts)
+    
+    result = process(ops)
+    for r in result:
+        print(r)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -274,6 +283,57 @@ PUSH 5
 GETMAX
 POP
 GETMAX
+```
+
+### Python
+
+```python
+
+def max_tracker(ops):
+    stack = []
+    max_stack = []
+    result = []
+    
+    for op in ops:
+        cmd = op[0]
+        
+        if cmd == "PUSH":
+            val = int(op[1])
+            stack.append(val)
+            if not max_stack or val >= max_stack[-1]:
+                max_stack.append(val)
+            else:
+                max_stack.append(max_stack[-1])
+        
+        elif cmd == "POP":
+            if stack:
+                stack.pop()
+                max_stack.pop()
+        
+        elif cmd == "MAX":
+            if max_stack:
+                result.append(max_stack[-1])
+            else:
+                result.append("EMPTY")
+    
+    return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    m = int(lines[0])
+    ops = []
+    for i in range(1, m + 1):
+        parts = lines[i].split()
+        ops.append(parts)
+    
+    result = max_tracker(ops)
+    for r in result:
+        print(r)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 1.  `PUSH 2`: Main `[2]`. Max `[2]`.

@@ -175,7 +175,7 @@ def min_changes(arr: list[int]) -> int:
 def main():
     n = int(input())
     arr = list(map(int, input().split()))
-    result = min_ops(arr)
+    result = min_changes(arr)
     print(result)
 
 if __name__ == "__main__":

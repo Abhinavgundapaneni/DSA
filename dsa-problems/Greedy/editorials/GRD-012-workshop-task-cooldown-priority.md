@@ -338,20 +338,24 @@ def min_slots(tasks_data: list, k: int) -> int:
     return time
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read()
+    data = data.split()
     if not data:
         return
         
-    iterator = iter(data)
-    n = int(next(iterator))
-    k = int(next(iterator))
+    idx = 0
+    n = int(data[idx])
+    idx += 1
+    k = int(data[idx])
+    idx += 1
     
     tasks = []
     for _ in range(n):
-        name = next(iterator)
-        count = int(next(iterator))
-        priority = int(next(iterator))
+        name = data[idx]; idx += 1
+        count = int(data[idx])
+        idx += 1
+        priority = int(data[idx])
+        idx += 1
         tasks.append((name, count, priority))
 
     result = min_slots(tasks, k)

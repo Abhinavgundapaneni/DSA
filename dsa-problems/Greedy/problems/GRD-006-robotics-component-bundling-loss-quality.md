@@ -74,7 +74,7 @@ Your goal is to bundle all parts into a single component while maximizing the fi
 **Output:**
 
 ```
-8
+9
 ```
 
 **Explanation:**

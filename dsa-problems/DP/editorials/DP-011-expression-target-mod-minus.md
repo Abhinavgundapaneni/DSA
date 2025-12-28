@@ -179,6 +179,14 @@ def count_expressions(s: str, M: int, K: int, L: int) -> int:
                     dp[pos+l][subRem][1] = (dp[pos+l][subRem][1] + ways) % MOD
 
     return dp[n][K][1]
+
+def main():
+    s = input().strip()
+    M, K, L = map(int, input().split())
+    print(count_expressions(s, M, K, L))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

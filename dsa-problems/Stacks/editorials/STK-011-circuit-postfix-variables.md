@@ -168,6 +168,23 @@ def eval_postfix(tokens: list[str], vars: dict[str, int]) -> int:
             stack.append(res)
             
     return stack[-1]
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    tokens = lines[1].split()
+    k = int(lines[2])
+    variables = {}
+    for i in range(3, 3 + k):
+        var, val = lines[i].split()
+        variables[var] = int(val)
+    
+    print(eval_postfix(tokens, variables))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -266,6 +283,47 @@ class Solution {
     return Number(stack[stack.length - 1]);
   }
 }
+```
+
+### Python
+
+```python
+
+def evaluate_postfix(tokens, variables):
+    stack = []
+    MOD = 10**9 + 7
+    
+    for token in tokens:
+        if token in ['+', '-', '*']:
+            b = stack.pop()
+            a = stack.pop()
+            if token == '+':
+                stack.append((a + b) % MOD)
+            elif token == '-':
+                stack.append((a - b) % MOD)
+            elif token == '*':
+                stack.append((a * b) % MOD)
+        else:
+            stack.append(variables[token])
+    
+    return stack[0]
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    tokens = lines[1].split()
+    k = int(lines[2])
+    variables = {}
+    for i in range(3, 3 + k):
+        var, val = lines[i].split()
+        variables[var] = int(val)
+    
+    print(evaluate_postfix(tokens, variables))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

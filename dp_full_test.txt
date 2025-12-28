@@ -1,0 +1,229 @@
+================================================================================
+DP - EDITORIAL SOLUTIONS TEST
+Testing against ALL test cases (samples, public, AND hidden)
+================================================================================
+
+Found 16 problems to test
+
+DP-001: Testing...
+  Γ£à Total: 44/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ£à Hidden: 39/39
+DP-002: Testing...
+  Γ£à Total: 44/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ£à Hidden: 39/39
+DP-003: Testing...
+  Γ£à Total: 44/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ£à Hidden: 39/39
+DP-004: Testing...
+  Γ£à Total: 44/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ£à Hidden: 39/39
+DP-005: Testing...
+  Γ¥î Total: 40/44 passed
+     Γ£à Samples: 2/2
+     Γ¥î Public: 2/3
+     Γ¥î Hidden: 36/39
+
+     First errors:
+       ΓÇó public[1]: RUNTIME_ERROR
+         Error: Traceback (most recent call last):
+  File "C:\Users\AGUNDA~1\AppData\Local\Temp\tmp979m2i6u.py", line 44, in <module>
+    main()
+  File "C:\Users\AGUN
+       ΓÇó hidden[17]: RUNTIME_ERROR
+         Error: Traceback (most recent call last):
+  File "C:\Users\AGUNDA~1\AppData\Local\Temp\tmp715xslxz.py", line 44, in <module>
+    main()
+  File "C:\Users\AGUN
+       ΓÇó hidden[18]: RUNTIME_ERROR
+         Error: Traceback (most recent call last):
+  File "C:\Users\AGUNDA~1\AppData\Local\Temp\tmp3no9rqlo.py", line 44, in <module>
+    main()
+  File "C:\Users\AGUN
+DP-006: Testing...
+  Γ¥î Total: 41/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ¥î Hidden: 36/39
+
+     First errors:
+       ΓÇó hidden[35]: WRONG_ANSWER
+         Expected: 50000
+         Actual:   25000
+       ΓÇó hidden[36]: WRONG_ANSWER
+         Expected: 75000
+         Actual:   37500
+       ΓÇó hidden[37]: WRONG_ANSWER
+         Expected: 100000
+         Actual:   50000
+DP-007: Testing...
+  Γ£à Total: 44/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ£à Hidden: 39/39
+DP-008: Testing...
+  Γ¥î Total: 41/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ¥î Hidden: 36/39
+
+     First errors:
+       ΓÇó hidden[35]: WRONG_ANSWER
+         Expected: 232307878464406
+         Actual:   429618969
+       ΓÇó hidden[36]: WRONG_ANSWER
+         Expected: 123456789012345
+         Actual:   600610019
+       ΓÇó hidden[37]: WRONG_ANSWER
+         Expected: 987654321098765
+         Actual:   971776173
+DP-009: Testing...
+  Γ¥î Total: 17/44 passed
+     Γ£à Samples: 2/2
+     Γ¥î Public: 1/3
+     Γ¥î Hidden: 14/39
+
+     First errors:
+       ΓÇó public[0]: WRONG_ANSWER
+         Expected: 3
+         Actual:   5
+       ΓÇó public[2]: WRONG_ANSWER
+         Expected: 1
+         Actual:   2
+       ΓÇó hidden[3]: WRONG_ANSWER
+         Expected: 8
+         Actual:   4
+DP-010: Testing...
+  Γ£à Total: 44/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ£à Hidden: 39/39
+DP-011: Testing...
+  Γ¥î Total: 39/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ¥î Hidden: 34/39
+
+     First errors:
+       ΓÇó hidden[34]: WRONG_ANSWER
+         Expected: 1
+         Actual:   0
+       ΓÇó hidden[35]: RUNTIME_ERROR
+         Error: Traceback (most recent call last):
+  File "C:\Users\AGUNDA~1\AppData\Local\Temp\tmp9__s4md5.py", line 36, in <module>
+    main()
+  File "C:\Users\AGUN
+       ΓÇó hidden[36]: RUNTIME_ERROR
+         Error: Traceback (most recent call last):
+  File "C:\Users\AGUNDA~1\AppData\Local\Temp\tmpi7oliqay.py", line 36, in <module>
+    main()
+  File "C:\Users\AGUN
+DP-012: Testing...
+  Γ¥î Total: 42/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ¥î Hidden: 37/39
+
+     First errors:
+       ΓÇó hidden[35]: WRONG_ANSWER
+         Expected: 13
+         Actual:   -1
+       ΓÇó hidden[36]: WRONG_ANSWER
+         Expected: 19
+         Actual:   -1
+DP-013: Testing...
+  Γ£à Total: 44/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ£à Hidden: 39/39
+DP-014: Testing...
+  Γ¥î Total: 41/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ¥î Hidden: 36/39
+
+     First errors:
+       ΓÇó hidden[35]: WRONG_ANSWER
+         Expected: 1
+         Actual:   441423758
+       ΓÇó hidden[36]: WRONG_ANSWER
+         Expected: 1
+         Actual:   257490760
+       ΓÇó hidden[37]: WRONG_ANSWER
+         Expected: 1
+         Actual:   967618232
+DP-015: Testing...
+  Γ£à Total: 44/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ£à Hidden: 39/39
+DP-016: Testing...
+  Γ¥î Total: 40/44 passed
+     Γ£à Samples: 2/2
+     Γ£à Public: 3/3
+     Γ¥î Hidden: 35/39
+
+     First errors:
+       ΓÇó hidden[35]: WRONG_ANSWER
+         Expected: 500000
+         Actual:   10
+       ΓÇó hidden[36]: WRONG_ANSWER
+         Expected: 750000
+         Actual:   10
+       ΓÇó hidden[37]: WRONG_ANSWER
+         Expected: 1000000
+         Actual:   10
+
+
+================================================================================
+DP - FINAL SUMMARY
+================================================================================
+
+Total Test Cases Executed: 704
+Γ£à Passed: 653 (92.8%)
+Γ¥î Failed: 51 (7.2%)
+
+================================================================================
+SUMMARY BY PROBLEM
+================================================================================
+
+Γ£à Perfect Score (8 problems):
+   DP-001: 44/44 (all hidden tests passed)
+   DP-002: 44/44 (all hidden tests passed)
+   DP-003: 44/44 (all hidden tests passed)
+   DP-004: 44/44 (all hidden tests passed)
+   DP-007: 44/44 (all hidden tests passed)
+   DP-010: 44/44 (all hidden tests passed)
+   DP-013: 44/44 (all hidden tests passed)
+   DP-015: 44/44 (all hidden tests passed)
+
+Γ¥î Problems with Failures (8 problems):
+   DP-005: 40/44 passed (4 failed)
+      ΓööΓöÇ Hidden tests: 3/39 failed
+   DP-006: 41/44 passed (3 failed)
+      ΓööΓöÇ Hidden tests: 3/39 failed
+   DP-008: 41/44 passed (3 failed)
+      ΓööΓöÇ Hidden tests: 3/39 failed
+   DP-009: 17/44 passed (27 failed)
+      ΓööΓöÇ Hidden tests: 25/39 failed
+   DP-011: 39/44 passed (5 failed)
+      ΓööΓöÇ Hidden tests: 5/39 failed
+   DP-012: 42/44 passed (2 failed)
+      ΓööΓöÇ Hidden tests: 2/39 failed
+   DP-014: 41/44 passed (3 failed)
+      ΓööΓöÇ Hidden tests: 3/39 failed
+   DP-016: 40/44 passed (4 failed)
+      ΓööΓöÇ Hidden tests: 4/39 failed
+
+================================================================================
+ΓÜá∩╕Å  51/704 test cases failed
+   Success rate: 92.8%
+================================================================================
+

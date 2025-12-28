@@ -1,140 +1,140 @@
 problem_id: STR_LOG_COMPRESSION_WINDOW__1007
 samples:
-  - input: |-
-      aaabbbbcc
-      3
-    output: "a3b4cc"
-  - input: |-
-      abc
-      2
-    output: "abc"
+- input: 'aaabbbbcc
+
+    3'
+  output: a3b4cc
+- input: 'abc
+
+    2'
+  output: abc
 public:
-  - input: |-
-      aaaaa
-      1
-    output: "a5"
-  - input: |-
-      aabbcc
-      2
-    output: "a2b2c2"
-  - input: |-
-      abcdefg
-      5
-    output: "abcdefg"
+- input: 'a
+
+    1'
+  output: a
+- input: 'aa
+
+    2'
+  output: aa
+- input: 'aabbcc
+
+    2'
+  output: aabbcc
 hidden:
-  - input: |-
-      aaaaaabbbbbbcccccc
-      4
-    output: "a6b6c6"
-  - input: |-
-      aabbccddee
-      3
-    output: "aabbccddee"
-  - input: |-
-      zzzzzzzzzz
-      10
-    output: "z10"
-  - input: |-
-      abcabcabc
-      100
-    output: "abcabcabc"
-  - input: |-
-      aaabbbcc
-      3
-    output: "a3b3cc"
-  - input: |-
-      abc
-      2
-    output: "abc"
-  - input: |-
-      aaaa
-      2
-    output: "a4"
-  - input: |-
-      aabbcc
-      2
-    output: "a2b2c2"
-  - input: |-
-      a
-      1
-    output: "a"
-  - input: |-
-      aaaaaa
-      3
-    output: "a6"
-  - input: |-
-      abbccc
-      2
-    output: "abb3"
-  - input: |-
-      xyzzz
-      3
-    output: "xy3"
-  - input: |-
-      mississippi
-      3
-    output: "mis2is2ip2i"
-  - input: |-
-      aaabbaaa
-      3
-    output: "a3b2a3"
-  - input: |-
-      abcdefg
-      5
-    output: "abcdefg"
-  - input: |-
-      zzzzzzzzz
-      4
-    output: "z9"
-  - input: |-
-      aabbbcccc
-      3
-    output: "aab3c4"
-  - input: |-
-      x
-      10
-    output: "x"
-  - input: |-
-      yy
-      2
-    output: "y2"
-  - input: |-
-      aaaabbbbcccc
-      4
-    output: "a4b4c4"
-  - input: |-
-      test
-      2
-    output: "test"
-  - input: |-
-      aaaaaaaaaaaa
-      5
-    output: "a12"
-  - input: |-
-      abababab
-      3
-    output: "abababab"
-  - input: |-
-      xxxxyyyy
-      4
-    output: "x4y4"
-  - input: |-
-      aabbaabb
-      3
-    output: "aab2aab2"
-  - input: |-
-      zzz
-      3
-    output: "z3"
-  - input: |-
-      abcabcabc
-      4
-    output: "abcabcabc"
-  - input: |-
-      qqqqq
-      5
-    output: "q5"
-  - input: |-
-      longlonglong
-      4
-    output: "longlongl3"
+- input: 'aaa
+
+    1'
+  output: a3
+- input: 'aaa
+
+    2'
+  output: a3
+- input: 'aaa
+
+    3'
+  output: a3
+- input: 'aaaa
+
+    3'
+  output: a4
+- input: 'aaabbbccc
+
+    3'
+  output: a3b3c3
+- input: 'aaabbbccc
+
+    4'
+  output: aaabbbccc
+- input: 'xyz
+
+    1'
+  output: xyz
+- input: 'xxyyzz
+
+    2'
+  output: xxyyzz
+- input: 'a
+
+    1'
+  output: a
+- input: 'aa
+
+    1'
+  output: aa
+- input: 'abbccc
+
+    2'
+  output: abbc3
+- input: 'xyzzz
+
+    3'
+  output: xyz3
+- input: 'mississippi
+
+    4'
+  output: mississippi
+- input: 'aaabbaaa
+
+    3'
+  output: a3bba3
+- input: 'abc
+
+    5'
+  output: abc
+- input: 'aaaaaaaaaa
+
+    5'
+  output: a10
+- input: 'aaaaaaaaaa
+
+    10'
+  output: a10
+- input: 'aaaaaaaaaa
+
+    11'
+  output: aaaaaaaaaa
+- input: 'aabbccdd
+
+    2'
+  output: aabbccdd
+- input: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+    50'
+  output: a100
+- input: 'abababababababababababababababababababababababababababababababababababababababababababababababababab
+
+    3'
+  output: abababababababababababababababababababababababababababababababababababababababababababababababababab
+- input: 'aaabbbbbcc
+
+    3'
+  output: a3b5cc
+- input: 'xxxxxxxxxxyyyyyyyyyy
+
+    5'
+  output: x10y10
+- input: 'test
+
+    2'
+  output: test
+- input: 'abcdefg
+
+    3'
+  output: abcdefg
+- input: 'aaaaaaaaaaaaaaa
+
+    3'
+  output: a15
+- input: 'aaaaaaaaaaaaaaaaaaaa
+
+    2'
+  output: a20
+- input: 'aaaaaaaaaaaaaaa
+
+    4'
+  output: a15
+- input: 'abcdabcdabcd
+
+    2'
+  output: abcdabcdabcd

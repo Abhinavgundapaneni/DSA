@@ -86,12 +86,38 @@ class Solution {
 ### Python
 
 ```python
+from bisect import bisect_left
+
 def count_unsafe(d: list[int]) -> int:
-    unsafe_count = 0
-    for i in range(len(d) - 1):
-        if d[i] < d[i+1]:
-            unsafe_count += 1
-    return unsafe_count
+    """
+    Count minimum plates to remove for strictly decreasing sequence.
+    This equals n - length of longest strictly decreasing subsequence.
+    """
+    if not d:
+        return 0
+    
+    # Find longest strictly decreasing subsequence using binary search
+    # We negate values and find LIS on negated values
+    tails = []
+    for num in d:
+        pos = bisect_left(tails, -num)
+        if pos == len(tails):
+            tails.append(-num)
+        else:
+            tails[pos] = -num
+    
+    return len(d) - len(tails)
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    n = int(lines[0])
+    plates = list(map(int, lines[1].split()))
+    print(count_unsafe(plates))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -128,6 +154,35 @@ class Solution {
     return unsafeCount;
   }
 }
+```
+
+### Python
+
+```python
+
+def min_plates(s):
+    stack = []
+    plates = 0
+    
+    for char in s:
+        if char == '(':
+            stack.append(char)
+        else:
+            if stack:
+                stack.pop()
+            else:
+                plates += 1
+    
+    return plates
+
+def main():
+    import sys
+    s = sys.stdin.read().strip()
+    print(min_plates(s))
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ## 🧪 Test Case Walkthrough (Dry Run)

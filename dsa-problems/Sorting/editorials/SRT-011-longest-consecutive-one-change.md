@@ -166,7 +166,7 @@ def longest_after_change(arr: list[int]) -> int:
 def main():
     n = int(input())
     arr = list(map(int, input().split()))
-    result = longest_consecutive(arr)
+    result = longest_after_change(arr)
     print(result)
 
 if __name__ == "__main__":

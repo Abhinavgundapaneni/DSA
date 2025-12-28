@@ -177,6 +177,18 @@ def smallest_missing_substring(s: str, k: int) -> str:
 
     result = dfs("", k)
     return result if result else ""
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    s = lines[0]
+    k = int(lines[1])
+    result = smallest_missing_substring(s, k)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++

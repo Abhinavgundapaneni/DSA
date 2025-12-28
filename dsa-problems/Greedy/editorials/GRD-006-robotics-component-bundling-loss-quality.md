@@ -267,22 +267,26 @@ def max_bundle_weight(n: int, T: int, weights: list, qualities: list) -> int:
     return pq[0][1] if pq else -1
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read()
+    data = data.split()
     if not data:
         return
         
-    iterator = iter(data)
-    n = int(next(iterator))
-    T = int(next(iterator))
+    idx = 0
+    n = int(data[idx])
+    idx += 1
+    T = int(data[idx])
+    idx += 1
     
     weights = []
     for _ in range(n):
-        weights.append(int(next(iterator)))
+        weights.append(int(data[idx]))
+        idx += 1
         
     qualities = []
     for _ in range(n):
-        qualities.append(int(next(iterator)))
+        qualities.append(int(data[idx]))
+        idx += 1
 
     result = max_bundle_weight(n, T, weights, qualities)
     print(result)

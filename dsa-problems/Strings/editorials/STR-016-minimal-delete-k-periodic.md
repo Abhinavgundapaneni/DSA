@@ -307,6 +307,18 @@ def minimal_delete_k_periodic(s: str, k: int) -> int:
             deletions += total_at_pos - max_freq
 
     return deletions
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    s = lines[0]
+    k = int(lines[1])
+    result = minimal_delete_k_periodic(s, k)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### Java

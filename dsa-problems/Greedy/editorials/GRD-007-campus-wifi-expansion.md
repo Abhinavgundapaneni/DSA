@@ -298,23 +298,28 @@ def min_cost(n: int, heights: list, existing_cables: list) -> int:
     return total_cost
 
 def main():
-    input = sys.stdin.read
-    data = input().split()
+    data = sys.stdin.read()
+    data = data.split()
     if not data:
         return
         
-    iterator = iter(data)
-    n = int(next(iterator))
+    idx = 0
+    n = int(data[idx])
+    idx += 1
     
     heights = []
     for _ in range(n):
-        heights.append(int(next(iterator)))
+        heights.append(int(data[idx]))
+        idx += 1
         
-    m = int(next(iterator))
+    m = int(data[idx])
+    idx += 1
     existing_cables = []
     for _ in range(m):
-        u = int(next(iterator))
-        v = int(next(iterator))
+        u = int(data[idx])
+        idx += 1
+        v = int(data[idx])
+        idx += 1
         existing_cables.append([u, v])
         
     print(min_cost(n, heights, existing_cables))

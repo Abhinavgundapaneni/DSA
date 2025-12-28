@@ -278,7 +278,11 @@ def solve():
     result = min(dp[1][0], dp[1][1])
     print(result)
 
-solve()
+def main():
+    solve()
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

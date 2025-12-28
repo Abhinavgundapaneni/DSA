@@ -37,31 +37,53 @@ def make_test_case(n, k, values):
 def generate_yaml():
     tc = {
         "samples": [
-            make_test_case(5, 3, [6, 2, 5, 1, 7])
+            make_test_case(5, 3, [6, 2, 5, 1, 7]),
+            make_test_case(3, 1, [10, 20, 30]),
+            make_test_case(4, 2, [1, 1, 2, 2])
         ],
         "public": [
-            make_test_case(3, 1, [10, 20, 30]),
-            make_test_case(4, 2, [1, 1, 2, 2]),
-            make_test_case(6, 3, [5, 4, 3, 2, 1, 0])
+            make_test_case(6, 3, [5, 4, 3, 2, 1, 0]),  # Decreasing
+            make_test_case(5, 2, [10, 5, 20, 15, 25]),  # Alternating
+            make_test_case(5, 3, [7, 7, 7, 7, 7]),  # All same
+            make_test_case(6, 4, [1, 2, 3, 4, 5, 6]),  # Increasing
+            make_test_case(8, 5, [3, 1, 4, 1, 5, 9, 2, 6])  # Mixed
         ],
         "hidden": []
     }
 
-    # Edge cases: k=1, k=n
-    tc["hidden"].append(make_test_case(10, 1, [random.randint(1, 100) for _ in range(10)]))
-    tc["hidden"].append(make_test_case(10, 10, [random.randint(1, 100) for _ in range(10)]))
-    
-    # All same values
-    tc["hidden"].append(make_test_case(5, 3, [7, 7, 7, 7, 7]))
+    # Edge cases (8-10)
+    tc["hidden"].append(make_test_case(10, 1, [random.randint(1, 100) for _ in range(10)]))  # k=1
+    tc["hidden"].append(make_test_case(10, 10, [random.randint(1, 100) for _ in range(10)]))  # k=n
+    tc["hidden"].append(make_test_case(5, 2, [1, 2, 3, 4, 5]))  # Small window
+    tc["hidden"].append(make_test_case(6, 3, [10, 10, 10, 10, 10, 10]))  # All duplicates
+    tc["hidden"].append(make_test_case(7, 4, [1, 1, 2, 2, 3, 3, 4]))  # Pairs
+    tc["hidden"].append(make_test_case(8, 3, [5, 4, 3, 2, 1, 2, 3, 4]))  # V-shape
+    tc["hidden"].append(make_test_case(5, 5, [9, 8, 7, 6, 5]))  # k=n decreasing
+    tc["hidden"].append(make_test_case(9, 4, [1, 2, 1, 2, 1, 2, 1, 2, 1]))  # Alternating pattern
 
-    # Large random case
-    n_large = 50000
-    k_large = 1000
-    values_large = [random.randint(-10**9, 10**9) for _ in range(n_large)]
-    tc["hidden"].append(make_test_case(n_large, k_large, values_large))
+    # Corner cases (8-10)
+    tc["hidden"].append(make_test_case(6, 3, [10**9, -10**9, 10**9, -10**9, 10**9, -10**9]))  # Extremes
+    tc["hidden"].append(make_test_case(5, 3, [0, 0, 0, 0, 0]))  # All zeros
+    tc["hidden"].append(make_test_case(10, 5, [random.randint(-100, 100) for _ in range(10)]))  # With negatives
+    tc["hidden"].append(make_test_case(8, 4, [-1, -2, -3, -4, -5, -6, -7, -8]))  # Negative decreasing
+    tc["hidden"].append(make_test_case(12, 6, [random.randint(-10**9, 10**9) for _ in range(12)]))  # Extreme random
+    tc["hidden"].append(make_test_case(15, 7, [i for i in range(15)]))  # Sequential larger
+    tc["hidden"].append(make_test_case(10, 5, [100] * 10))  # All same large value
+    tc["hidden"].append(make_test_case(20, 10, [random.randint(1, 50) for _ in range(20)]))  # Medium random
 
-    # Stress case
-    tc["hidden"].append(make_test_case(1000, 500, [random.randint(-10**9, 10**9) for _ in range(1000)]))
+    # Normal cases (10-14)
+    tc["hidden"].append(make_test_case(12, 4, [random.randint(1, 100) for _ in range(12)]))  # Small-medium
+    tc["hidden"].append(make_test_case(15, 5, [i*5 for i in range(15)]))  # Pattern
+    tc["hidden"].append(make_test_case(18, 6, [random.randint(1, 200) for _ in range(18)]))  # Random medium
+    tc["hidden"].append(make_test_case(20, 8, [i for i in range(20)]))  # Medium array
+    tc["hidden"].append(make_test_case(25, 10, [random.randint(1, 150) for _ in range(25)]))  # Larger random
+    tc["hidden"].append(make_test_case(22, 9, [i*3 for i in range(22)]))  # Pattern larger
+    tc["hidden"].append(make_test_case(30, 12, [random.randint(1, 100) for _ in range(30)]))  # Large random
+    tc["hidden"].append(make_test_case(28, 11, [i*2 for i in range(28)]))  # Even pattern
+    tc["hidden"].append(make_test_case(35, 15, [random.randint(5, 95) for _ in range(35)]))  # Larger
+    tc["hidden"].append(make_test_case(40, 18, [i for i in range(40)]))  # Large sequential
+    tc["hidden"].append(make_test_case(32, 13, [random.randint(10, 90) for _ in range(32)]))  # Large varied
+    tc["hidden"].append(make_test_case(38, 16, [i*4 for i in range(38)]))  # Pattern max
 
     print(yaml.dump(tc, sort_keys=False, default_flow_style=False))
 

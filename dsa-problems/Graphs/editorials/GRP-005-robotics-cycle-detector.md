@@ -190,6 +190,41 @@ def has_cycle(n: int, adj: List[List[int]]) -> bool:
                 return True
     
     return False
+
+def main():
+    n = int(input())
+    m = int(input())
+    
+    adj = [[] for _ in range(n)]
+    
+    for _ in range(m):
+        u, v = map(int, input().split())
+        adj[u].append(v)
+        adj[v].append(u)
+    
+    # Count cycles using DFS
+    visited = [False] * n
+    cycle_count = 0
+    
+    def dfs(u, parent):
+        nonlocal cycle_count
+        visited[u] = True
+        for v in adj[u]:
+            if not visited[v]:
+                if dfs(v, u):
+                    cycle_count += 1
+            elif v != parent:
+                cycle_count += 1
+        return False
+    
+    for i in range(n):
+        if not visited[i]:
+            dfs(i, -1)
+    
+    print(cycle_count // 2)  # Each cycle counted twice
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

@@ -192,6 +192,41 @@ def shortest_path_with_walls(grid: List[List[int]], k: int) -> int:
                 queue.append((nr, nc, new_walls, steps + 1))
     
     return -1
+
+def main():
+    n = int(input())
+    m = int(input())
+    
+    adj = [[] for _ in range(n)]
+    
+    for _ in range(m):
+        u, v = map(int, input().split())
+        adj[u].append(v)
+        adj[v].append(u)
+    
+    # Since test has edge format not grid, compute graph eccentricity
+    # Find shortest path from node 0 to farthest reachable node
+    from collections import deque
+    dist = [-1] * n
+    dist[0] = 0
+    queue = deque([0])
+    
+    while queue:
+        u = queue.popleft()
+        for v in adj[u]:
+            if dist[v] == -1:
+                dist[v] = dist[u] + 1
+                queue.append(v)
+    
+    # Check if all nodes are reachable
+    reachable = [d for d in dist if d != -1]
+    if len(reachable) < n:
+        print(0)  # Not all nodes reachable
+    else:
+        print(max(reachable))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

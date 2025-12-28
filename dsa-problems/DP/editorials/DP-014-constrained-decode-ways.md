@@ -171,6 +171,13 @@ def decode_ways(s: str) -> int:
                 cur = (cur + prev2) % MOD
         prev2, prev1 = prev1, cur
     return prev1 % MOD
+
+def main():
+    s = input().strip()
+    print(decode_ways(s))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

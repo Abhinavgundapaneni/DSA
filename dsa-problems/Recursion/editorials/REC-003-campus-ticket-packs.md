@@ -145,39 +145,25 @@ class Solution {
 ### Python
 
 ```python
-def pack_combinations(values: list[int], packs: list[int], target: int) -> list[list[int]]:
-    n = len(values)
-    results = []
-
-    def backtrack(idx, current_sum, current_items):
-        if current_sum == target:
-            results.append(sorted(current_items))
-            return
-        if idx == n or current_sum > target:
-            return
-
-        # Option 1: Include
-        pack_val = values[idx]
-        pack_size = packs[idx]
-        added_sum = pack_val * pack_size
-        
-        if current_sum + added_sum <= target:
-            # Add 'pack_size' copies of 'pack_val'
-            new_items = current_items + [pack_val] * pack_size
-            backtrack(idx + 1, current_sum + added_sum, new_items)
-
-        # Option 2: Exclude
-        backtrack(idx + 1, current_sum, current_items)
-
-    backtrack(0, 0, [])
+def count_combinations(coins: list[int], target: int) -> int:
+    """Count ways to make target using coins (unlimited supply)."""
+    dp = [0] * (target + 1)
+    dp[0] = 1
     
-    # Deduplicate
-    # Convert lists to tuples to use set
-    unique_results = set(tuple(x) for x in results)
+    for coin in coins:
+        for i in range(coin, target + 1):
+            dp[i] += dp[i - coin]
     
-    # Sort for output
-    sorted_results = sorted([list(x) for x in unique_results])
-    return sorted_results
+    return dp[target]
+
+def main():
+    line1 = input().split()
+    n, target = int(line1[0]), int(line1[1])
+    coins = list(map(int, input().split()))
+    print(count_combinations(coins, target))
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

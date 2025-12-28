@@ -159,55 +159,49 @@ class Solution {
 
 ```python
 def process(ops: list[list[str]]) -> list[str]:
+    """Process stack operations with MIN k support"""
     result = []
-    n = 100005
-    tree = [float('inf')] * (4 * n)
-    current_size = 0
-    stack_vals = [] # Keep a simple list for O(1) access to popped values
+    stack = []  # Main stack storing values
     
-    def update(node, start, end, idx, val):
-        if start == end:
-            tree[node] = val
-            return
-        mid = (start + end) // 2
-        if idx <= mid:
-            update(2 * node, start, mid, idx, val)
-        else:
-            update(2 * node + 1, mid + 1, end, idx, val)
-        tree[node] = min(tree[2 * node], tree[2 * node + 1])
-        
-    def query(node, start, end, l, r):
-        if r < start or end < l:
-            return float('inf')
-        if l <= start and end <= r:
-            return tree[node]
-        mid = (start + end) // 2
-        return min(query(2 * node, start, mid, l, r),
-                   query(2 * node + 1, mid + 1, end, l, r))
-                   
     for op in ops:
         cmd = op[0]
         if cmd == "PUSH":
             val = int(op[1])
-            stack_vals.append(val)
-            update(1, 0, n - 1, current_size, val)
-            current_size += 1
+            stack.append(val)
         elif cmd == "POP":
-            if current_size == 0:
+            if not stack:
                 result.append("EMPTY")
             else:
-                val = stack_vals.pop()
-                result.append(str(val))
-                current_size -= 1
+                result.append(str(stack.pop()))
         elif cmd == "MIN":
             k = int(op[1])
-            if current_size < k:
+            if len(stack) == 0:
+                result.append("EMPTY")
+            elif len(stack) < k:
                 result.append("NA")
             else:
-                min_val = query(1, 0, n - 1, current_size - k, current_size - 1)
-                result.append(str(min_val))
+                # Get minimum of top k elements
+                top_k = stack[-k:]
+                result.append(str(min(top_k)))
                 
     return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    m = int(lines[0])
+    ops = []
+    for i in range(1, m + 1):
+        parts = lines[i].split()
+        ops.append(parts)
+    
+    result = process(ops)
+    for r in result:
+        print(r)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++
@@ -349,6 +343,55 @@ PUSH 3
 MIN 2
 POP
 MIN 2
+```
+
+### Python
+
+```python
+
+def sliding_min_stack(ops):
+    stack = []
+    min_stack = []
+    result = []
+    
+    for op in ops:
+        cmd = op[0]
+        
+        if cmd == "PUSH":
+            val = int(op[1])
+            stack.append(val)
+            if not min_stack or val <= min_stack[-1]:
+                min_stack.append(val)
+            else:
+                min_stack.append(min_stack[-1])
+        
+        elif cmd == "POP":
+            if stack:
+                stack.pop()
+                min_stack.pop()
+        
+        elif cmd == "MIN":
+            if min_stack:
+                result.append(min_stack[-1])
+    
+    return result
+
+def main():
+    import sys
+    lines = sys.stdin.read().strip().split('\n')
+    m = int(lines[0])
+    ops = []
+    for i in range(1, m + 1):
+        parts = lines[i].split()
+        ops.append(parts)
+    
+    result = sliding_min_stack(ops)
+    for r in result:
+        print(r)
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 1.  `PUSH 5`: Stack `[5]`. SegTree `[5, inf...]`. Size 1.

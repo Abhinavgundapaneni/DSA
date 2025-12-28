@@ -191,6 +191,16 @@ def can_rotate_to_palindrome(s: str) -> bool:
             return True
 
     return False
+
+def main():
+    import sys
+    s = sys.stdin.read().strip()
+    result = can_rotate_to_palindrome(s)
+    print("true" if result else "false")
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 ### C++

@@ -128,35 +128,90 @@ class Solution {
 ### Python
 
 ```python
-def knight_tour(n: int, blocked: list[list[bool]]) -> list[tuple[int, int]]:
-    total_unblocked = sum(not cell for row in blocked for cell in row)
+def knight_tour(n, blocked):
+    """
+    Check if a knight's tour is possible on an n×n board with blocked squares.
+    Knight starts at (0,0) and must visit all unblocked cells exactly once.
+    Uses Warnsdorff's heuristic for better performance.
+    """
+    # If start is blocked, no tour possible
+    if blocked[0][0]:
+        return False
+    
+    total_unblocked = sum(1 for i in range(n) for j in range(n) if not blocked[i][j])
+    
+    # Knight tours don't exist for 2x2 or 3x3 boards (even with all squares free)
+    if n in (2, 3) and total_unblocked == n * n:
+        return False
+    
+    # For n=4 with no blocked squares, knight tour is impossible
+    if n == 4 and total_unblocked == 16:
+        return False
+    
+    # If only 1 cell (and it's start), tour exists trivially
+    if total_unblocked == 1:
+        return True
+    
     visited = [[False] * n for _ in range(n)]
-    path = [(0, 0)]
-    visited[0][0] = True
+    for i in range(n):
+        for j in range(n):
+            if blocked[i][j]:
+                visited[i][j] = True
     
     moves = [
         (-2, -1), (-2, 1), (-1, -2), (-1, 2),
         (1, -2), (1, 2), (2, -1), (2, 1)
     ]
-
+    
+    def count_onward_moves(r, c):
+        """Count available moves from position (r, c)."""
+        count = 0
+        for dr, dc in moves:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < n and 0 <= nc < n and not visited[nr][nc]:
+                count += 1
+        return count
+    
+    def get_sorted_moves(r, c):
+        """Get moves sorted by Warnsdorff's heuristic (prefer fewer onward moves)."""
+        candidates = []
+        for dr, dc in moves:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < n and 0 <= nc < n and not visited[nr][nc]:
+                candidates.append((count_onward_moves(nr, nc), nr, nc))
+        candidates.sort()
+        return [(nr, nc) for _, nr, nc in candidates]
+    
     def dfs(r, c, count):
         if count == total_unblocked:
             return True
         
-        for dr, dc in moves:
-            nr, nc = r + dr, c + dc
-            if 0 <= nr < n and 0 <= nc < n and not blocked[nr][nc] and not visited[nr][nc]:
-                visited[nr][nc] = True
-                path.append((nr, nc))
-                if dfs(nr, nc, count + 1):
-                    return True
-                path.pop()
-                visited[nr][nc] = False
+        for nr, nc in get_sorted_moves(r, c):
+            visited[nr][nc] = True
+            if dfs(nr, nc, count + 1):
+                return True
+            visited[nr][nc] = False
         return False
+    
+    # Start from (0,0) as specified in the problem
+    visited[0][0] = True
+    return dfs(0, 0, 1)
 
-    if dfs(0, 0, 1):
-        return path
-    return []
+def main():
+    n = int(input())
+    b = int(input())
+    blocked = [[False] * n for _ in range(n)]
+    for _ in range(b):
+        r, c = map(int, input().split())
+        blocked[r][c] = True
+    
+    if knight_tour(n, blocked):
+        print("YES")
+    else:
+        print("NO")
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### C++

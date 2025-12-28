@@ -1,86 +1,86 @@
 problem_id: STR_LAB_CODE_PALINDROME_ROTATE__1002
 samples:
-  - input: aab
-    output: "true"
-  - input: abc
-    output: "false"
+- input: aab
+  output: 'true'
+- input: abc
+  output: 'false'
 public:
-  - input: racecar
-    output: "true"
-  - input: aabbcc
-    output: "false"
-  - input: a
-    output: "true"
-  - input: aa
-    output: "true"
-  - input: abcd
-    output: "false"
+- input: racecar
+  output: 'true'
+- input: aabbcc
+  output: 'false'
+- input: a
+  output: 'true'
+- input: aa
+  output: 'true'
+- input: abcd
+  output: 'false'
 hidden:
-  - input: aabbccddee
-    output: "false"
-  - input: aabbccddeeff
-    output: "false"
-  - input: aabbccddee
-    output: "false"
-  - input: aabbccddeea
-    output: "true"
-  - input: zzz
-    output: "true"
-  - input: a
-    output: "true"
-  - input: aa
-    output: "true"
-  - input: ab
-    output: "false"
-  - input: aba
-    output: "true"
-  - input: abc
-    output: "false"
-  - input: aab
-    output: "true"
-  - input: baa
-    output: "true"
-  - input: abcd
-    output: "false"
-  - input: abcba
-    output: "true"
-  - input: racecar
-    output: "true"
-  - input: noon
-    output: "true"
-  - input: level
-    output: "true"
-  - input: aaa
-    output: "true"
-  - input: aaaa
-    output: "true"
-  - input: aaaaa
-    output: "true"
-  - input: xyz
-    output: "false"
-  - input: test
-    output: "false"
-  - input: abcdefg
-    output: "false"
-  - input: palindrome
-    output: "false"
-  - input: rotated
-    output: "false"
-  - input: example
-    output: "false"
-  - input: mississippi
-    output: "true"
-  - input: rotations
-    output: "false"
-  - input: abcabc
-    output: "true"
-  - input: xyzzyx
-    output: "true"
-  - input: aabbcc
-    output: "true"
-  - input: testtest
-    output: "true"
-  - input: longstring
-    output: "false"
-  - input: minimal
-    output: "false"
+- input: aabbccddee
+  output: 'false'
+- input: aabbccddeeff
+  output: 'false'
+- input: aabbccddee
+  output: 'false'
+- input: aabbccddeea
+  output: 'false'
+- input: zzz
+  output: 'true'
+- input: a
+  output: 'true'
+- input: aa
+  output: 'true'
+- input: ab
+  output: 'false'
+- input: aba
+  output: 'true'
+- input: abc
+  output: 'false'
+- input: aab
+  output: 'true'
+- input: baa
+  output: 'true'
+- input: abcd
+  output: 'false'
+- input: abcba
+  output: 'true'
+- input: racecar
+  output: 'true'
+- input: noon
+  output: 'true'
+- input: level
+  output: 'true'
+- input: aaa
+  output: 'true'
+- input: aaaa
+  output: 'true'
+- input: aaaaa
+  output: 'true'
+- input: xyz
+  output: 'false'
+- input: test
+  output: 'false'
+- input: abcdefg
+  output: 'false'
+- input: palindrome
+  output: 'false'
+- input: rotated
+  output: 'false'
+- input: example
+  output: 'false'
+- input: mississippi
+  output: 'false'
+- input: rotations
+  output: 'false'
+- input: abcabc
+  output: 'false'
+- input: xyzzyx
+  output: 'true'
+- input: aabbcc
+  output: 'false'
+- input: testtest
+  output: 'false'
+- input: longstring
+  output: 'false'
+- input: minimal
+  output: 'false'
